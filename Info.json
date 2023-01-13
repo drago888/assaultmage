@@ -1,0 +1,11 @@
+{
+  "Id": "AssaultMage",
+  "DisplayName": "AssaultMage",
+  "Author": "",
+  "Version": "0.1",
+  "ManagerVersion": "0.21.3",
+  "Requirements": [],
+  "AssemblyName": "AssaultMage.dll",
+  "EntryMethod": "AssaultMage.Main.Load"
+}
+

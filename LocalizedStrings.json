@@ -1,0 +1,287 @@
+[
+    {
+        "Key": "MyFeat.Name",
+        // Don't process this since it is just a name. Without this it might create strange artifacts by trying to create
+        // links to encycolpedia pages.
+        "ProcessTemplates": false,
+        "enGB": "My Feat"
+    },
+
+    {
+        "Key": "MyFeat.Description",
+        "enGB": "This is my feat, not your feat."
+    },
+
+    {
+        "Key": "ArmorAttune.Name",
+        "ProcessTemplates": false,
+        "enGB": "Arcane Armor Attunement"
+    },
+
+    {
+        "Key": "ArmorAttune.Description",
+        "enGB": "You have learned how to cast {g|Encyclopedia:Spell}spells{/g} while wearing armor and attune your armor to synchronize with your arcane energies.\nBenefit: Reduce the {g|Encyclopedia:Spell_Fail_Chance}arcane spell failure chance{/g} due to the armor you are wearing by 20% for any spells you cast. Stacks with Arcane Armor Mastery. You are also trained as a fighter, monk, cleric and wizard."
+    },
+
+    {
+        "Key": "AssaultMage.Name",
+        "ProcessTemplates": false,
+        "enGB": "Assault Mage"
+    },
+
+    {
+        "Key": "AssaultMage.Description",
+        "enGB": "An armored wizard who had learnt to fight in heavy armor and attune his armor to his magical energies and with bonus of 2 to Wisdom. This archetype is only available to the main character."
+    },
+
+    {
+        "Key": "SuperDodge.Name",
+        "ProcessTemplates": false,
+        "enGB": "Shifting Projections"
+    },
+
+    {
+        "Key": "SuperDodge.Description",
+        "enGB": "The assault mage had used distracting image to increasing his AC by 2 times the intelligence bonus"
+    },
+
+    {
+        "Key": "AssaultMage.Spellbook",
+        "ProcessTemplates": false,
+        "enGB": "The assault mage spellbook."
+    },
+
+    {
+        "Key": "Cleric1.Name",
+        "ProcessTemplates": false,
+        "enGB": "Cleric1"
+    },
+
+    {
+        "Key": "Cleric1.Description",
+        "enGB": "Cleric Level 1 Spell."
+    },
+
+    {
+        "Key": "Cleric2.Name",
+        "ProcessTemplates": false,
+        "enGB": "Cleric2"
+    },
+
+    {
+        "Key": "Cleric2.Description",
+        "enGB": "Cleric Level 2 Spell."
+    },
+
+    {
+        "Key": "Cleric3.Name",
+        "ProcessTemplates": false,
+        "enGB": "Cleric3"
+    },
+
+    {
+        "Key": "Cleric3.Description",
+        "enGB": "Cleric Level 3 Spell."
+    },
+
+    {
+        "Key": "Cleric4.Name",
+        "ProcessTemplates": false,
+        "enGB": "Cleric4"
+    },
+
+    {
+        "Key": "Cleric4.Description",
+        "enGB": "Cleric Level 4 Spell."
+    },
+
+    {
+        "Key": "Cleric5.Name",
+        "ProcessTemplates": false,
+        "enGB": "Cleric5"
+    },
+
+    {
+        "Key": "Cleric5.Description",
+        "enGB": "Cleric Level 5 Spell."
+    },
+
+    {
+        "Key": "Cleric6.Name",
+        "ProcessTemplates": false,
+        "enGB": "Cleric6"
+    },
+
+    {
+        "Key": "Cleric6.Description",
+        "enGB": "Cleric Level 6 Spell."
+    },
+
+    {
+        "Key": "Cleric7.Name",
+        "ProcessTemplates": false,
+        "enGB": "Cleric7"
+    },
+
+    {
+        "Key": "Cleric7.Description",
+        "enGB": "Cleric Level 7 Spell."
+    },
+
+    {
+        "Key": "Cleric8.Name",
+        "ProcessTemplates": false,
+        "enGB": "Cleric8"
+    },
+
+    {
+        "Key": "Cleric8.Description",
+        "enGB": "Cleric Level 8 Spell."
+    },
+
+    {
+        "Key": "Cleric9.Name",
+        "ProcessTemplates": false,
+        "enGB": "Cleric9"
+    },
+
+    {
+        "Key": "Cleric9.Description",
+        "enGB": "Cleric Level 9 Spell."
+    },
+
+    {
+        "Key": "Cleric10.Name",
+        "ProcessTemplates": false,
+        "enGB": "Cleric10"
+    },
+
+    {
+        "Key": "Cleric10.Description",
+        "enGB": "Cleric Level 10 Spell."
+    },
+
+    {
+        "Key": "Cleric11.Name",
+        "ProcessTemplates": false,
+        "enGB": "Cleric11"
+    },
+
+    {
+        "Key": "Cleric11.Description",
+        "enGB": "Cleric Level 11 Spell."
+    },
+
+    {
+        "Key": "Cleric12.Name",
+        "ProcessTemplates": false,
+        "enGB": "Cleric12"
+    },
+
+    {
+        "Key": "Cleric12.Description",
+        "enGB": "Cleric Level 12 Spell."
+    },
+
+    {
+        "Key": "Cleric13.Name",
+        "ProcessTemplates": false,
+        "enGB": "Cleric13"
+    },
+
+    {
+        "Key": "Cleric13.Description",
+        "enGB": "Cleric Level 13 Spell."
+    },
+
+    {
+        "Key": "Cleric14.Name",
+        "ProcessTemplates": false,
+        "enGB": "Cleric14"
+    },
+
+    {
+        "Key": "Cleric14.Description",
+        "enGB": "Cleric Level 14 Spell."
+    },
+
+    {
+        "Key": "Cleric15.Name",
+        "ProcessTemplates": false,
+        "enGB": "Cleric15"
+    },
+
+    {
+        "Key": "Cleric15.Description",
+        "enGB": "Cleric Level 15 Spell."
+    },
+
+    {
+        "Key": "Cleric16.Name",
+        "ProcessTemplates": false,
+        "enGB": "Cleric16"
+    },
+
+    {
+        "Key": "Cleric16.Description",
+        "enGB": "Cleric Level 16 Spell."
+    },
+
+    {
+        "Key": "Cleric17.Name",
+        "ProcessTemplates": false,
+        "enGB": "Cleric17"
+    },
+
+    {
+        "Key": "Cleric17.Description",
+        "enGB": "Cleric Level 17 Spell."
+    },
+
+    {
+        "Key": "Cleric18.Name",
+        "ProcessTemplates": false,
+        "enGB": "Cleric18"
+    },
+
+    {
+        "Key": "Cleric18.Description",
+        "enGB": "Cleric Level 18 Spell."
+    },
+
+    {
+        "Key": "Cleric19.Name",
+        "ProcessTemplates": false,
+        "enGB": "Cleric19"
+    },
+
+    {
+        "Key": "Cleric19.Description",
+        "enGB": "Cleric Level 19 Spell."
+    },
+
+    {
+        "Key": "Cleric20.Name",
+        "ProcessTemplates": false,
+        "enGB": "Cleric20"
+    },
+
+    {
+        "Key": "Cleric20.Description",
+        "enGB": "Cleric Level 20 Spell."
+    },
+
+    {
+        "Key": "WizardSpellbookSelection.DisplayName",
+        "ProcessTemplates": false,
+        "enGB": "Wizard spells Selection"
+    },
+
+    {
+        "Key": "WizardSpellbookSelection.Description",
+        "ProcessTemplates": false,
+        "enGB": "Select the spells to add into your spellbooks"
+    }
+
+
+]
