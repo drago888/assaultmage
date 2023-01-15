@@ -457,17 +457,19 @@ namespace AssaultMage.Archetypes
                 .AddToClassSkills(ClassSkills)
                 .SetReplaceClassSkills(true)
                 .AddPrerequisiteMainCharacter(true, false, GroupType.All, false)
+                .ClearStartingItems()
                 .AddToStartingItems(
                     ItemArmorRefs.FullplateStandard.Reference.GetBlueprint(),
                     ItemEquipmentUsableRefs.ScrollOfMageArmor.Reference.GetBlueprint(),
                     ItemEquipmentUsableRefs.ScrollOfMageShield.Reference.GetBlueprint(),
                     ItemEquipmentUsableRefs.ScrollOfMagicMissile.Reference.GetBlueprint(),
-                    ItemEquipmentUsableRefs.ScrollOfExpeditiousRetreat.Reference.GetBlueprint()
+                    ItemEquipmentUsableRefs.ScrollOfExpeditiousRetreat.Reference.GetBlueprint(),
+                    ItemEquipmentUsableRefs.ScrollOfHurricaneBow.Reference.GetBlueprint()
                 )
                 .SetReplaceStartingEquipment(true)
                 .SetRecommendedAttributes(RecommendedStats)
                 .SetOverrideAttributeRecommendations(true)
-                .SetAddSkillPoints(3)
+                .SetAddSkillPoints(4)
                 .Configure();
 
             ArchetypeConfigurator.For(AssaultMageArchetype)

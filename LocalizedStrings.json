@@ -42,7 +42,7 @@
 
     {
         "Key": "SuperDodge.Description",
-        "enGB": "The assault mage had used distracting image to increasing his AC by 2 times the intelligence bonus"
+        "enGB": "The assault mage had used distracting image to increasing his AC by his intelligence bonus"
     },
 
     {
@@ -281,6 +281,28 @@
         "Key": "WizardSpellbookSelection.Description",
         "ProcessTemplates": false,
         "enGB": "Select the spells to add into your spellbooks"
+    },
+
+    {
+        "Key": "UltimateBuff.Name",
+        "ProcessTemplates": false,
+        "enGB": "Ultimate Buff"
+    },
+
+    {
+        "Key": "UltimateBuff.Description",
+        "enGB": "The ultimate buff that enhance the armor with lots of useful constant buffs"
+    },
+
+    {
+        "Key": "UltimateBuffAbility.Name",
+        "ProcessTemplates": false,
+        "enGB": "Ultimate Buff Ability"
+    },
+
+    {
+        "Key": "UltimateBuffAbility.Description",
+        "enGB": "The ultimate buff ability that enhance the armor with lots of useful constant buffs"
     }
 
 
