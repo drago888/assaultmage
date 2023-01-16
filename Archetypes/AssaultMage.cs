@@ -182,266 +182,6 @@ namespace AssaultMage.Archetypes
             StatType[] RecommendedStats = { StatType.Intelligence, StatType.Wisdom };
 
 
-            BlueprintFeature Cleric1 = FeatureConfigurator.New(Cleric1Name, Cleric1Guid, FeatureGroup.Feat)
-                                            .SetDisplayName(Cleric1DisplayName)
-                                            .SetDescription(Cleric1Description)
-                                            .SetHideInUI(true)
-                                            .SetHideInCharacterSheetAndLevelUp(true)
-                                            .SetHideNotAvailibleInUI(true)
-                                            .RemoveFromGroups(FeatureGroup.Feat)
-                                            .AddSpellbook(1,
-                                                          null,
-                                                          BlueprintCore.Blueprints.CustomConfigurators.ComponentMerge.Merge,
-                                                          SpellbookRefs.ClericSpellbook.Reference.GetBlueprint())
-                                             .Configure();
-
-            BlueprintFeature Cleric2 = FeatureConfigurator.New(Cleric2Name, Cleric2Guid, FeatureGroup.Feat)
-                                            .SetDisplayName(Cleric2DisplayName)
-                                            .SetDescription(Cleric2Description)
-                                            .SetHideInUI(true)
-                                            .SetHideInCharacterSheetAndLevelUp(true)
-                                            .SetHideNotAvailibleInUI(true)
-                                            .RemoveFromGroups(FeatureGroup.Feat)
-                                            .AddSpellbook(2,
-                                                          null,
-                                                          BlueprintCore.Blueprints.CustomConfigurators.ComponentMerge.Merge,
-                                                          SpellbookRefs.ClericSpellbook.Reference.GetBlueprint())
-                                            .Configure();
-
-            BlueprintFeature Cleric3 = FeatureConfigurator.New(Cleric3Name, Cleric3Guid, FeatureGroup.Feat)
-                                            .SetDisplayName(Cleric3DisplayName)
-                                            .SetDescription(Cleric3Description)
-                                            .SetHideInUI(true)
-                                            .SetHideInCharacterSheetAndLevelUp(true)
-                                            .SetHideNotAvailibleInUI(true)
-                                            .RemoveFromGroups(FeatureGroup.Feat)
-                                            .AddSpellbook(3,
-                                                          null,
-                                                          BlueprintCore.Blueprints.CustomConfigurators.ComponentMerge.Merge,
-                                                          SpellbookRefs.ClericSpellbook.Reference.GetBlueprint())
-                                            .Configure();
-
-            BlueprintFeature Cleric4 = FeatureConfigurator.New(Cleric4Name, Cleric4Guid, FeatureGroup.Feat)
-                                            .SetDisplayName(Cleric4DisplayName)
-                                            .SetDescription(Cleric4Description)
-                                            .SetHideInUI(true)
-                                            .SetHideInCharacterSheetAndLevelUp(true)
-                                            .SetHideNotAvailibleInUI(true)
-                                            .RemoveFromGroups(FeatureGroup.Feat)
-                                            .AddSpellbook(4,
-                                                          null,
-                                                          BlueprintCore.Blueprints.CustomConfigurators.ComponentMerge.Merge,
-                                                          SpellbookRefs.ClericSpellbook.Reference.GetBlueprint())
-                                            .Configure();
-
-            BlueprintFeature Cleric5 = FeatureConfigurator.New(Cleric5Name, Cleric5Guid, FeatureGroup.Feat)
-                                            .SetDisplayName(Cleric5DisplayName)
-                                            .SetDescription(Cleric5Description)
-                                            .SetHideInUI(true)
-                                            .SetHideInCharacterSheetAndLevelUp(true)
-                                            .SetHideNotAvailibleInUI(true)
-                                            .RemoveFromGroups(FeatureGroup.Feat)
-                                            .AddSpellbook(5,
-                                                          null,
-                                                          BlueprintCore.Blueprints.CustomConfigurators.ComponentMerge.Merge,
-                                                          SpellbookRefs.ClericSpellbook.Reference.GetBlueprint())
-                                            .Configure();
-
-            BlueprintFeature Cleric6 = FeatureConfigurator.New(Cleric6Name, Cleric6Guid, FeatureGroup.Feat)
-                                            .SetDisplayName(Cleric6DisplayName)
-                                            .SetDescription(Cleric6Description)
-                                            .SetHideInUI(true)
-                                            .SetHideInCharacterSheetAndLevelUp(true)
-                                            .SetHideNotAvailibleInUI(true)
-                                            .RemoveFromGroups(FeatureGroup.Feat)
-                                            .AddSpellbook(6,
-                                                          null,
-                                                          BlueprintCore.Blueprints.CustomConfigurators.ComponentMerge.Merge,
-                                                          SpellbookRefs.ClericSpellbook.Reference.GetBlueprint())
-                                            .Configure();
-
-            BlueprintFeature Cleric7 = FeatureConfigurator.New(Cleric7Name, Cleric7Guid, FeatureGroup.Feat)
-                                            .SetDisplayName(Cleric7DisplayName)
-                                            .SetDescription(Cleric7Description)
-                                            .SetHideInUI(true)
-                                            .SetHideInCharacterSheetAndLevelUp(true)
-                                            .SetHideNotAvailibleInUI(true)
-                                            .RemoveFromGroups(FeatureGroup.Feat)
-                                            .AddSpellbook(7,
-                                                          null,
-                                                          BlueprintCore.Blueprints.CustomConfigurators.ComponentMerge.Merge,
-                                                          SpellbookRefs.ClericSpellbook.Reference.GetBlueprint())
-                                            .Configure();
-
-            BlueprintFeature Cleric8 = FeatureConfigurator.New(Cleric8Name, Cleric8Guid, FeatureGroup.Feat)
-                                            .SetDisplayName(Cleric8DisplayName)
-                                            .SetDescription(Cleric8Description)
-                                            .SetHideInUI(true)
-                                            .SetHideInCharacterSheetAndLevelUp(true)
-                                            .SetHideNotAvailibleInUI(true)
-                                            .RemoveFromGroups(FeatureGroup.Feat)
-                                            .AddSpellbook(8,
-                                                          null,
-                                                          BlueprintCore.Blueprints.CustomConfigurators.ComponentMerge.Merge,
-                                                          SpellbookRefs.ClericSpellbook.Reference.GetBlueprint())
-                                            .Configure();
-
-            BlueprintFeature Cleric9 = FeatureConfigurator.New(Cleric9Name, Cleric9Guid, FeatureGroup.Feat)
-                                            .SetDisplayName(Cleric9DisplayName)
-                                            .SetDescription(Cleric9Description)
-                                            .SetHideInUI(true)
-                                            .SetHideInCharacterSheetAndLevelUp(true)
-                                            .SetHideNotAvailibleInUI(true)
-                                            .RemoveFromGroups(FeatureGroup.Feat)
-                                            .AddSpellbook(9,
-                                                          null,
-                                                          BlueprintCore.Blueprints.CustomConfigurators.ComponentMerge.Merge,
-                                                          SpellbookRefs.ClericSpellbook.Reference.GetBlueprint())
-                                            .Configure();
-
-            BlueprintFeature Cleric10 = FeatureConfigurator.New(Cleric10Name, Cleric10Guid, FeatureGroup.Feat)
-                                            .SetDisplayName(Cleric10DisplayName)
-                                            .SetDescription(Cleric10Description)
-                                            .SetHideInUI(true)
-                                            .SetHideInCharacterSheetAndLevelUp(true)
-                                            .SetHideNotAvailibleInUI(true)
-                                            .RemoveFromGroups(FeatureGroup.Feat)
-                                            .AddSpellbook(10,
-                                                          null,
-                                                          BlueprintCore.Blueprints.CustomConfigurators.ComponentMerge.Merge,
-                                                          SpellbookRefs.ClericSpellbook.Reference.GetBlueprint())
-                                            .Configure();
-
-            BlueprintFeature Cleric11 = FeatureConfigurator.New(Cleric11Name, Cleric11Guid, FeatureGroup.Feat)
-                                            .SetDisplayName(Cleric11DisplayName)
-                                            .SetDescription(Cleric11Description)
-                                            .SetHideInUI(true)
-                                            .SetHideInCharacterSheetAndLevelUp(true)
-                                            .SetHideNotAvailibleInUI(true)
-                                            .RemoveFromGroups(FeatureGroup.Feat)
-                                            .AddSpellbook(11,
-                                                          null,
-                                                          BlueprintCore.Blueprints.CustomConfigurators.ComponentMerge.Merge,
-                                                          SpellbookRefs.ClericSpellbook.Reference.GetBlueprint())
-                                            .Configure();
-
-            BlueprintFeature Cleric12 = FeatureConfigurator.New(Cleric12Name, Cleric12Guid, FeatureGroup.Feat)
-                                            .SetDisplayName(Cleric12DisplayName)
-                                            .SetDescription(Cleric12Description)
-                                            .SetHideInUI(true)
-                                            .SetHideInCharacterSheetAndLevelUp(true)
-                                            .SetHideNotAvailibleInUI(true)
-                                            .RemoveFromGroups(FeatureGroup.Feat)
-                                            .AddSpellbook(12,
-                                                          null,
-                                                          BlueprintCore.Blueprints.CustomConfigurators.ComponentMerge.Merge,
-                                                          SpellbookRefs.ClericSpellbook.Reference.GetBlueprint())
-                                            .Configure();
-
-            BlueprintFeature Cleric13 = FeatureConfigurator.New(Cleric13Name, Cleric13Guid, FeatureGroup.Feat)
-                                            .SetDisplayName(Cleric13DisplayName)
-                                            .SetDescription(Cleric13Description)
-                                            .SetHideInUI(true)
-                                            .SetHideInCharacterSheetAndLevelUp(true)
-                                            .SetHideNotAvailibleInUI(true)
-                                            .RemoveFromGroups(FeatureGroup.Feat)
-                                            .AddSpellbook(13,
-                                                          null,
-                                                          BlueprintCore.Blueprints.CustomConfigurators.ComponentMerge.Merge,
-                                                          SpellbookRefs.ClericSpellbook.Reference.GetBlueprint())
-                                            .Configure();
-
-            BlueprintFeature Cleric14 = FeatureConfigurator.New(Cleric14Name, Cleric14Guid, FeatureGroup.Feat)
-                                            .SetDisplayName(Cleric14DisplayName)
-                                            .SetDescription(Cleric14Description)
-                                            .SetHideInUI(true)
-                                            .SetHideInCharacterSheetAndLevelUp(true)
-                                            .SetHideNotAvailibleInUI(true)
-                                            .RemoveFromGroups(FeatureGroup.Feat)
-                                            .AddSpellbook(14,
-                                                          null,
-                                                          BlueprintCore.Blueprints.CustomConfigurators.ComponentMerge.Merge,
-                                                          SpellbookRefs.ClericSpellbook.Reference.GetBlueprint())
-                                            .Configure();
-
-            BlueprintFeature Cleric15 = FeatureConfigurator.New(Cleric15Name, Cleric15Guid, FeatureGroup.Feat)
-                                            .SetDisplayName(Cleric15DisplayName)
-                                            .SetDescription(Cleric15Description)
-                                            .SetHideInUI(true)
-                                            .SetHideInCharacterSheetAndLevelUp(true)
-                                            .SetHideNotAvailibleInUI(true)
-                                            .RemoveFromGroups(FeatureGroup.Feat)
-                                            .AddSpellbook(15,
-                                                          null,
-                                                          BlueprintCore.Blueprints.CustomConfigurators.ComponentMerge.Merge,
-                                                          SpellbookRefs.ClericSpellbook.Reference.GetBlueprint())
-                                            .Configure();
-
-            BlueprintFeature Cleric16 = FeatureConfigurator.New(Cleric16Name, Cleric16Guid, FeatureGroup.Feat)
-                                            .SetDisplayName(Cleric16DisplayName)
-                                            .SetDescription(Cleric16Description)
-                                            .SetHideInUI(true)
-                                            .SetHideInCharacterSheetAndLevelUp(true)
-                                            .SetHideNotAvailibleInUI(true)
-                                            .RemoveFromGroups(FeatureGroup.Feat)
-                                            .AddSpellbook(16,
-                                                          null,
-                                                          BlueprintCore.Blueprints.CustomConfigurators.ComponentMerge.Merge,
-                                                          SpellbookRefs.ClericSpellbook.Reference.GetBlueprint())
-                                            .Configure();
-
-            BlueprintFeature Cleric17 = FeatureConfigurator.New(Cleric17Name, Cleric17Guid, FeatureGroup.Feat)
-                                            .SetDisplayName(Cleric17DisplayName)
-                                            .SetDescription(Cleric17Description)
-                                            .SetHideInUI(true)
-                                            .SetHideInCharacterSheetAndLevelUp(true)
-                                            .SetHideNotAvailibleInUI(true)
-                                            .RemoveFromGroups(FeatureGroup.Feat)
-                                            .AddSpellbook(17,
-                                                          null,
-                                                          BlueprintCore.Blueprints.CustomConfigurators.ComponentMerge.Merge,
-                                                          SpellbookRefs.ClericSpellbook.Reference.GetBlueprint())
-                                            .Configure();
-
-            BlueprintFeature Cleric18 = FeatureConfigurator.New(Cleric18Name, Cleric18Guid, FeatureGroup.Feat)
-                                            .SetDisplayName(Cleric18DisplayName)
-                                            .SetDescription(Cleric18Description)
-                                            .SetHideInUI(true)
-                                            .SetHideInCharacterSheetAndLevelUp(true)
-                                            .SetHideNotAvailibleInUI(true)
-                                            .RemoveFromGroups(FeatureGroup.Feat)
-                                            .AddSpellbook(18,
-                                                          null,
-                                                          BlueprintCore.Blueprints.CustomConfigurators.ComponentMerge.Merge,
-                                                          SpellbookRefs.ClericSpellbook.Reference.GetBlueprint())
-                                            .Configure();
-
-            BlueprintFeature Cleric19 = FeatureConfigurator.New(Cleric19Name, Cleric19Guid, FeatureGroup.Feat)
-                                            .SetDisplayName(Cleric19DisplayName)
-                                            .SetDescription(Cleric19Description)
-                                            .SetHideInUI(true)
-                                            .SetHideInCharacterSheetAndLevelUp(true)
-                                            .SetHideNotAvailibleInUI(true)
-                                            .RemoveFromGroups(FeatureGroup.Feat)
-                                            .AddSpellbook(19,
-                                                          null,
-                                                          BlueprintCore.Blueprints.CustomConfigurators.ComponentMerge.Merge,
-                                                          SpellbookRefs.ClericSpellbook.Reference.GetBlueprint())
-                                            .Configure();
-
-            BlueprintFeature Cleric20 = FeatureConfigurator.New(Cleric20Name, Cleric20Guid, FeatureGroup.Feat)
-                                            .SetDisplayName(Cleric20DisplayName)
-                                            .SetDescription(Cleric20Description)
-                                            .SetHideInUI(true)
-                                            .SetHideInCharacterSheetAndLevelUp(true)
-                                            .SetHideNotAvailibleInUI(true)
-                                            .RemoveFromGroups(FeatureGroup.Feat)
-                                            .AddSpellbook(20,
-                                                          null,
-                                                          BlueprintCore.Blueprints.CustomConfigurators.ComponentMerge.Merge,
-                                                          SpellbookRefs.ClericSpellbook.Reference.GetBlueprint())
-                                            .Configure();
-
             AssaultMageArchetype = ArchetypeConfigurator.New(
                 ArchetypeName, ArchtypeGuid, BaseClass)
                 .SetLocalizedName(ArchetypeDisplayName)
@@ -449,7 +189,7 @@ namespace AssaultMage.Archetypes
                 .SetIsDivineCaster(true)
                 .SetIsArcaneCaster(true)
                 .SetChangeCasterType(true)
-                .SetReplaceSpellbook(CreateSpellbook())
+                //.SetReplaceSpellbook(CreateSpellbook())
                 .SetFortitudeSave(CharacterClassRefs.MonkClass.Reference.Get().FortitudeSave)
                 .SetWillSave(CharacterClassRefs.WizardClass.Reference.Get().WillSave)
                 .SetReflexSave(CharacterClassRefs.MonkClass.Reference.Get().ReflexSave)
@@ -471,10 +211,10 @@ namespace AssaultMage.Archetypes
                 .SetOverrideAttributeRecommendations(true)
                 .SetAddSkillPoints(4)
                 .Configure();
-
+            
             ArchetypeConfigurator.For(AssaultMageArchetype)
                 .AddToAddFeatures(1,
-                    Cleric1,
+                    FeatureRefs.FullCasterFeature.ToString(),
                     FeatureRefs.FighterProficiencies.ToString(),
                     FeatureRefs.BardProficiencies.ToString(),
                     FeatureRefs.WitchHexIceplantFeature.ToString(),
@@ -502,7 +242,6 @@ namespace AssaultMage.Archetypes
                     FeatureSelectionRefs.DomainsSelection.ToString()
                 )
                 .AddToAddFeatures(2,
-                    Cleric2,
                     FeatureSelectionRefs.WitchFamiliarSelection.ToString(),
                     FeatureSelectionRefs.BasicFeatSelection.ToString(),
                     FeatureRefs.DamageReduction.ToString(),
@@ -512,21 +251,18 @@ namespace AssaultMage.Archetypes
                     FeatureRefs.Evasion.ToString()
                 )
                 .AddToAddFeatures(3,
-                    Cleric3,
                     FeatureSelectionRefs.WizardFeatSelection.ToString(),
                     FeatureSelectionRefs.FighterFeatSelection.ToString(),
                     FeatureRefs.ArmorTraining.ToString(),
                     FeatureRefs.TowerShieldTraining.ToString()
                 )
                 .AddToAddFeatures(4,
-                    Cleric4,
                     FeatureSelectionRefs.DiscoverySelection.ToString(),
                     FeatureSelectionRefs.BasicFeatSelection.ToString(),
                     FeatureRefs.DamageReduction.ToString(),
                     FeatureRefs.AnimalDomainGreaterFeature.ToString()
                 )
                 .AddToAddFeatures(5,
-                    Cleric5,
                     FeatureSelectionRefs.WizardFeatSelection.ToString(),
                     FeatureSelectionRefs.FighterFeatSelection.ToString(),
                     FeatureRefs.PurityOfBody.ToString(),
@@ -535,16 +271,15 @@ namespace AssaultMage.Archetypes
                     FeatureRefs.TowerShieldNegatePenalty.ToString(),
                     FeatureRefs.ArmorTraining.ToString(),
                     FeatureRefs.TowerShieldTraining.ToString(),
-                    FeatureSelectionRefs.WeaponTrainingSelection.ToString()
+                    FeatureSelectionRefs.WeaponTrainingSelection.ToString(),
+                    FeatureRefs.SpellMasterItemBondSpecializationFeature.ToString()
                 )
                 .AddToAddFeatures(6,
-                    Cleric6,
                     FeatureSelectionRefs.BasicFeatSelection.ToString(),
                     FeatureRefs.ArmoredHulkResilienceOfSteel.ToString(),
                     FeatureRefs.DamageReduction.ToString()
                 )
                 .AddToAddFeatures(7,
-                    Cleric7,
                     FeatureSelectionRefs.WizardFeatSelection.ToString(),
                     FeatureSelectionRefs.FighterFeatSelection.ToString(),
                     FeatureRefs.EnlightenedPhilosopherRevelationMentalAcuity.ToString(),
@@ -552,12 +287,10 @@ namespace AssaultMage.Archetypes
                     FeatureRefs.TowerShieldTraining.ToString()
                 )
                 .AddToAddFeatures(8,
-                    Cleric8,
                     FeatureSelectionRefs.BasicFeatSelection.ToString(),
                     FeatureRefs.DamageReduction.ToString()
                 )
                 .AddToAddFeatures(9,
-                    Cleric9,
                     FeatureSelectionRefs.WizardFeatSelection.ToString(),
                     FeatureSelectionRefs.FighterFeatSelection.ToString(),
                     FeatureRefs.TowerShieldSpecialistTouchShield.ToString(),
@@ -567,76 +300,68 @@ namespace AssaultMage.Archetypes
                     FeatureSelectionRefs.WeaponTrainingRankUpSelection.ToString()
                 )
                 .AddToAddFeatures(10,
-                    Cleric10,
                     FeatureSelectionRefs.VivsectionistDiscoverySelection.ToString(),
-                    FeatureRefs.DamageReduction.ToString()
+                    FeatureRefs.DamageReduction.ToString(),
+                    FeatureRefs.SpellMasterItemBondSpecializationFeature.ToString()
                 )
                 .AddToAddFeatures(11,
-                    Cleric11,
                     FeatureSelectionRefs.VivsectionistDiscoverySelection.ToString(),
                     FeatureRefs.ArmorTraining.ToString(),
                     FeatureRefs.TowerShieldTraining.ToString()
                 )
                 .AddToAddFeatures(12,
-                    Cleric12,
                     FeatureSelectionRefs.VivsectionistDiscoverySelection.ToString(),
                     FeatureRefs.ArmoredHulkResilienceOfSteel.ToString(),
                     FeatureRefs.DamageReduction.ToString()
                 )
                 .AddToAddFeatures(13,
-                    Cleric13,
                     FeatureSelectionRefs.BasicFeatSelection.ToString(),
                     FeatureSelectionRefs.WeaponTrainingSelection.ToString(),
                     FeatureSelectionRefs.WeaponTrainingRankUpSelection.ToString()
                 )
                 .AddToAddFeatures(14,
-                    Cleric14,
                     FeatureSelectionRefs.WizardFeatSelection.ToString(),
                     FeatureSelectionRefs.FighterFeatSelection.ToString(),
                     FeatureRefs.DamageReduction.ToString()
                 )
                 .AddToAddFeatures(15,
-                    Cleric15,
                     FeatureRefs.PersistantMutagen.ToString(),
                     FeatureRefs.ArmoredHulkResilienceOfSteel.ToString(),
-                    FeatureRefs.ArmorTraining.ToString()
+                    FeatureRefs.ArmorTraining.ToString(),
+                    FeatureRefs.SpellMasterItemBondSpecializationFeature.ToString()
                 )
                 .AddToAddFeatures(16,
-                    Cleric16,
                     FeatureSelectionRefs.BasicFeatSelection.ToString(),
                     FeatureRefs.DamageReduction.ToString()
                 )
                 .AddToAddFeatures(17,
-                    Cleric17,
                     FeatureSelectionRefs.WizardFeatSelection.ToString(),
                     FeatureSelectionRefs.FighterFeatSelection.ToString(),
                     FeatureSelectionRefs.WeaponTrainingSelection.ToString(),
                     FeatureSelectionRefs.WeaponTrainingRankUpSelection.ToString()
                 )
                 .AddToAddFeatures(18,
-                    Cleric18,
                     FeatureSelectionRefs.WizardFeatSelection.ToString(),
                     FeatureSelectionRefs.FighterFeatSelection.ToString(),
                     FeatureRefs.ArmoredHulkResilienceOfSteel.ToString(),
                     FeatureRefs.DamageReduction.ToString()
                 )
                 .AddToAddFeatures(19,
-                    Cleric19,
                     FeatureSelectionRefs.WizardFeatSelection.ToString(),
                     FeatureRefs.ArmorMastery.ToString()
                 )
                 .AddToAddFeatures(20,
-                    Cleric20,
                     FeatureSelectionRefs.WizardFeatSelection.ToString(),
                     FeatureSelectionRefs.FighterFeatSelection.ToString(),
                     FeatureRefs.AwakenedIntellect.ToString(),
                     FeatureSelectionRefs.GrandDiscoverySelection.ToString(),
                     FeatureRefs.DamageReduction.ToString(),
                     FeatureRefs.TrueMutagen.ToString(),
-                    FeatureSelectionRefs.WeaponMasterySelection.ToString()
+                    FeatureSelectionRefs.WeaponMasterySelection.ToString(),
+                    FeatureRefs.SpellMasterItemBondSpecializationFeature.ToString()
                 )
                 .Configure();
-
+                
 
             FeatureConfigurator.For(Feats.ArmorAttune.ArmorAttuneFeat)
                 .SetReapplyOnLevelUp(true)

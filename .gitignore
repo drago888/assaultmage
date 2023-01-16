@@ -1,5 +1,5 @@
 .git/
 .vs/
-bin/
-lib/
-obj/
+/bin/
+/lib/
+/obj/

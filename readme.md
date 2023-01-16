@@ -10,7 +10,7 @@ And have invulnerable rager damage reduction, tower shield specialist skills, ar
 However, the unique skills for this Archetype are
 1. Arcane Armor Attunement - allowing -20 spell failure when using armor and shield
 						   - This archetype also starts with arcane armor mastery and both stacks up to 40% spell failure reduction.
-2. Shifting Projections - Grants 2x Intelligence bonus to AC Dodge
+2. Shifting Projections - Grants Intelligence bonus to AC Dodge
 
 Also this class will have bonus of 2 wisdom upon character creation completion.
 
@@ -28,3 +28,4 @@ See <a href="https://wittlewolfie.github.io/WW-Blueprint-Core/articles/intro.htm
 If need to recreate the assets bundle, add in some icons for the below location
 	a. assets/icons/magicarmor.png
 	b. assets/icons/armoredmage.jpg
+	
