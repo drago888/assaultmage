@@ -437,7 +437,7 @@ namespace AssaultMage.Archetypes
                                                           SpellbookRefs.ClericSpellbook.Reference.GetBlueprint())
                                             .Configure();
 
-            Main.Logger.Info("in configure {ArchetypeName} Archetype");
+            //Main.Logger.Info("in configure {ArchetypeName} Archetype");
 
             StatType[] RecommendedStats = { StatType.Intelligence, StatType.Wisdom };
 
@@ -449,7 +449,7 @@ namespace AssaultMage.Archetypes
                 .SetIsDivineCaster(true)
                 .SetIsArcaneCaster(true)
                 .SetChangeCasterType(true)
-                .SetReplaceSpellbook(SpellbookRefs.WizardSpellbook.Reference.GetBlueprint())
+                .SetReplaceSpellbook(CreateSpellbook())
                 .SetFortitudeSave(CharacterClassRefs.MonkClass.Reference.Get().FortitudeSave)
                 .SetWillSave(CharacterClassRefs.WizardClass.Reference.Get().WillSave)
                 .SetReflexSave(CharacterClassRefs.MonkClass.Reference.Get().ReflexSave)
@@ -474,8 +474,8 @@ namespace AssaultMage.Archetypes
             
             ArchetypeConfigurator.For(AssaultMageArchetype)
                 .AddToAddFeatures(1,
-                    FeatureRefs.FullCasterFeature.ToString(),
-                    FeatureRefs.FighterProficiencies.ToString(),
+                    FeatureRefs.FullCasterFeature.ToString()
+                /*    FeatureRefs.FighterProficiencies.ToString(),
                     FeatureRefs.BardProficiencies.ToString(),
                     FeatureRefs.WitchHexIceplantFeature.ToString(),
                     FeatureRefs.ArcaneArmorTraining.ToString(),
@@ -499,8 +499,8 @@ namespace AssaultMage.Archetypes
                     FeatureSelectionRefs.DeitySelection.ToString(),
                     FeatureSelectionRefs.DomainsSelection.ToString(),
                     FeatureSelectionRefs.DomainsSelection.ToString(),
-                    FeatureSelectionRefs.DomainsSelection.ToString(),
-                    Cleric1
+                    FeatureSelectionRefs.DomainsSelection.ToString()*/
+                    //Cleric1
                 )
                 .AddToAddFeatures(2,
                     FeatureSelectionRefs.WitchFamiliarSelection.ToString(),
@@ -654,7 +654,50 @@ namespace AssaultMage.Archetypes
 
         }
 
+        private static BlueprintSpellbook CreateSpellbook()
+        {
+            BlueprintSpellbook AssaultMageSpellbook;
 
+            const string AssaultMageSpellListName = "AssaultMageSpellList";
+            const string AssaultMageSpellListGuid = "b14d9fae-8e68-441c-921c-8b8bd50d9622";
+
+            const string AssaultMageSpellTableName = "AssaultMageSpellTable";
+            const string AssaultMageSpellTableGuid = "3139d063-29f8-458d-a617-b8f3c8512fa1";
+
+            BlueprintSpellbook WizardSpellbook = (BlueprintSpellbook)SpellbookRefs.WizardSpellbook.Reference.Get();
+            BlueprintSpellList WizardSpellList = WizardSpellbook.SpellList;
+
+            BlueprintSpellbook ClericSpellbook = (BlueprintSpellbook)SpellbookRefs.ClericSpellbook.Reference.Get();
+            BlueprintSpellsTable ClericSpellSlots = SpellsTableRefs.ClericSpellLevels.Reference.Get();
+            BlueprintSpellList ClericSpellList = ClericSpellbook.SpellList;
+
+            BlueprintSpellList AssaultMageSpellList = SpellListConfigurator.New(AssaultMageSpellListName, AssaultMageSpellListGuid)
+                .CopyFrom(WizardSpellList)
+                .Configure();
+
+
+            for (int i=0; i < AssaultMageSpellList.SpellsByLevel.Length; ++i)
+            {
+                for (int j=0; j < ClericSpellList.SpellsByLevel[i].m_Spells.Count; ++j)
+                {
+                    if (!AssaultMageSpellList.SpellsByLevel[i].m_Spells.Contains(ClericSpellList.SpellsByLevel[i].m_Spells[j]))
+                    {
+                        AssaultMageSpellList.SpellsByLevel[i].m_Spells.Add(ClericSpellList.SpellsByLevel[i].m_Spells[j]);
+                    }
+                }
+            }
+
+
+            AssaultMageSpellbook = SpellbookConfigurator.New(ArchetypeSpellbook, ArchetypeSpellbookGuid)
+                .CopyFrom(SpellbookRefs.WizardSpellbook)
+                .SetName(ArchetypeDisplayName)
+                .SetCantripsType(CantripsType.Orisions)
+                .SetSpellList(AssaultMageSpellList)
+                .Configure();
+
+
+            return AssaultMageSpellbook;
+        }
 
         public static void ConfigureDisabled()
         {
