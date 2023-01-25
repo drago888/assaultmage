@@ -33,7 +33,7 @@ namespace AssaultMage.Archetypes
         private static string ArchetypeDescription = "AssaultMage.Description";
 
         private static string ArchetypeSpellbook = "AssaultMage.Spellbook";
-        private static string ArchetypeSpellbookGuid = "d9bb94eb-a924-4726-bc11-f543eb103db6";
+        internal static string ArchetypeSpellbookGuid = "d9bb94eb-a924-4726-bc11-f543eb103db6";
 
         private static readonly string Cleric1Name = "Cleric1";
         private static readonly string Cleric1Guid = "8e829f35-a2a8-4206-b88e-c7a88fdc8eb1";
@@ -134,6 +134,14 @@ namespace AssaultMage.Archetypes
         private static readonly string Cleric20Guid = "482e2ca4-fb62-46a5-8277-70ea0314cd93";
         private static readonly string Cleric20DisplayName = "Cleric20.Name";
         private static readonly string Cleric20Description = "Cleric20.Description";
+
+        private static readonly string AssaultMageSpellListName = "AssaultMageSpellList";
+        private static readonly string AssaultMageSpellListGuid = "b14d9fae-8e68-441c-921c-8b8bd50d9622";
+
+        private static readonly string AssaultMageSpellTableName = "AssaultMageSpellTable";
+        private static readonly string AssaultMageSpellTableGuid = "3139d063-29f8-458d-a617-b8f3c8512fa1";
+
+        internal static BlueprintSpellbook AssaultMageSpellbook;
 
         /*private static readonly string WizardSpellbookSelectionName = "WizardSpellbookSelection";
         private static readonly string WizardSpellbookSelectionGuid = "b5c58d04-67d3-4a79-93aa-998147b54722";
@@ -474,14 +482,14 @@ namespace AssaultMage.Archetypes
             
             ArchetypeConfigurator.For(AssaultMageArchetype)
                 .AddToAddFeatures(1,
-                    FeatureRefs.FullCasterFeature.ToString()
-                /*    FeatureRefs.FighterProficiencies.ToString(),
+                    FeatureRefs.FullCasterFeature.ToString(),
+                    FeatureRefs.FighterProficiencies.ToString(),
                     FeatureRefs.BardProficiencies.ToString(),
                     FeatureRefs.WitchHexIceplantFeature.ToString(),
                     FeatureRefs.ArcaneArmorTraining.ToString(),
                     FeatureRefs.ArcaneArmorMastery.ToString(),
                     Feats.ArmorAttune.ArmorAttuneFeat,
-                    Feats.SuperDodge.SuperDodgeFeat,
+                    Feats.SuperDodge.SuperDodgeFeat/*,
                     FeatureSelectionRefs.SorcererBloodlineSelection.ToString(),
                     FeatureSelectionRefs.SorcererBloodlineSelection.ToString(),
                     FeatureSelectionRefs.SorcererBloodlineSelection.ToString(),
@@ -656,14 +664,6 @@ namespace AssaultMage.Archetypes
 
         private static BlueprintSpellbook CreateSpellbook()
         {
-            BlueprintSpellbook AssaultMageSpellbook;
-
-            const string AssaultMageSpellListName = "AssaultMageSpellList";
-            const string AssaultMageSpellListGuid = "b14d9fae-8e68-441c-921c-8b8bd50d9622";
-
-            const string AssaultMageSpellTableName = "AssaultMageSpellTable";
-            const string AssaultMageSpellTableGuid = "3139d063-29f8-458d-a617-b8f3c8512fa1";
-
             BlueprintSpellbook WizardSpellbook = (BlueprintSpellbook)SpellbookRefs.WizardSpellbook.Reference.Get();
             BlueprintSpellList WizardSpellList = WizardSpellbook.SpellList;
 
@@ -693,6 +693,7 @@ namespace AssaultMage.Archetypes
                 .SetName(ArchetypeDisplayName)
                 .SetCantripsType(CantripsType.Orisions)
                 .SetSpellList(AssaultMageSpellList)
+                .SetAllSpellsKnown()
                 .Configure();
 
 

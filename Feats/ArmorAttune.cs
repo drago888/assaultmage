@@ -54,8 +54,13 @@ namespace AssaultMage.Feats
                                                 CharacterClassRefs.MonkClass.Reference.GetBlueprint(), 1)
                 .AddClassLevelsForPrerequisites(AssaultMage.Archetypes.AssaultMage.BaseClass,
                                                 CharacterClassRefs.WizardClass.Reference.GetBlueprint(), 1)
+                .AddClassLevelsForPrerequisites(AssaultMage.Archetypes.AssaultMage.BaseClass,
+                                                CharacterClassRefs.RogueClass.Reference.GetBlueprint(), 1)
                 .AddArcaneSpellFailureIncrease(-20)
                 .AddStatBonus(Kingmaker.Enums.ModifierDescriptor.Competence, false, StatType.Wisdom, 2)
+                .AddSpellsPerDay(4, new int[] {1,2,3,4,5 })
+                .AddSpellsPerDay(3, new int[] { 6,7,8 })
+                .AddSpellsPerDay(2, new int[] { 9,10 })
                 .Configure(delayed: true);
 
 
