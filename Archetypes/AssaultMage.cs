@@ -163,7 +163,7 @@ namespace AssaultMage.Archetypes
 
         internal static BlueprintArchetype AssaultMageArchetype;
 
-        internal static SimpleBlueprint BaseClass = CharacterClassRefs.WizardClass.Reference.GetBlueprint();
+        internal static SimpleBlueprint BaseClass = CharacterClassRefs.ClericClass.Reference.GetBlueprint();
 
         
         public static void Configure()
@@ -221,10 +221,10 @@ namespace AssaultMage.Archetypes
                                                 CharacterClassRefs.ClericClass.Reference.GetBlueprint(), 1)
                                            .AddClassLevelsForPrerequisites(BaseClass,
                                                 CharacterClassRefs.DruidClass.Reference.GetBlueprint(), 1)
-                                           .AddSpellbook(1, 
+                                           /*.AddSpellbook(1, 
                                                          null, 
                                                          BlueprintCore.Blueprints.CustomConfigurators.ComponentMerge.Skip, 
-                                                         SpellbookRefs.ClericSpellbook.Reference.Get())
+                                                         SpellbookRefs.ClericSpellbook.Reference.Get())*/
                                            .Configure();
 
             BlueprintFeature Cleric2 = FeatureConfigurator.New(Cleric2Name, Cleric2Guid, FeatureGroup.Feat)
@@ -518,10 +518,10 @@ namespace AssaultMage.Archetypes
                     FeatureRefs.ArcaneArmorMastery.ToString(),
                     Feats.ArmorAttune.ArmorAttuneFeat,
                     Feats.SuperDodge.SuperDodgeFeat,
+                    /*FeatureSelectionRefs.SorcererBloodlineSelection.ToString(),
                     FeatureSelectionRefs.SorcererBloodlineSelection.ToString(),
                     FeatureSelectionRefs.SorcererBloodlineSelection.ToString(),
-                    FeatureSelectionRefs.SorcererBloodlineSelection.ToString(),
-                    FeatureSelectionRefs.SorcererBloodlineSelection.ToString(),
+                    FeatureSelectionRefs.SorcererBloodlineSelection.ToString(),*/
                     FeatureRefs.CraneStyleFeat.ToString(),
                     FeatureRefs.CautiousFighter.ToString(),
                     FeatureRefs.StudentOfWarMindOverMetal.ToString(),
@@ -529,8 +529,8 @@ namespace AssaultMage.Archetypes
                     FeatureRefs.Toughness.ToString(),
                     FeatureRefs.Dodge.ToString(),
                     FeatureRefs.StalwartDefenderACBonus.ToString(),
-                    //FeatureRefs.WizardArcaneBond.ToString(),
-                    //FeatureRefs.ScribingScrolls.ToString(),
+                    FeatureRefs.WizardArcaneBond.ToString(),
+                    FeatureRefs.ScribingScrolls.ToString(),
                     FeatureRefs.CombatExpertiseFeature.ToString(),
                     //FeatureSelectionRefs.DeitySelection.ToString(),
                     //FeatureSelectionRefs.DomainsSelection.ToString(),
@@ -551,6 +551,12 @@ namespace AssaultMage.Archetypes
                     FeatureRefs.NobilityDomainAllowed.ToString(),
                     FeatureRefs.NobilityDomainBaseFeature.ToString(),
                     FeatureRefs.NobilityDomainSpellListFeature.ToString(),*/
+                    FeatureRefs.NobilityDomainAllowed.ToString(),
+                    FeatureSelectionRefs.DomainsSelection.ToString(),
+                    FeatureRefs.BloodlineDraconicBronzeArcana.ToString(),
+                    FeatureRefs.BloodlineDraconicCopperArcana.ToString(),
+                    FeatureRefs.BloodlineDraconicGoldArcana.ToString(),
+                    FeatureRefs.BloodlineDraconicSilverArcana.ToString(),
                     Cleric1
                 )
                 .AddToAddFeatures(2,
@@ -561,28 +567,28 @@ namespace AssaultMage.Archetypes
                     FeatureRefs.BrewPotions.ToString(),
                     FeatureRefs.UncannyDodgeTalent.ToString(),
                     FeatureRefs.Evasion.ToString(),
-                    FeatureSelectionRefs.RogueTalentSelection.ToString(),
-                    Cleric2
+                    FeatureSelectionRefs.RogueTalentSelection.ToString()
+                    //Cleric2
                 )
                 .AddToAddFeatures(3,
-                    //FeatureSelectionRefs.WizardFeatSelection.ToString(),
+                    FeatureSelectionRefs.WizardFeatSelection.ToString(),
                     FeatureSelectionRefs.FighterFeatSelection.ToString(),
                     FeatureRefs.ArmorTraining.ToString(),
                     FeatureRefs.TowerShieldTraining.ToString(),
-                    FeatureRefs.SneakAttack.ToString(),
-                    Cleric3
+                    FeatureRefs.SneakAttack.ToString()
+                    //Cleric3
                 )
                 .AddToAddFeatures(4,
                     FeatureSelectionRefs.DiscoverySelection.ToString(),
                     FeatureSelectionRefs.BasicFeatSelection.ToString(),
                     FeatureRefs.DamageReduction.ToString(),
-                    FeatureSelectionRefs.RogueTalentSelection.ToString(),
+                    FeatureSelectionRefs.RogueTalentSelection.ToString()
                     //FeatureRefs.AnimalDomainGreaterFeature.ToString(),
-                    //FeatureSelectionRefs.AnimalCompanionSelectionDomain.ToString(),
-                    Cleric4
+                    //FeatureSelectionRefs.AnimalCompanionSelectionDomain.ToString()
+                    //Cleric4
                 )
                 .AddToAddFeatures(5,
-                    //FeatureSelectionRefs.WizardFeatSelection.ToString(),
+                    FeatureSelectionRefs.WizardFeatSelection.ToString(),
                     FeatureSelectionRefs.FighterFeatSelection.ToString(),
                     FeatureRefs.PurityOfBody.ToString(),
                     FeatureRefs.ImprovedEvasion.ToString(),
@@ -592,118 +598,120 @@ namespace AssaultMage.Archetypes
                     FeatureRefs.TowerShieldTraining.ToString(),
                     FeatureSelectionRefs.WeaponTrainingSelection.ToString(),
                     FeatureRefs.SneakAttack.ToString(),
-                    Cleric5
-                // FeatureRefs.SpellMasterItemBondSpecializationFeature.ToString()
+                    FeatureRefs.SpellMasterItemBondSpecializationFeature.ToString()
+                    //Cleric5
                 )
                 .AddToAddFeatures(6,
                     FeatureSelectionRefs.BasicFeatSelection.ToString(),
                     FeatureRefs.ArmoredHulkResilienceOfSteel.ToString(),
                     FeatureRefs.DamageReduction.ToString(),
-                    FeatureSelectionRefs.RogueTalentSelection.ToString(),
-                    Cleric6
+                    FeatureSelectionRefs.RogueTalentSelection.ToString()
+                    //Cleric6
                 )
                 .AddToAddFeatures(7,
-                    //FeatureSelectionRefs.WizardFeatSelection.ToString(),
+                    FeatureSelectionRefs.WizardFeatSelection.ToString(),
                     FeatureSelectionRefs.FighterFeatSelection.ToString(),
                     FeatureRefs.EnlightenedPhilosopherRevelationMentalAcuity.ToString(),
                     FeatureRefs.ArmorTraining.ToString(),
                     FeatureRefs.TowerShieldTraining.ToString(),
-                    FeatureRefs.SneakAttack.ToString(),
-                    Cleric7
+                    FeatureRefs.SneakAttack.ToString()
+                    //Cleric7
                 )
                 .AddToAddFeatures(8,
                     FeatureSelectionRefs.BasicFeatSelection.ToString(),
                     FeatureRefs.DamageReduction.ToString(),
-                    FeatureSelectionRefs.RogueTalentSelection.ToString(),
+                    FeatureSelectionRefs.RogueTalentSelection.ToString()
                     //FeatureRefs.CommunityDomainGreaterFeature.ToString(),
                     //FeatureRefs.CommunityBlessingMajorFeature.ToString(),
                     //FeatureRefs.NobilityDomainGreaterFeature.ToString(),
                     //FeatureRefs.NobilityBlessingMajorFeature.ToString()
-                    Cleric8
+                    //Cleric8
                 )
                 .AddToAddFeatures(9,
-                    //FeatureSelectionRefs.WizardFeatSelection.ToString(),
+                    FeatureSelectionRefs.WizardFeatSelection.ToString(),
                     FeatureSelectionRefs.FighterFeatSelection.ToString(),
                     FeatureRefs.TowerShieldSpecialistTouchShield.ToString(),
                     FeatureRefs.ArmoredHulkResilienceOfSteel.ToString(),
                     FeatureRefs.TowerShieldTraining.ToString(),
                     FeatureSelectionRefs.WeaponTrainingSelection.ToString(),
                     FeatureSelectionRefs.WeaponTrainingRankUpSelection.ToString(),
-                    FeatureRefs.SneakAttack.ToString(),
-                    Cleric9
+                    FeatureRefs.SneakAttack.ToString()
+                    //Cleric9
                 )
                 .AddToAddFeatures(10,
                     FeatureSelectionRefs.VivsectionistDiscoverySelection.ToString(),
                     FeatureRefs.DamageReduction.ToString(),
                     FeatureSelectionRefs.RogueTalentSelection.ToString(),
-                    //FeatureRefs.SpellMasterItemBondSpecializationFeature.ToString()
-                    Cleric10
+                    FeatureRefs.SpellMasterItemBondSpecializationFeature.ToString()
+                    //Cleric10
                 )
                 .AddToAddFeatures(11,
                     FeatureSelectionRefs.VivsectionistDiscoverySelection.ToString(),
                     FeatureRefs.ArmorTraining.ToString(),
                     FeatureRefs.TowerShieldTraining.ToString(),
-                    FeatureRefs.SneakAttack.ToString(),
-                    Cleric11
+                    FeatureRefs.SneakAttack.ToString()
+                    //Cleric11
                 )
                 .AddToAddFeatures(12,
                     FeatureSelectionRefs.VivsectionistDiscoverySelection.ToString(),
                     FeatureRefs.ArmoredHulkResilienceOfSteel.ToString(),
                     FeatureRefs.DamageReduction.ToString(),
-                    FeatureSelectionRefs.RogueTalentSelection.ToString(),
-                    Cleric12
+                    FeatureSelectionRefs.RogueTalentSelection.ToString()
+                    //Cleric12
                 )
                 .AddToAddFeatures(13,
                     FeatureSelectionRefs.BasicFeatSelection.ToString(),
                     FeatureSelectionRefs.WeaponTrainingSelection.ToString(),
                     FeatureSelectionRefs.WeaponTrainingRankUpSelection.ToString(),
-                    FeatureRefs.SneakAttack.ToString(),
-                    Cleric13
+                    FeatureRefs.SneakAttack.ToString()
+                    //Cleric13
                 )
                 .AddToAddFeatures(14,
-                    //FeatureSelectionRefs.WizardFeatSelection.ToString(),
+                    FeatureSelectionRefs.WizardFeatSelection.ToString(),
                     FeatureSelectionRefs.FighterFeatSelection.ToString(),
                     FeatureRefs.DamageReduction.ToString(),
-                    FeatureSelectionRefs.RogueTalentSelection.ToString(),
-                    Cleric14
+                    FeatureSelectionRefs.RogueTalentSelection.ToString()
+                    //Cleric14
                 )
                 .AddToAddFeatures(15,
                     FeatureRefs.PersistantMutagen.ToString(),
                     FeatureRefs.ArmoredHulkResilienceOfSteel.ToString(),
                     FeatureRefs.ArmorTraining.ToString(),
                     FeatureRefs.SneakAttack.ToString(),
-                    //FeatureRefs.SpellMasterItemBondSpecializationFeature.ToString()
-                    Cleric15
+                    FeatureRefs.SpellMasterItemBondSpecializationFeature.ToString(),
+                    FeatureRefs.AngelWingsFeature.ToString()
+                    //Cleric15
                 )
                 .AddToAddFeatures(16,
                     FeatureSelectionRefs.BasicFeatSelection.ToString(),
                     FeatureRefs.DamageReduction.ToString(),
                     FeatureSelectionRefs.RogueTalentSelection.ToString()
+                    //Cleric16
                 )
                 .AddToAddFeatures(17,
-                    //FeatureSelectionRefs.WizardFeatSelection.ToString(),
+                    FeatureSelectionRefs.WizardFeatSelection.ToString(),
                     FeatureSelectionRefs.FighterFeatSelection.ToString(),
                     FeatureSelectionRefs.WeaponTrainingSelection.ToString(),
                     FeatureSelectionRefs.WeaponTrainingRankUpSelection.ToString(),
-                    FeatureRefs.SneakAttack.ToString(),
-                    Cleric17
+                    FeatureRefs.SneakAttack.ToString()
+                    //Cleric17
                 )
                 .AddToAddFeatures(18,
-                    //FeatureSelectionRefs.WizardFeatSelection.ToString(),
+                    FeatureSelectionRefs.WizardFeatSelection.ToString(),
                     FeatureSelectionRefs.FighterFeatSelection.ToString(),
                     FeatureRefs.ArmoredHulkResilienceOfSteel.ToString(),
                     FeatureRefs.DamageReduction.ToString(),
-                    FeatureSelectionRefs.RogueTalentSelection.ToString(),
-                    Cleric18
+                    FeatureSelectionRefs.RogueTalentSelection.ToString()
+                    //Cleric18
                 )
                 .AddToAddFeatures(19,
-                    //FeatureSelectionRefs.WizardFeatSelection.ToString(),
+                    FeatureSelectionRefs.WizardFeatSelection.ToString(),
                     FeatureRefs.ArmorMastery.ToString(),
-                    FeatureRefs.SneakAttack.ToString(),
-                    Cleric19
+                    FeatureRefs.SneakAttack.ToString()
+                    //Cleric19
                 )
                 .AddToAddFeatures(20,
-                    //FeatureSelectionRefs.WizardFeatSelection.ToString(),
+                    FeatureSelectionRefs.WizardFeatSelection.ToString(),
                     FeatureSelectionRefs.FighterFeatSelection.ToString(),
                     FeatureRefs.AwakenedIntellect.ToString(),
                     FeatureSelectionRefs.GrandDiscoverySelection.ToString(),
@@ -712,8 +720,12 @@ namespace AssaultMage.Archetypes
                     FeatureSelectionRefs.WeaponMasterySelection.ToString(),
                     FeatureRefs.MasterStrike.ToString(),
                     FeatureSelectionRefs.RogueTalentSelection.ToString(),
-                    //FeatureRefs.SpellMasterItemBondSpecializationFeature.ToString()
-                    Cleric20
+                    FeatureRefs.SpellMasterItemBondSpecializationFeature.ToString(),
+                    FeatureRefs.BloodlineDraconicBronzePowerOfWyrms.ToString(),
+                    FeatureRefs.BloodlineDraconicCopperPowerOfWyrms.ToString(),
+                    FeatureRefs.BloodlineDraconicGoldPowerOfWyrms.ToString(),
+                    FeatureRefs.BloodlineDraconicSilverPowerOfWyrms.ToString()
+                    //Cleric20
                 )
                 .Configure();
                 
@@ -1404,6 +1416,7 @@ namespace AssaultMage.Archetypes
         private static BlueprintSpellbook CreateSpellbook()
         {
             BlueprintSpellbook WizardSpellbook = (BlueprintSpellbook)SpellbookRefs.WizardSpellbook.Reference.Get();
+            BlueprintSpellbook ClericSpellbook = (BlueprintSpellbook)SpellbookRefs.ClericSpellbook.Reference.Get();
 
             SetSpellList();
             SetSpellSlots();
@@ -1417,6 +1430,10 @@ namespace AssaultMage.Archetypes
                 .SetSpellsPerDay(AssaultMageSpellTable)
                 .SetHasSpecialSpellList()
                 //.SetSpellSlots(AssaultMageSpellTable)
+                .SetAllSpellsKnown(false)
+                .SetCanCopyScrolls(true)
+                .SetCastingAttribute(StatType.Intelligence)
+                .SetIsArcane(true)
                 .Configure();
 
           
