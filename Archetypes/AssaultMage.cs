@@ -529,7 +529,11 @@ namespace AssaultMage.Archetypes
                     FeatureRefs.Toughness.ToString(),
                     FeatureRefs.Dodge.ToString(),
                     FeatureRefs.StalwartDefenderACBonus.ToString(),
-                    FeatureRefs.WizardArcaneBond.ToString(),
+                    FeatureRefs.ItemBondFeature.ToString(),
+                    FeatureRefs.SpellMasterItemBondSpecializationFeature.ToString(),
+                    FeatureRefs.UniversalistSchoolBaseFeature.ToString(),
+                    //FeatureSelectionRefs.ArcaneBondSelection.ToString(),
+                    //FeatureSelectionRefs.SpecialistSchoolSelection.ToString(),
                     FeatureRefs.ScribingScrolls.ToString(),
                     FeatureRefs.CombatExpertiseFeature.ToString(),
                     //FeatureSelectionRefs.DeitySelection.ToString(),
@@ -620,7 +624,8 @@ namespace AssaultMage.Archetypes
                 .AddToAddFeatures(8,
                     FeatureSelectionRefs.BasicFeatSelection.ToString(),
                     FeatureRefs.DamageReduction.ToString(),
-                    FeatureSelectionRefs.RogueTalentSelection.ToString()
+                    FeatureSelectionRefs.RogueTalentSelection.ToString(),
+                    FeatureRefs.UniversalistSchoolExtendReachFeature.ToString()
                     //FeatureRefs.CommunityDomainGreaterFeature.ToString(),
                     //FeatureRefs.CommunityBlessingMajorFeature.ToString(),
                     //FeatureRefs.NobilityDomainGreaterFeature.ToString(),
@@ -656,7 +661,8 @@ namespace AssaultMage.Archetypes
                     FeatureSelectionRefs.VivsectionistDiscoverySelection.ToString(),
                     FeatureRefs.ArmoredHulkResilienceOfSteel.ToString(),
                     FeatureRefs.DamageReduction.ToString(),
-                    FeatureSelectionRefs.RogueTalentSelection.ToString()
+                    FeatureSelectionRefs.RogueTalentSelection.ToString(),
+                    FeatureRefs.UniversalistSchoolEmpowerFeature.ToString()
                     //Cleric12
                 )
                 .AddToAddFeatures(13,
@@ -685,7 +691,8 @@ namespace AssaultMage.Archetypes
                 .AddToAddFeatures(16,
                     FeatureSelectionRefs.BasicFeatSelection.ToString(),
                     FeatureRefs.DamageReduction.ToString(),
-                    FeatureSelectionRefs.RogueTalentSelection.ToString()
+                    FeatureSelectionRefs.RogueTalentSelection.ToString(),
+                    FeatureRefs.UniversalistSchoolMaximizeFeature.ToString()
                     //Cleric16
                 )
                 .AddToAddFeatures(17,
@@ -724,7 +731,8 @@ namespace AssaultMage.Archetypes
                     FeatureRefs.BloodlineDraconicBronzePowerOfWyrms.ToString(),
                     FeatureRefs.BloodlineDraconicCopperPowerOfWyrms.ToString(),
                     FeatureRefs.BloodlineDraconicGoldPowerOfWyrms.ToString(),
-                    FeatureRefs.BloodlineDraconicSilverPowerOfWyrms.ToString()
+                    FeatureRefs.BloodlineDraconicSilverPowerOfWyrms.ToString(),
+                    FeatureRefs.UniversalistSchoolQuickenFeature.ToString()
                     //Cleric20
                 )
                 .Configure();
