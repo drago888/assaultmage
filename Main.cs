@@ -30,6 +30,7 @@ using Kingmaker.UI.ServiceWindow.CharacterScreen;
 using Kingmaker.UI.MVVM._VM.CharGen.Phases.Spells;
 using System.Collections.Generic;
 using Kingmaker.UI.MVVM._VM.ServiceWindows.MythicInfo;
+using Kingmaker.UI.MVVM._VM.CharGen.Phases.Total;
 
 namespace AssaultMage
 {
@@ -40,6 +41,7 @@ namespace AssaultMage
         public static bool isAssaultMageSelected = false;
         public static List<BlueprintAbility> SelectedClericSpells = new List<BlueprintAbility>();
         public static int SpellLevel = 0;
+        public static int AssaultMageLevel = 0;
 
 
         public static bool Load(UnityModManager.ModEntry modEntry)
@@ -120,7 +122,8 @@ namespace AssaultMage
             }
         }
 
-        /*
+    
+  
         [HarmonyPatch(typeof(CharGenClassPhaseVM))]
         public static class CharGenClassPhaseVM_Patch
         {
@@ -163,17 +166,29 @@ namespace AssaultMage
         }
 
 
-        public static int LearnClericSpells(LevelUpController levelUpController)
+        public static int LearnClericSpells(ref LevelUpController levelUpController)
         {
             int level = levelUpController.State.NextClassLevel;
             BlueprintSpellbook clericSpellbook = SpellbookRefs.ClericSpellbook.Reference.Get();
             int spellLevel = clericSpellbook.SpellsPerDay.Levels[level].Count.Length - 1;
 
-            Main.Logger.Info("Next class level " + level);
+            AssaultMageLevel = level;
+
+            Spellbook AssaultMageSpellbook = null;
+
+            foreach (Spellbook spellbook in levelUpController.State.Unit.Spellbooks)
+            {
+                if (isAssaultMageSelected && spellbook.Blueprint.AssetGuid == BlueprintGuid.Parse(AssaultMage.Archetypes.AssaultMage.ArchetypeSpellbookGuid))
+                {
+                    AssaultMageSpellbook = spellbook;
+                }
+            }
+
+                    Main.Logger.Info("Next class level " + level);
             Main.Logger.Info("Next spell level " + spellLevel);
 
 
-            int lastKnownSpellIndex = levelUpController.State.Unit.GetSpellbook(CharacterClassRefs.ClericClass.Reference.Get()).m_KnownSpells.Length;
+            //int lastKnownSpellIndex = levelUpController.State.Unit.GetSpellbook(CharacterClassRefs.ClericClass.Reference.Get()).m_KnownSpells.Length;
             SelectedClericSpells.Clear();
             Main.Logger.Info("SelectedClericSpells count after empty - " + SelectedClericSpells.Count);
             Main.Logger.Info("Cleric spellbooks count " + SpellListRefs.ClericSpellList.Reference.Get().SpellsByLevel[spellLevel].m_Spells.Count);
@@ -185,9 +200,13 @@ namespace AssaultMage
                 Main.Logger.Info("Spell is " + spell.name);
 
                 if (levelUpController != null && levelUpController.State != null && levelUpController.State.Unit != null &&
-                    levelUpController.State.Unit.GetSpellbook(CharacterClassRefs.ClericClass.Reference.Get()) != null)
+                    AssaultMageSpellbook != null)
                 {
-                    levelUpController.State.Unit.GetSpellbook(CharacterClassRefs.ClericClass.Reference.Get()).AddKnown(spellLevel, spell);
+                    if (!AssaultMageSpellbook.IsKnown(spell))
+                    {
+                        AssaultMageSpellbook.AddKnown(spellLevel, spell);
+                    }
+
 
                     Main.Logger.Info("Learn spell " + spell.name);
                     SelectedClericSpells.Add(spell);
@@ -230,36 +249,35 @@ namespace AssaultMage
                 Main.Logger.Info("CharGenSpellsPhaseVM CreateSpellVMsCOllection");
 
                 SetAssaultMageSelected(levelUpController);
-                int spellLevel = 0;
+
+                foreach(var sp in levelUpController.State.Unit.m_Spellbooks)
+                {
+                    Main.Logger.Info("Spellbook blueprint is " + sp.Key.name);
+
+                    BlueprintSpellsTable spt = sp.Key.m_SpellSlots.Get();
+
+                    if (spt != null && spt.Levels != null)
+                    {
+                        for (int i = 0; i < spt.Levels.Length; ++i)
+                        {
+                            for (int j = 0; j < spt.Levels[i].Count.Length; ++j)
+                            {
+                                Main.Logger.Info("Count " + j + " value " + spt.Levels[i].Count[j]);
+                            }
+                        }
+                    }
+                }
 
                 if (isAssaultMageSelected)
                 {
-                    SpellLevel = LearnClericSpells(levelUpController);
+                    SpellLevel = LearnClericSpells(ref levelUpController);
 
                 } else
                 {
                     SelectedClericSpells.Empty();
                 }
 
-                if (levelUpController.State != null && levelUpController.State.Unit != null && 
-                    levelUpController.State.Unit.GetSpellbook(CharacterClassRefs.ClericClass.Reference.Get())!=null &&
-                    levelUpController.State.Unit.GetSpellbook(CharacterClassRefs.ClericClass.Reference.Get()).m_KnownSpells != null)
-                {
-                    levelUpController.State.Unit.GetSpellbook(CharacterClassRefs.ClericClass.Reference.Get()).m_KnownSpells[spellLevel].ForEach(
-                        a =>
-                        Main.Logger.Info("CharGenSpellsPhaseVM.CreateSpellVMsCollection known spells " + a.Name)
-                     );
-                }
-
-                if (levelUpController != null && levelUpController.Unit != null &&
-                    levelUpController.Unit.GetSpellbook(CharacterClassRefs.ClericClass.Reference.Get()) != null &&
-                    levelUpController.Unit.GetSpellbook(CharacterClassRefs.ClericClass.Reference.Get()).m_KnownSpells != null)
-                {
-                    levelUpController.Unit.GetSpellbook(CharacterClassRefs.ClericClass.Reference.Get()).m_KnownSpells[spellLevel].ForEach(
-                        a =>
-                        Main.Logger.Info("Unit known spells " + a.Name)
-                     );
-                }
+                Main.Logger.Info("End CharGenSpellsPhaseVM CreateSpellVMsCOllection");
 
                 return true;
             }
@@ -299,14 +317,6 @@ namespace AssaultMage
             {
                 Main.Logger.Info("CharInfoSpellTableVM constructor");
 
-                if (isAssaultMageSelected && spellbook.Blueprint.AssetGuid == BlueprintGuid.Parse(AssaultMage.Archetypes.AssaultMage.ArchetypeSpellbookGuid))
-                {
-                    for (int i=0; i < SelectedClericSpells.Count; ++i)
-                    {
-                        spellbook.AddKnown(SpellLevel, SelectedClericSpells.ElementAt(i));
-                    }
-                }
-
                 return true;
             }
 
@@ -314,15 +324,6 @@ namespace AssaultMage
             public static void Postfix(CharInfoSpellTableVM __instance, ref Spellbook spellbook)
             {
                 Main.Logger.Info("CharInfoSpellTableVM constructor postfix");
-
-
-                if (spellbook != null && spellbook.m_KnownSpells != null)
-                {
-                    for(int i=0; i < spellbook.m_KnownSpells[SpellLevel].Count;++i)
-                    {
-                        Main.Logger.Info("Spell is " + spellbook.m_KnownSpells[SpellLevel].ElementAt(i).Name);
-                    }
-                }
 
                 return;
             }
@@ -340,11 +341,126 @@ namespace AssaultMage
             }
         }
 
+        [HarmonyPatch(typeof(CharInfoSpellTableListVM))]
+        public static class CharInfoSpellTableListVM_Patch
+        {
+            [HarmonyPatch(nameof(CharInfoSpellTableListVM.RefreshData)), HarmonyPrefix]
+            public static bool Prefix_2(CharInfoSpellTableListVM __instance)
+            {
+                Main.Logger.Info("CharInfoSpellTableListVM.RefreshData");
+
+
+                return true;
+            }
+
+        }
+
+        [HarmonyPatch(typeof(CharGenTotalPhaseVM))]
+        public static class CharGenTotalPhaseVM_Patch
+        {
+            [HarmonyPatch(nameof(CharGenTotalPhaseVM.CreateLevelupInfoParts), new Type[] { typeof(LevelUpController)}), HarmonyPrefix]
+            public static bool Prefix(CharGenTotalPhaseVM __instance, LevelUpController levelUpController)
+            {
+                Main.Logger.Info("CharGenTotalPhaseVM.CreateLevelupInfoParts");
+                
+                if (__instance.UnitDescriptor != null && __instance.UnitDescriptor.Value != null && __instance.UnitDescriptor.Value.Spellbooks!=null)
+                {
+                    foreach (Spellbook spellbook in __instance.UnitDescriptor.Value.Spellbooks)
+                    {
+                        if (isAssaultMageSelected && spellbook.Blueprint.AssetGuid == BlueprintGuid.Parse(AssaultMage.Archetypes.AssaultMage.ArchetypeSpellbookGuid))
+                        {
+                            for (int i = 0; i < SelectedClericSpells.Count; ++i)
+                            {
+                                if (!spellbook.IsKnown(SelectedClericSpells.ElementAt(i)))
+                                {
+                                    spellbook.AddKnown(SpellLevel, SelectedClericSpells.ElementAt(i));
+                                }
+                            }
+                        }
+                    }
+                }
+
+
+                return true;
+            }
+        }
+
         [HarmonyPatch(typeof(CharGenContextVM))]
         public static class CharGenContextVM_Patch
         {
+            [HarmonyPatch(nameof(CharGenContextVM.CompleteCharGen)), HarmonyPrefix]
+            public static bool CompleteCharGen_Patch(ref CharGenContextVM __instance)
+            {
+                Main.Logger.Info("CharGenContextVM.CompleteCharGen");
+                Main.Logger.Info("Assault Mage selected - " + isAssaultMageSelected);
 
-        }*/
+                if (isAssaultMageSelected)
+                {
+                    //__instance.m_LevelUpController.Unit.DemandSpellbook(AssaultMage.Archetypes.AssaultMage.AssaultMageSpellbook);
+                    //__instance.m_LevelUpController.Unit.DemandSpellbook(SpellbookRefs.WizardSpellbook.Reference.Get());
+                    __instance.m_LevelUpController.Unit.DemandSpellbook(AssaultMage.Archetypes.AssaultMage.AssaultMageArchetype.m_ReplaceSpellbook.Get());
+                }
+
+
+                if (__instance.m_LevelUpController != null && __instance.m_LevelUpController.Unit != null &&
+                    __instance.m_LevelUpController.Unit.Spellbooks != null)
+                {
+                    foreach (Spellbook spellbook in __instance.m_LevelUpController.Unit.Spellbooks)
+                    {
+                        if (isAssaultMageSelected && spellbook.Blueprint.AssetGuid == BlueprintGuid.Parse(AssaultMage.Archetypes.AssaultMage.ArchetypeSpellbookGuid))
+                        {
+                            for (int i = 0; i < SelectedClericSpells.Count; ++i)
+                            {
+                                if (!spellbook.IsKnown(SelectedClericSpells.ElementAt(i)))
+                                {
+                                    spellbook.AddKnown(SpellLevel, SelectedClericSpells.ElementAt(i));
+                                    Main.Logger.Info("Added spell " + SelectedClericSpells.ElementAt(i).name);
+                                }
+                            }
+                        }
+                    }
+                }
+
+                //__instance.m_LevelUpController.Commit();
+                return true;
+            }
+
+            [HarmonyPatch(nameof(CharGenContextVM.CompleteLevelUp)), HarmonyPrefix]
+            public static bool CompleteLevelUp_Prefix(CharGenContextVM __instance)
+            {
+                Main.Logger.Info("CharGenContextVM.CompleteLevelUp");
+
+                if (isAssaultMageSelected)
+                {
+                    //__instance.m_LevelUpController.Unit.DemandSpellbook(AssaultMage.Archetypes.AssaultMage.AssaultMageSpellbook);
+                    //__instance.m_LevelUpController.Unit.DemandSpellbook(SpellbookRefs.WizardSpellbook.Reference.Get());
+                    __instance.m_LevelUpController.Unit.DemandSpellbook(AssaultMage.Archetypes.AssaultMage.AssaultMageArchetype.m_ReplaceSpellbook.Get());
+                }
+
+
+                if (__instance.m_LevelUpController != null && __instance.m_LevelUpController.Unit != null &&
+                    __instance.m_LevelUpController.Unit.Spellbooks != null)
+                {
+                    foreach (Spellbook spellbook in __instance.m_LevelUpController.Unit.Spellbooks)
+                    {
+                        if (isAssaultMageSelected && spellbook.Blueprint.AssetGuid == BlueprintGuid.Parse(AssaultMage.Archetypes.AssaultMage.ArchetypeSpellbookGuid))
+                        {
+                            for (int i = 0; i < SelectedClericSpells.Count; ++i)
+                            {
+                                if (!spellbook.IsKnown(SelectedClericSpells.ElementAt(i)))
+                                {
+                                    spellbook.AddKnown(SpellLevel, SelectedClericSpells.ElementAt(i));
+                                    Main.Logger.Info("Added spell " + SelectedClericSpells.ElementAt(i).name);
+                                }
+                            }
+                        }
+                    }
+                }
+
+                return true;
+            }
+        }
+        
 
         public static void AddChanges()
         {

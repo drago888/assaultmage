@@ -20,9 +20,19 @@ using BlueprintCore.Actions.Builder.ContextEx;
 using Newtonsoft.Json;
 using System.IO;
 using Kingmaker.Blueprints.Classes.Selection;
+using Kingmaker.Localization;
 
 namespace AssaultMage.Archetypes
 {
+    public static class ExtensionMethods
+    {
+        public static T DeepCopy<T>(this T self)
+        {
+            var serialized = JsonConvert.SerializeObject(self);
+            return JsonConvert.DeserializeObject<T>(serialized);
+        }
+    }
+
     class AssaultMage
     {
 
@@ -142,6 +152,8 @@ namespace AssaultMage.Archetypes
         private static readonly string AssaultMageSpellTableGuid = "3139d063-29f8-458d-a617-b8f3c8512fa1";
 
         internal static BlueprintSpellbook AssaultMageSpellbook;
+        internal static BlueprintSpellList AssaultMageSpellList;
+        internal static BlueprintSpellsTable AssaultMageSpellTable;
 
         /*private static readonly string WizardSpellbookSelectionName = "WizardSpellbookSelection";
         private static readonly string WizardSpellbookSelectionGuid = "b5c58d04-67d3-4a79-93aa-998147b54722";
@@ -151,8 +163,9 @@ namespace AssaultMage.Archetypes
 
         internal static BlueprintArchetype AssaultMageArchetype;
 
-        internal static SimpleBlueprint BaseClass = CharacterClassRefs.ClericClass.Reference.GetBlueprint();
+        internal static SimpleBlueprint BaseClass = CharacterClassRefs.WizardClass.Reference.GetBlueprint();
 
+        
         public static void Configure()
         {
             if (Main.Enabled)
@@ -184,6 +197,9 @@ namespace AssaultMage.Archetypes
                 StatType.SkillUseMagicDevice
             };
 
+            //Main.Logger.Info("in configure {ArchetypeName} Archetype");
+
+            StatType[] RecommendedStats = { StatType.Intelligence };
 
             BlueprintFeature Cleric1 = FeatureConfigurator.New(Cleric1Name, Cleric1Guid, FeatureGroup.Feat)
                                            .SetDisplayName(Cleric1DisplayName)
@@ -192,10 +208,23 @@ namespace AssaultMage.Archetypes
                                            .SetHideInCharacterSheetAndLevelUp(true)
                                            .SetHideNotAvailibleInUI(true)
                                            .RemoveFromGroups(FeatureGroup.Feat)
-                                           .AddSpellbook(1,
-                                                         null,
-                                                         BlueprintCore.Blueprints.CustomConfigurators.ComponentMerge.Skip,
-                                                         SpellbookRefs.ClericSpellbook.Reference.GetBlueprint())
+                                           .AddChangeHitDie(Kingmaker.RuleSystem.DiceType.D12)
+                                           .AddClassLevelsForPrerequisites(BaseClass,
+                                                CharacterClassRefs.FighterClass.Reference.GetBlueprint(), 1)
+                                           .AddClassLevelsForPrerequisites(BaseClass,
+                                                CharacterClassRefs.MonkClass.Reference.GetBlueprint(), 1)
+                                           .AddClassLevelsForPrerequisites(BaseClass,
+                                                CharacterClassRefs.WizardClass.Reference.GetBlueprint(), 1)
+                                           .AddClassLevelsForPrerequisites(BaseClass,
+                                                CharacterClassRefs.RogueClass.Reference.GetBlueprint(), 1)
+                                           .AddClassLevelsForPrerequisites(BaseClass,
+                                                CharacterClassRefs.ClericClass.Reference.GetBlueprint(), 1)
+                                           .AddClassLevelsForPrerequisites(BaseClass,
+                                                CharacterClassRefs.DruidClass.Reference.GetBlueprint(), 1)
+                                           .AddSpellbook(1, 
+                                                         null, 
+                                                         BlueprintCore.Blueprints.CustomConfigurators.ComponentMerge.Skip, 
+                                                         SpellbookRefs.ClericSpellbook.Reference.Get())
                                            .Configure();
 
             BlueprintFeature Cleric2 = FeatureConfigurator.New(Cleric2Name, Cleric2Guid, FeatureGroup.Feat)
@@ -277,17 +306,17 @@ namespace AssaultMage.Archetypes
                                             .Configure();
 
             BlueprintFeature Cleric8 = FeatureConfigurator.New(Cleric8Name, Cleric8Guid, FeatureGroup.Feat)
-                                            .SetDisplayName(Cleric8DisplayName)
-                                            .SetDescription(Cleric8Description)
-                                            .SetHideInUI(true)
-                                            .SetHideInCharacterSheetAndLevelUp(true)
-                                            .SetHideNotAvailibleInUI(true)
-                                            .RemoveFromGroups(FeatureGroup.Feat)
-                                            .AddSpellbook(8,
+                                           .SetDisplayName(Cleric1DisplayName)
+                                           .SetDescription(Cleric1Description)
+                                           .SetHideInUI(true)
+                                           .SetHideInCharacterSheetAndLevelUp(true)
+                                           .SetHideNotAvailibleInUI(true)
+                                           .RemoveFromGroups(FeatureGroup.Feat)
+                                           .AddSpellbook(8,
                                                           null,
                                                           BlueprintCore.Blueprints.CustomConfigurators.ComponentMerge.Skip,
                                                           SpellbookRefs.ClericSpellbook.Reference.GetBlueprint())
-                                            .Configure();
+                                           .Configure();
 
             BlueprintFeature Cleric9 = FeatureConfigurator.New(Cleric9Name, Cleric9Guid, FeatureGroup.Feat)
                                             .SetDisplayName(Cleric9DisplayName)
@@ -445,9 +474,7 @@ namespace AssaultMage.Archetypes
                                                           SpellbookRefs.ClericSpellbook.Reference.GetBlueprint())
                                             .Configure();
 
-            //Main.Logger.Info("in configure {ArchetypeName} Archetype");
 
-            StatType[] RecommendedStats = { StatType.Intelligence, StatType.Wisdom };
 
 
             AssaultMageArchetype = ArchetypeConfigurator.New(
@@ -458,6 +485,7 @@ namespace AssaultMage.Archetypes
                 .SetIsArcaneCaster(true)
                 .SetChangeCasterType(true)
                 .SetReplaceSpellbook(CreateSpellbook())
+                //.SetReplaceSpellbook(SpellbookRefs.WizardSpellbook.Reference.Get())
                 .SetFortitudeSave(CharacterClassRefs.MonkClass.Reference.Get().FortitudeSave)
                 .SetWillSave(CharacterClassRefs.WizardClass.Reference.Get().WillSave)
                 .SetReflexSave(CharacterClassRefs.MonkClass.Reference.Get().ReflexSave)
@@ -467,12 +495,12 @@ namespace AssaultMage.Archetypes
                 .AddPrerequisiteMainCharacter(true, false, GroupType.All, false)
                 .ClearStartingItems()
                 .AddToStartingItems(
-                    ItemArmorRefs.FullplateStandard.Reference.GetBlueprint(),
-                    ItemEquipmentUsableRefs.ScrollOfMageArmor.Reference.GetBlueprint(),
-                    ItemEquipmentUsableRefs.ScrollOfMageShield.Reference.GetBlueprint(),
-                    ItemEquipmentUsableRefs.ScrollOfMagicMissile.Reference.GetBlueprint(),
-                    ItemEquipmentUsableRefs.ScrollOfExpeditiousRetreat.Reference.GetBlueprint(),
-                    ItemEquipmentUsableRefs.ScrollOfHurricaneBow.Reference.GetBlueprint()
+                    ItemArmorRefs.FullplateStandard.Reference.Get(),
+                    ItemEquipmentUsableRefs.ScrollOfMageArmor.Reference.Get(),
+                    ItemEquipmentUsableRefs.ScrollOfMageShield.Reference.Get(),
+                    ItemEquipmentUsableRefs.ScrollOfMagicMissile.Reference.Get(),
+                    ItemEquipmentUsableRefs.ScrollOfExpeditiousRetreat.Reference.Get(),
+                    ItemEquipmentUsableRefs.ScrollOfHurricaneBow.Reference.Get()
                 )
                 .SetReplaceStartingEquipment(true)
                 .SetRecommendedAttributes(RecommendedStats)
@@ -489,7 +517,7 @@ namespace AssaultMage.Archetypes
                     FeatureRefs.ArcaneArmorTraining.ToString(),
                     FeatureRefs.ArcaneArmorMastery.ToString(),
                     Feats.ArmorAttune.ArmorAttuneFeat,
-                    Feats.SuperDodge.SuperDodgeFeat/*,
+                    Feats.SuperDodge.SuperDodgeFeat,
                     FeatureSelectionRefs.SorcererBloodlineSelection.ToString(),
                     FeatureSelectionRefs.SorcererBloodlineSelection.ToString(),
                     FeatureSelectionRefs.SorcererBloodlineSelection.ToString(),
@@ -501,14 +529,29 @@ namespace AssaultMage.Archetypes
                     FeatureRefs.Toughness.ToString(),
                     FeatureRefs.Dodge.ToString(),
                     FeatureRefs.StalwartDefenderACBonus.ToString(),
-                    FeatureRefs.WizardArcaneBond.ToString(),
-                    FeatureRefs.ScribingScrolls.ToString(),
+                    //FeatureRefs.WizardArcaneBond.ToString(),
+                    //FeatureRefs.ScribingScrolls.ToString(),
                     FeatureRefs.CombatExpertiseFeature.ToString(),
-                    FeatureSelectionRefs.DeitySelection.ToString(),
-                    FeatureSelectionRefs.DomainsSelection.ToString(),
-                    FeatureSelectionRefs.DomainsSelection.ToString(),
-                    FeatureSelectionRefs.DomainsSelection.ToString()*/
-                    //Cleric1
+                    //FeatureSelectionRefs.DeitySelection.ToString(),
+                    //FeatureSelectionRefs.DomainsSelection.ToString(),
+                    //FeatureSelectionRefs.DomainsSelection.ToString(),
+                    //FeatureSelectionRefs.DomainsSelection.ToString(),
+                    FeatureRefs.ThugFrightening.ToString(),
+                    FeatureRefs.SneakAttack.ToString(),
+                    //FeatureRefs.ClericSpontaneousCure.ToString(),
+                    /*FeatureRefs.ErastilFeature.ToString(),
+                    FeatureRefs.CommunityDomainAllowed.ToString(),
+                    FeatureRefs.CommunityDomainBaseFeature.ToString(),
+                    FeatureRefs.CommunityDomainSpellListFeature.ToString(),
+                    FeatureRefs.AnimalDomainAllowed.ToString(),
+                    FeatureRefs.AnimalDomainBaseFeature.ToString(),
+                    FeatureRefs.AnimalDomainSpellListFeature.ToString(),
+                    //FeatureRefs.CommunityBlessingFeature.ToString(),
+                    FeatureRefs.AbadarFeature.ToString(),
+                    FeatureRefs.NobilityDomainAllowed.ToString(),
+                    FeatureRefs.NobilityDomainBaseFeature.ToString(),
+                    FeatureRefs.NobilityDomainSpellListFeature.ToString(),*/
+                    Cleric1
                 )
                 .AddToAddFeatures(2,
                     FeatureSelectionRefs.WitchFamiliarSelection.ToString(),
@@ -518,24 +561,28 @@ namespace AssaultMage.Archetypes
                     FeatureRefs.BrewPotions.ToString(),
                     FeatureRefs.UncannyDodgeTalent.ToString(),
                     FeatureRefs.Evasion.ToString(),
+                    FeatureSelectionRefs.RogueTalentSelection.ToString(),
                     Cleric2
                 )
                 .AddToAddFeatures(3,
-                    FeatureSelectionRefs.WizardFeatSelection.ToString(),
+                    //FeatureSelectionRefs.WizardFeatSelection.ToString(),
                     FeatureSelectionRefs.FighterFeatSelection.ToString(),
                     FeatureRefs.ArmorTraining.ToString(),
                     FeatureRefs.TowerShieldTraining.ToString(),
+                    FeatureRefs.SneakAttack.ToString(),
                     Cleric3
                 )
                 .AddToAddFeatures(4,
                     FeatureSelectionRefs.DiscoverySelection.ToString(),
                     FeatureSelectionRefs.BasicFeatSelection.ToString(),
                     FeatureRefs.DamageReduction.ToString(),
-                    FeatureRefs.AnimalDomainGreaterFeature.ToString(),
+                    FeatureSelectionRefs.RogueTalentSelection.ToString(),
+                    //FeatureRefs.AnimalDomainGreaterFeature.ToString(),
+                    //FeatureSelectionRefs.AnimalCompanionSelectionDomain.ToString(),
                     Cleric4
                 )
                 .AddToAddFeatures(5,
-                    FeatureSelectionRefs.WizardFeatSelection.ToString(),
+                    //FeatureSelectionRefs.WizardFeatSelection.ToString(),
                     FeatureSelectionRefs.FighterFeatSelection.ToString(),
                     FeatureRefs.PurityOfBody.ToString(),
                     FeatureRefs.ImprovedEvasion.ToString(),
@@ -544,108 +591,128 @@ namespace AssaultMage.Archetypes
                     FeatureRefs.ArmorTraining.ToString(),
                     FeatureRefs.TowerShieldTraining.ToString(),
                     FeatureSelectionRefs.WeaponTrainingSelection.ToString(),
-                    FeatureRefs.SpellMasterItemBondSpecializationFeature.ToString(),
+                    FeatureRefs.SneakAttack.ToString(),
                     Cleric5
+                // FeatureRefs.SpellMasterItemBondSpecializationFeature.ToString()
                 )
                 .AddToAddFeatures(6,
                     FeatureSelectionRefs.BasicFeatSelection.ToString(),
                     FeatureRefs.ArmoredHulkResilienceOfSteel.ToString(),
                     FeatureRefs.DamageReduction.ToString(),
+                    FeatureSelectionRefs.RogueTalentSelection.ToString(),
                     Cleric6
                 )
                 .AddToAddFeatures(7,
-                    FeatureSelectionRefs.WizardFeatSelection.ToString(),
+                    //FeatureSelectionRefs.WizardFeatSelection.ToString(),
                     FeatureSelectionRefs.FighterFeatSelection.ToString(),
                     FeatureRefs.EnlightenedPhilosopherRevelationMentalAcuity.ToString(),
                     FeatureRefs.ArmorTraining.ToString(),
                     FeatureRefs.TowerShieldTraining.ToString(),
+                    FeatureRefs.SneakAttack.ToString(),
                     Cleric7
                 )
                 .AddToAddFeatures(8,
                     FeatureSelectionRefs.BasicFeatSelection.ToString(),
                     FeatureRefs.DamageReduction.ToString(),
+                    FeatureSelectionRefs.RogueTalentSelection.ToString(),
+                    //FeatureRefs.CommunityDomainGreaterFeature.ToString(),
+                    //FeatureRefs.CommunityBlessingMajorFeature.ToString(),
+                    //FeatureRefs.NobilityDomainGreaterFeature.ToString(),
+                    //FeatureRefs.NobilityBlessingMajorFeature.ToString()
                     Cleric8
                 )
                 .AddToAddFeatures(9,
-                    FeatureSelectionRefs.WizardFeatSelection.ToString(),
+                    //FeatureSelectionRefs.WizardFeatSelection.ToString(),
                     FeatureSelectionRefs.FighterFeatSelection.ToString(),
                     FeatureRefs.TowerShieldSpecialistTouchShield.ToString(),
                     FeatureRefs.ArmoredHulkResilienceOfSteel.ToString(),
                     FeatureRefs.TowerShieldTraining.ToString(),
                     FeatureSelectionRefs.WeaponTrainingSelection.ToString(),
                     FeatureSelectionRefs.WeaponTrainingRankUpSelection.ToString(),
+                    FeatureRefs.SneakAttack.ToString(),
                     Cleric9
                 )
                 .AddToAddFeatures(10,
                     FeatureSelectionRefs.VivsectionistDiscoverySelection.ToString(),
                     FeatureRefs.DamageReduction.ToString(),
-                    FeatureRefs.SpellMasterItemBondSpecializationFeature.ToString(),
+                    FeatureSelectionRefs.RogueTalentSelection.ToString(),
+                    //FeatureRefs.SpellMasterItemBondSpecializationFeature.ToString()
                     Cleric10
                 )
                 .AddToAddFeatures(11,
                     FeatureSelectionRefs.VivsectionistDiscoverySelection.ToString(),
                     FeatureRefs.ArmorTraining.ToString(),
                     FeatureRefs.TowerShieldTraining.ToString(),
+                    FeatureRefs.SneakAttack.ToString(),
                     Cleric11
                 )
                 .AddToAddFeatures(12,
                     FeatureSelectionRefs.VivsectionistDiscoverySelection.ToString(),
                     FeatureRefs.ArmoredHulkResilienceOfSteel.ToString(),
                     FeatureRefs.DamageReduction.ToString(),
+                    FeatureSelectionRefs.RogueTalentSelection.ToString(),
                     Cleric12
                 )
                 .AddToAddFeatures(13,
                     FeatureSelectionRefs.BasicFeatSelection.ToString(),
                     FeatureSelectionRefs.WeaponTrainingSelection.ToString(),
                     FeatureSelectionRefs.WeaponTrainingRankUpSelection.ToString(),
+                    FeatureRefs.SneakAttack.ToString(),
                     Cleric13
                 )
                 .AddToAddFeatures(14,
-                    FeatureSelectionRefs.WizardFeatSelection.ToString(),
+                    //FeatureSelectionRefs.WizardFeatSelection.ToString(),
                     FeatureSelectionRefs.FighterFeatSelection.ToString(),
                     FeatureRefs.DamageReduction.ToString(),
+                    FeatureSelectionRefs.RogueTalentSelection.ToString(),
                     Cleric14
                 )
                 .AddToAddFeatures(15,
                     FeatureRefs.PersistantMutagen.ToString(),
                     FeatureRefs.ArmoredHulkResilienceOfSteel.ToString(),
                     FeatureRefs.ArmorTraining.ToString(),
-                    FeatureRefs.SpellMasterItemBondSpecializationFeature.ToString(),
+                    FeatureRefs.SneakAttack.ToString(),
+                    //FeatureRefs.SpellMasterItemBondSpecializationFeature.ToString()
                     Cleric15
                 )
                 .AddToAddFeatures(16,
                     FeatureSelectionRefs.BasicFeatSelection.ToString(),
                     FeatureRefs.DamageReduction.ToString(),
-                    Cleric16
+                    FeatureSelectionRefs.RogueTalentSelection.ToString()
                 )
                 .AddToAddFeatures(17,
-                    FeatureSelectionRefs.WizardFeatSelection.ToString(),
+                    //FeatureSelectionRefs.WizardFeatSelection.ToString(),
                     FeatureSelectionRefs.FighterFeatSelection.ToString(),
                     FeatureSelectionRefs.WeaponTrainingSelection.ToString(),
                     FeatureSelectionRefs.WeaponTrainingRankUpSelection.ToString(),
+                    FeatureRefs.SneakAttack.ToString(),
                     Cleric17
                 )
                 .AddToAddFeatures(18,
-                    FeatureSelectionRefs.WizardFeatSelection.ToString(),
+                    //FeatureSelectionRefs.WizardFeatSelection.ToString(),
                     FeatureSelectionRefs.FighterFeatSelection.ToString(),
                     FeatureRefs.ArmoredHulkResilienceOfSteel.ToString(),
                     FeatureRefs.DamageReduction.ToString(),
+                    FeatureSelectionRefs.RogueTalentSelection.ToString(),
                     Cleric18
                 )
                 .AddToAddFeatures(19,
-                    FeatureSelectionRefs.WizardFeatSelection.ToString(),
+                    //FeatureSelectionRefs.WizardFeatSelection.ToString(),
                     FeatureRefs.ArmorMastery.ToString(),
+                    FeatureRefs.SneakAttack.ToString(),
                     Cleric19
                 )
                 .AddToAddFeatures(20,
-                    FeatureSelectionRefs.WizardFeatSelection.ToString(),
+                    //FeatureSelectionRefs.WizardFeatSelection.ToString(),
                     FeatureSelectionRefs.FighterFeatSelection.ToString(),
                     FeatureRefs.AwakenedIntellect.ToString(),
                     FeatureSelectionRefs.GrandDiscoverySelection.ToString(),
                     FeatureRefs.DamageReduction.ToString(),
                     FeatureRefs.TrueMutagen.ToString(),
                     FeatureSelectionRefs.WeaponMasterySelection.ToString(),
-                    FeatureRefs.SpellMasterItemBondSpecializationFeature.ToString(),
+                    FeatureRefs.MasterStrike.ToString(),
+                    FeatureSelectionRefs.RogueTalentSelection.ToString(),
+                    //FeatureRefs.SpellMasterItemBondSpecializationFeature.ToString()
                     Cleric20
                 )
                 .Configure();
@@ -662,7 +729,7 @@ namespace AssaultMage.Archetypes
 
         }
 
-        private static BlueprintSpellbook CreateSpellbook()
+        private static void SetSpellList()
         {
             BlueprintSpellbook WizardSpellbook = (BlueprintSpellbook)SpellbookRefs.WizardSpellbook.Reference.Get();
             BlueprintSpellList WizardSpellList = WizardSpellbook.SpellList;
@@ -671,32 +738,688 @@ namespace AssaultMage.Archetypes
             BlueprintSpellsTable ClericSpellSlots = SpellsTableRefs.ClericSpellLevels.Reference.Get();
             BlueprintSpellList ClericSpellList = ClericSpellbook.SpellList;
 
-            BlueprintSpellList AssaultMageSpellList = SpellListConfigurator.New(AssaultMageSpellListName, AssaultMageSpellListGuid)
-                .CopyFrom(WizardSpellList)
-                .Configure();
 
 
-            for (int i=0; i < AssaultMageSpellList.SpellsByLevel.Length; ++i)
+            SpellLevelList zeroLevelSpells = new SpellLevelList(0)
             {
-                for (int j=0; j < ClericSpellList.SpellsByLevel[i].m_Spells.Count; ++j)
-                {
-                    if (!AssaultMageSpellList.SpellsByLevel[i].m_Spells.Contains(ClericSpellList.SpellsByLevel[i].m_Spells[j]))
+                m_Spells =
+                WizardSpellList.GetSpells(0)
+                  .Select(s => s.ToReference<BlueprintAbilityReference>())
+                  .ToList()
+            };
+
+            zeroLevelSpells.m_Spells.AddRange(
+                ClericSpellList.GetSpells(0)
+                    .Except(WizardSpellList.GetSpells(0))
+                    .Select(s => s.ToReference<BlueprintAbilityReference>())
+            );
+
+            SpellLevelList firstLevelSpells = new SpellLevelList(1)
+            {
+                m_Spells =
+                WizardSpellList.GetSpells(1)
+                  .Select(s => s.ToReference<BlueprintAbilityReference>())
+                  .ToList()
+            };
+
+            firstLevelSpells.m_Spells.AddRange(
+                ClericSpellList.GetSpells(1)
+                    .Except(WizardSpellList.GetSpells(1))
+                    .Except(WizardSpellList.GetSpells(2))
+                    .Except(WizardSpellList.GetSpells(3))
+                    .Except(WizardSpellList.GetSpells(4))
+                    .Except(WizardSpellList.GetSpells(5))
+                    .Except(WizardSpellList.GetSpells(6))
+                    .Except(WizardSpellList.GetSpells(7))
+                    .Except(WizardSpellList.GetSpells(8))
+                    .Except(WizardSpellList.GetSpells(9))
+                    .Except(WizardSpellList.GetSpells(10))
+                    .Select(s => s.ToReference<BlueprintAbilityReference>())
+            );
+
+            SpellLevelList secondLevelSpells = new SpellLevelList(2)
+            {
+                m_Spells =
+                WizardSpellList.GetSpells(2)
+                  .Select(s => s.ToReference<BlueprintAbilityReference>())
+                  .ToList()
+            };
+
+            secondLevelSpells.m_Spells.AddRange(
+                ClericSpellList.GetSpells(2)
+                    .Except(WizardSpellList.GetSpells(1))
+                    .Except(WizardSpellList.GetSpells(2))
+                    .Except(WizardSpellList.GetSpells(3))
+                    .Except(WizardSpellList.GetSpells(4))
+                    .Except(WizardSpellList.GetSpells(5))
+                    .Except(WizardSpellList.GetSpells(6))
+                    .Except(WizardSpellList.GetSpells(7))
+                    .Except(WizardSpellList.GetSpells(8))
+                    .Except(WizardSpellList.GetSpells(9))
+                    .Except(WizardSpellList.GetSpells(10))
+                    .Select(s => s.ToReference<BlueprintAbilityReference>())
+            );
+
+            SpellLevelList thirdLevelSpells = new SpellLevelList(3)
+            {
+                m_Spells =
+                WizardSpellList.GetSpells(3)
+                  .Select(s => s.ToReference<BlueprintAbilityReference>())
+                  .ToList()
+            };
+
+            thirdLevelSpells.m_Spells.AddRange(
+                ClericSpellList.GetSpells(3)
+                    .Except(WizardSpellList.GetSpells(1))
+                    .Except(WizardSpellList.GetSpells(2))
+                    .Except(WizardSpellList.GetSpells(3))
+                    .Except(WizardSpellList.GetSpells(4))
+                    .Except(WizardSpellList.GetSpells(5))
+                    .Except(WizardSpellList.GetSpells(6))
+                    .Except(WizardSpellList.GetSpells(7))
+                    .Except(WizardSpellList.GetSpells(8))
+                    .Except(WizardSpellList.GetSpells(9))
+                    .Except(WizardSpellList.GetSpells(10))
+                    .Select(s => s.ToReference<BlueprintAbilityReference>())
+            );
+
+            SpellLevelList fourthLevelSpells = new SpellLevelList(4)
+            {
+                m_Spells =
+                WizardSpellList.GetSpells(4)
+                  .Select(s => s.ToReference<BlueprintAbilityReference>())
+                  .ToList()
+            };
+
+            fourthLevelSpells.m_Spells.AddRange(
+                ClericSpellList.GetSpells(4)
+                    .Except(WizardSpellList.GetSpells(1))
+                    .Except(WizardSpellList.GetSpells(2))
+                    .Except(WizardSpellList.GetSpells(3))
+                    .Except(WizardSpellList.GetSpells(4))
+                    .Except(WizardSpellList.GetSpells(5))
+                    .Except(WizardSpellList.GetSpells(6))
+                    .Except(WizardSpellList.GetSpells(7))
+                    .Except(WizardSpellList.GetSpells(8))
+                    .Except(WizardSpellList.GetSpells(9))
+                    .Except(WizardSpellList.GetSpells(10))
+                    .Select(s => s.ToReference<BlueprintAbilityReference>())
+            );
+
+            SpellLevelList fifthLevelSpells = new SpellLevelList(5)
+            {
+                m_Spells =
+                WizardSpellList.GetSpells(5)
+                  .Select(s => s.ToReference<BlueprintAbilityReference>())
+                  .ToList()
+            };
+
+            fifthLevelSpells.m_Spells.AddRange(
+                ClericSpellList.GetSpells(5)
+                    .Except(WizardSpellList.GetSpells(1))
+                    .Except(WizardSpellList.GetSpells(2))
+                    .Except(WizardSpellList.GetSpells(3))
+                    .Except(WizardSpellList.GetSpells(4))
+                    .Except(WizardSpellList.GetSpells(5))
+                    .Except(WizardSpellList.GetSpells(6))
+                    .Except(WizardSpellList.GetSpells(7))
+                    .Except(WizardSpellList.GetSpells(8))
+                    .Except(WizardSpellList.GetSpells(9))
+                    .Except(WizardSpellList.GetSpells(10))
+                    .Select(s => s.ToReference<BlueprintAbilityReference>())
+            );
+
+            SpellLevelList sixthLevelSpells = new SpellLevelList(6)
+            {
+                m_Spells =
+                WizardSpellList.GetSpells(6)
+                  .Select(s => s.ToReference<BlueprintAbilityReference>())
+                  .ToList()
+            };
+
+            sixthLevelSpells.m_Spells.AddRange(
+                ClericSpellList.GetSpells(6)
+                    .Except(WizardSpellList.GetSpells(1))
+                    .Except(WizardSpellList.GetSpells(2))
+                    .Except(WizardSpellList.GetSpells(3))
+                    .Except(WizardSpellList.GetSpells(4))
+                    .Except(WizardSpellList.GetSpells(5))
+                    .Except(WizardSpellList.GetSpells(6))
+                    .Except(WizardSpellList.GetSpells(7))
+                    .Except(WizardSpellList.GetSpells(8))
+                    .Except(WizardSpellList.GetSpells(9))
+                    .Except(WizardSpellList.GetSpells(10))
+                    .Select(s => s.ToReference<BlueprintAbilityReference>())
+            );
+
+            SpellLevelList seventhLevelSpells = new SpellLevelList(7)
+            {
+                m_Spells =
+                WizardSpellList.GetSpells(7)
+                  .Select(s => s.ToReference<BlueprintAbilityReference>())
+                  .ToList()
+            };
+
+            seventhLevelSpells.m_Spells.AddRange(
+                ClericSpellList.GetSpells(7)
+                    .Except(WizardSpellList.GetSpells(1))
+                    .Except(WizardSpellList.GetSpells(2))
+                    .Except(WizardSpellList.GetSpells(3))
+                    .Except(WizardSpellList.GetSpells(4))
+                    .Except(WizardSpellList.GetSpells(5))
+                    .Except(WizardSpellList.GetSpells(6))
+                    .Except(WizardSpellList.GetSpells(7))
+                    .Except(WizardSpellList.GetSpells(8))
+                    .Except(WizardSpellList.GetSpells(9))
+                    .Except(WizardSpellList.GetSpells(10))
+                    .Select(s => s.ToReference<BlueprintAbilityReference>())
+            );
+
+            SpellLevelList eighthLevelSpells = new SpellLevelList(8)
+            {
+                m_Spells =
+                WizardSpellList.GetSpells(8)
+                  .Select(s => s.ToReference<BlueprintAbilityReference>())
+                  .ToList()
+            };
+
+            eighthLevelSpells.m_Spells.AddRange(
+                ClericSpellList.GetSpells(8)
+                    .Except(WizardSpellList.GetSpells(1))
+                    .Except(WizardSpellList.GetSpells(2))
+                    .Except(WizardSpellList.GetSpells(3))
+                    .Except(WizardSpellList.GetSpells(4))
+                    .Except(WizardSpellList.GetSpells(5))
+                    .Except(WizardSpellList.GetSpells(6))
+                    .Except(WizardSpellList.GetSpells(7))
+                    .Except(WizardSpellList.GetSpells(8))
+                    .Except(WizardSpellList.GetSpells(9))
+                    .Except(WizardSpellList.GetSpells(10))
+                    .Select(s => s.ToReference<BlueprintAbilityReference>())
+            );
+
+            SpellLevelList ninthLevelSpells = new SpellLevelList(9)
+            {
+                m_Spells =
+                WizardSpellList.GetSpells(9)
+                  .Select(s => s.ToReference<BlueprintAbilityReference>())
+                  .ToList()
+            };
+
+            ninthLevelSpells.m_Spells.AddRange(
+                ClericSpellList.GetSpells(9)
+                    .Except(WizardSpellList.GetSpells(1))
+                    .Except(WizardSpellList.GetSpells(2))
+                    .Except(WizardSpellList.GetSpells(3))
+                    .Except(WizardSpellList.GetSpells(4))
+                    .Except(WizardSpellList.GetSpells(5))
+                    .Except(WizardSpellList.GetSpells(6))
+                    .Except(WizardSpellList.GetSpells(7))
+                    .Except(WizardSpellList.GetSpells(8))
+                    .Except(WizardSpellList.GetSpells(9))
+                    .Except(WizardSpellList.GetSpells(10))
+                    .Select(s => s.ToReference<BlueprintAbilityReference>())
+            );
+
+            SpellLevelList tenthLevelSpells = new SpellLevelList(10)
+            {
+                m_Spells =
+                WizardSpellList.GetSpells(10)
+                  .Select(s => s.ToReference<BlueprintAbilityReference>())
+                  .ToList()
+            };
+
+            tenthLevelSpells.m_Spells.AddRange(
+                ClericSpellList.GetSpells(10)
+                    .Except(WizardSpellList.GetSpells(1))
+                    .Except(WizardSpellList.GetSpells(2))
+                    .Except(WizardSpellList.GetSpells(3))
+                    .Except(WizardSpellList.GetSpells(4))
+                    .Except(WizardSpellList.GetSpells(5))
+                    .Except(WizardSpellList.GetSpells(6))
+                    .Except(WizardSpellList.GetSpells(7))
+                    .Except(WizardSpellList.GetSpells(8))
+                    .Except(WizardSpellList.GetSpells(9))
+                    .Except(WizardSpellList.GetSpells(10))
+                    .Select(s => s.ToReference<BlueprintAbilityReference>())
+            );
+
+            AssaultMageSpellList = SpellListConfigurator.New(AssaultMageSpellListName, AssaultMageSpellListGuid)
+                .AddToSpellsByLevel(
+                    zeroLevelSpells,
+                    firstLevelSpells,
+                    secondLevelSpells,
+                    thirdLevelSpells,
+                    fourthLevelSpells,
+                    fifthLevelSpells,
+                    sixthLevelSpells,
+                    seventhLevelSpells,
+                    eighthLevelSpells,
+                    ninthLevelSpells,
+                    tenthLevelSpells
+                 )
+                .Configure();
+        }
+
+        private static void SetSpellSlots()
+        {
+            SpellsLevelEntry[] entries = new SpellsLevelEntry[] { 
+                new SpellsLevelEntry(),
+                // 1
+                new SpellsLevelEntry() {
+                    Count = new int[]
                     {
-                        AssaultMageSpellList.SpellsByLevel[i].m_Spells.Add(ClericSpellList.SpellsByLevel[i].m_Spells[j]);
+                        0,
+                        2
+                    }
+                },
+                // 2
+                new SpellsLevelEntry() {
+                    Count = new int[]
+                    {
+                        0,
+                        4
+                    }
+                },
+                // 3
+                new SpellsLevelEntry() {
+                    Count = new int[]
+                    {
+                        0,
+                        4,
+                        2
+                    }
+                },
+                // 4
+                new SpellsLevelEntry() {
+                    Count = new int[]
+                    {
+                        0,
+                        6,
+                        4
+                    }
+                },
+                // 5
+                new SpellsLevelEntry() {
+                    Count = new int[]
+                    {
+                        0,
+                        6,
+                        4,
+                        2
+                    }
+                },
+                // 6
+                new SpellsLevelEntry() {
+                    Count = new int[]
+                    {
+                        0,
+                        6,
+                        6,
+                        4
+                    }
+                },
+                // 7
+                new SpellsLevelEntry() {
+                    Count = new int[]
+                    {
+                        0,
+                        8,
+                        6,
+                        4,
+                        2
+                    }
+                },
+                // 8
+                new SpellsLevelEntry() {
+                    Count = new int[]
+                    {
+                        0,
+                        8,
+                        6,
+                        6,
+                        4
+                    }
+                },
+                // 9
+                new SpellsLevelEntry() {
+                    Count = new int[]
+                    {
+                        0,
+                        8,
+                        8,
+                        6,
+                        4,
+                        2
+                    }
+                },
+                // 10
+                new SpellsLevelEntry() {
+                    Count = new int[]
+                    {
+                        0,
+                        8,
+                        8,
+                        6,
+                        6,
+                        4
+                    }
+                },
+                // 11
+                new SpellsLevelEntry() {
+                    Count = new int[]
+                    {
+                        0,
+                        8,
+                        8,
+                        8,
+                        6,
+                        4,
+                        2
+                    }
+                },
+                // 12
+                new SpellsLevelEntry() {
+                    Count = new int[]
+                    {
+                        0,
+                        8,
+                        8,
+                        8,
+                        6,
+                        6,
+                        4
+                    }
+                },
+                // 13
+                new SpellsLevelEntry() {
+                    Count = new int[]
+                    {
+                        0,
+                        8,
+                        8,
+                        8,
+                        8,
+                        6,
+                        4,
+                        2
+                    }
+                },
+                // 14
+                new SpellsLevelEntry() {
+                    Count = new int[]
+                    {
+                        0,
+                        8,
+                        8,
+                        8,
+                        8,
+                        6,
+                        6,
+                        4
+                    }
+                },
+                // 15
+                new SpellsLevelEntry() {
+                    Count = new int[]
+                    {
+                        0,
+                        8,
+                        8,
+                        8,
+                        8,
+                        8,
+                        6,
+                        4,
+                        2
+                    }
+                },
+                // 16
+                new SpellsLevelEntry() {
+                    Count = new int[]
+                    {
+                        0,
+                        8,
+                        8,
+                        8,
+                        8,
+                        8,
+                        6,
+                        6,
+                        4
+                    }
+                },
+                // 17
+                new SpellsLevelEntry() {
+                    Count = new int[]
+                    {
+                        0,
+                        8,
+                        8,
+                        8,
+                        8,
+                        8,
+                        8,
+                        6,
+                        4,
+                        2
+                    }
+                },
+                // 18
+                new SpellsLevelEntry() {
+                    Count = new int[]
+                    {
+                        0,
+                        8,
+                        8,
+                        8,
+                        8,
+                        8,
+                        8,
+                        6,
+                        6,
+                        4
+                    }
+                },
+                // 19
+                new SpellsLevelEntry() {
+                    Count = new int[]
+                    {
+                        0,
+                        8,
+                        8,
+                        8,
+                        8,
+                        8,
+                        8,
+                        8,
+                        6,
+                        6
+                    }
+                },
+                // 20
+                new SpellsLevelEntry() {
+                    Count = new int[]
+                    {
+                        0,
+                        8,
+                        8,
+                        8,
+                        8,
+                        8,
+                        8,
+                        8,
+                        8,
+                        8
+                    }
+                },
+                // 21
+                new SpellsLevelEntry() {
+                    Count = new int[]
+                    {
+                        0,
+                        10,
+                        10,
+                        8,
+                        8,
+                        8,
+                        8,
+                        8,
+                        8,
+                        8
+                    }
+                },
+                // 22
+                new SpellsLevelEntry() {
+                    Count = new int[]
+                    {
+                        0,
+                        10,
+                        10,
+                        8,
+                        8,
+                        8,
+                        8,
+                        8,
+                        8,
+                        8
+                    }
+                },
+                // 23
+                new SpellsLevelEntry() {
+                    Count = new int[]
+                    {
+                        0,
+                        10,
+                        10,
+                        8,
+                        8,
+                        8,
+                        8,
+                        8,
+                        8,
+                        8
+                    }
+                },
+                // 24
+                new SpellsLevelEntry() {
+                    Count = new int[]
+                    {
+                        0,
+                        10,
+                        10,
+                        8,
+                        8,
+                        8,
+                        8,
+                        8,
+                        8,
+                        8
+                    }
+                },
+                // 25
+                new SpellsLevelEntry() {
+                    Count = new int[]
+                    {
+                        0,
+                        10,
+                        10,
+                        8,
+                        8,
+                        8,
+                        8,
+                        8,
+                        8,
+                        8
+                    }
+                },
+                // 26
+                new SpellsLevelEntry() {
+                    Count = new int[]
+                    {
+                        0,
+                        10,
+                        10,
+                        8,
+                        8,
+                        8,
+                        8,
+                        8,
+                        8,
+                        8
+                    }
+                },
+                // 27
+                new SpellsLevelEntry() {
+                    Count = new int[]
+                    {
+                        0,
+                        10,
+                        10,
+                        8,
+                        8,
+                        8,
+                        8,
+                        8,
+                        8,
+                        8
+                    }
+                },
+                // 28
+                new SpellsLevelEntry() {
+                    Count = new int[]
+                    {
+                        0,
+                        10,
+                        10,
+                        8,
+                        8,
+                        8,
+                        8,
+                        8,
+                        8,
+                        8
                     }
                 }
-            }
+            };
 
 
-            AssaultMageSpellbook = SpellbookConfigurator.New(ArchetypeSpellbook, ArchetypeSpellbookGuid)
-                .CopyFrom(SpellbookRefs.WizardSpellbook)
-                .SetName(ArchetypeDisplayName)
-                .SetCantripsType(CantripsType.Orisions)
-                .SetSpellList(AssaultMageSpellList)
-                .SetAllSpellsKnown()
+            AssaultMageSpellTable = SpellsTableConfigurator.New(AssaultMageSpellTableName, AssaultMageSpellTableGuid)
+                .CopyFrom(SpellsTableRefs.InquisitorSpellsKnownTable)
+                .SetLevels(entries)
                 .Configure();
 
+            Main.Logger.Info("After AssaultMageSpellTable");
 
+            for (int i=0; i<AssaultMageSpellTable.Levels.Length; ++i)
+            {
+                Main.Logger.Info("Spell Table level " + i);
+                for(int j=0; j<AssaultMageSpellTable.Levels[i].Count.Length; ++j)
+                {
+                    Main.Logger.Info("Spell count " + j + " value " + AssaultMageSpellTable.Levels[i].Count[j]);
+                }
+            }
+        }
+
+        private static BlueprintSpellbook CreateSpellbook()
+        {
+            BlueprintSpellbook WizardSpellbook = (BlueprintSpellbook)SpellbookRefs.WizardSpellbook.Reference.Get();
+
+            SetSpellList();
+            SetSpellSlots();
+
+            AssaultMageSpellbook = SpellbookConfigurator.New(ArchetypeSpellbook, ArchetypeSpellbookGuid)
+                .CopyFrom(WizardSpellbook)
+                .SetName(ArchetypeDisplayName)
+                //.SetCantripsType(CantripsType.Orisions)
+                .SetCantripsType(CantripsType.Cantrips)
+                .SetSpellList(AssaultMageSpellList)
+                .SetSpellsPerDay(AssaultMageSpellTable)
+                .SetHasSpecialSpellList()
+                //.SetSpellSlots(AssaultMageSpellTable)
+                .Configure();
+
+          
             return AssaultMageSpellbook;
         }
 
