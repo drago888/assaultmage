@@ -106,7 +106,6 @@ namespace AssaultMage.Feats
                     .AddBuffOnArmor(BuffRefs.OwlsWisdomBuff.Reference.GetBlueprint())
                     .AddBuffOnArmor(BuffRefs.FoxsCunningBuff.Reference.GetBlueprint())
                     .AddBuffOnArmor(BuffRefs.FrightfulAspectBuff.Reference.GetBlueprint())
-                    .AddBuffOnArmor(BuffRefs.IronBodyBuff.Reference.GetBlueprint())
                     .Configure();
 
 
