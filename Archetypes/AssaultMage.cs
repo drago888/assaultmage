@@ -562,7 +562,7 @@ namespace AssaultMage.Archetypes
                     FeatureRefs.BloodlineDraconicGoldArcana.ToString(),
                     FeatureRefs.BloodlineDraconicSilverArcana.ToString(),
                     FeatureRefs.ArcanistArcaneReservoirFeature.ToString(),
-                    FeatureRefs.ArcanePoolFeature.ToString(),
+                    //FeatureRefs.ArcanePoolFeature.ToString(),
                     Cleric1
                 )
                 .AddToAddFeatures(2,
@@ -605,9 +605,9 @@ namespace AssaultMage.Archetypes
                     //FeatureRefs.TowerShieldTraining.ToString(),
                     FeatureSelectionRefs.WeaponTrainingSelection.ToString(),
                     FeatureRefs.SneakAttack.ToString(),
-                    FeatureRefs.SpellMasterItemBondSpecializationFeature.ToString(),
-                    FeatureRefs.ArcaneWeaponPlus2.ToString(),
-                    FeatureRefs.ArcaneArmorEnchantPlus2.ToString()
+                    FeatureRefs.SpellMasterItemBondSpecializationFeature.ToString()
+                    //FeatureRefs.ArcaneWeaponPlus2.ToString(),
+                    //FeatureRefs.ArcaneArmorEnchantPlus2.ToString()
                     //Cleric5
                 )
                 .AddToAddFeatures(6,
@@ -646,9 +646,9 @@ namespace AssaultMage.Archetypes
                     FeatureSelectionRefs.WeaponTrainingSelection.ToString(),
                     FeatureSelectionRefs.WeaponTrainingRankUpSelection.ToString(),
                     FeatureRefs.SneakAttack.ToString(),
-                    FeatureRefs.ShareTransmutation.ToString(),
-                    FeatureRefs.ArcaneWeaponPlus3.ToString(),
-                    FeatureRefs.ArcaneArmorEnchantPlus3.ToString()
+                    FeatureRefs.ShareTransmutation.ToString()
+                    //FeatureRefs.ArcaneWeaponPlus3.ToString(),
+                    //FeatureRefs.ArcaneArmorEnchantPlus3.ToString()
                     //Cleric9
                 )
                 .AddToAddFeatures(10,
@@ -677,9 +677,9 @@ namespace AssaultMage.Archetypes
                     FeatureSelectionRefs.BasicFeatSelection.ToString(),
                     FeatureSelectionRefs.WeaponTrainingSelection.ToString(),
                     FeatureSelectionRefs.WeaponTrainingRankUpSelection.ToString(),
-                    FeatureRefs.SneakAttack.ToString(),
-                    FeatureRefs.ArcaneWeaponPlus4.ToString(),
-                    FeatureRefs.ArcaneArmorEnchantPlus4.ToString()
+                    FeatureRefs.SneakAttack.ToString()
+                    //FeatureRefs.ArcaneWeaponPlus4.ToString(),
+                    //FeatureRefs.ArcaneArmorEnchantPlus4.ToString()
                     //Cleric13
                 )
                 .AddToAddFeatures(14,
@@ -710,9 +710,9 @@ namespace AssaultMage.Archetypes
                     FeatureSelectionRefs.FighterFeatSelection.ToString(),
                     FeatureSelectionRefs.WeaponTrainingSelection.ToString(),
                     FeatureSelectionRefs.WeaponTrainingRankUpSelection.ToString(),
-                    FeatureRefs.SneakAttack.ToString(),
-                    FeatureRefs.ArcaneWeaponPlus5.ToString(),
-                    FeatureRefs.ArcaneArmorEnchantPlus5.ToString()
+                    FeatureRefs.SneakAttack.ToString()
+                    //FeatureRefs.ArcaneWeaponPlus5.ToString(),
+                    //FeatureRefs.ArcaneArmorEnchantPlus5.ToString()
                     //Cleric17
                 )
                 .AddToAddFeatures(18,
@@ -757,6 +757,7 @@ namespace AssaultMage.Archetypes
                 .Configure();
 
             FeatureConfigurator.For(Feats.SuperDodge.SuperDodgeFeat)
+                .SetReapplyOnLevelUp(true)
                 .AddPrerequisiteArchetypeLevel(AssaultMageArchetype, BaseClass, true, GroupType.All, false, 1)
                 .Configure();
 
