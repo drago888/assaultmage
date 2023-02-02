@@ -1,11 +1,12 @@
 #Pathfinder - Wrath of the Righteous Mod
 
-This mod will create an overpowered archetype - Assault Mage located under Wizard class.
+This mod will create an overpowered archetype - Assault Mage located under cleric class.
 This archetype is only available to the main character.
 However, this class will have lots of skills/feats and can bypass fighter, wizard, cleric, rogue and monk pre-requisite.
 
 It also can cast up to the full levels of cleric and wizard spells.
-And have invulnerable rager damage reduction, tower shield specialist skills, armor mastery and weapon specialization.
+And have invulnerable rager damage reduction, brown-fur transmutator ability, arcane weapon enhancement and arcane armor enhancement, armor mastery and weapon specialization.
+Able to use shield when spellcasting without spell failure.
 
 However, the unique skills for this Archetype are
 1. Arcane Armor Attunement - allowing -20 spell failure when using armor and shield

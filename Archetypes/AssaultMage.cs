@@ -561,6 +561,8 @@ namespace AssaultMage.Archetypes
                     FeatureRefs.BloodlineDraconicCopperArcana.ToString(),
                     FeatureRefs.BloodlineDraconicGoldArcana.ToString(),
                     FeatureRefs.BloodlineDraconicSilverArcana.ToString(),
+                    FeatureRefs.ArcanistArcaneReservoirFeature.ToString(),
+                    FeatureRefs.ArcanePoolFeature.ToString(),
                     Cleric1
                 )
                 .AddToAddFeatures(2,
@@ -578,8 +580,9 @@ namespace AssaultMage.Archetypes
                     FeatureSelectionRefs.WizardFeatSelection.ToString(),
                     FeatureSelectionRefs.FighterFeatSelection.ToString(),
                     FeatureRefs.ArmorTraining.ToString(),
-                    FeatureRefs.TowerShieldTraining.ToString(),
-                    FeatureRefs.SneakAttack.ToString()
+                    //FeatureRefs.TowerShieldTraining.ToString(),
+                    FeatureRefs.SneakAttack.ToString(),
+                    FeatureRefs.PowerfulChange.ToString()
                     //Cleric3
                 )
                 .AddToAddFeatures(4,
@@ -597,12 +600,14 @@ namespace AssaultMage.Archetypes
                     FeatureRefs.PurityOfBody.ToString(),
                     FeatureRefs.ImprovedEvasion.ToString(),
                     FeatureRefs.ImprovedUncannyDodgeTalent.ToString(),
-                    FeatureRefs.TowerShieldNegatePenalty.ToString(),
+                    //FeatureRefs.TowerShieldNegatePenalty.ToString(),
                     FeatureRefs.ArmorTraining.ToString(),
-                    FeatureRefs.TowerShieldTraining.ToString(),
+                    //FeatureRefs.TowerShieldTraining.ToString(),
                     FeatureSelectionRefs.WeaponTrainingSelection.ToString(),
                     FeatureRefs.SneakAttack.ToString(),
-                    FeatureRefs.SpellMasterItemBondSpecializationFeature.ToString()
+                    FeatureRefs.SpellMasterItemBondSpecializationFeature.ToString(),
+                    FeatureRefs.ArcaneWeaponPlus2.ToString(),
+                    FeatureRefs.ArcaneArmorEnchantPlus2.ToString()
                     //Cleric5
                 )
                 .AddToAddFeatures(6,
@@ -617,7 +622,7 @@ namespace AssaultMage.Archetypes
                     FeatureSelectionRefs.FighterFeatSelection.ToString(),
                     FeatureRefs.EnlightenedPhilosopherRevelationMentalAcuity.ToString(),
                     FeatureRefs.ArmorTraining.ToString(),
-                    FeatureRefs.TowerShieldTraining.ToString(),
+                    //FeatureRefs.TowerShieldTraining.ToString(),
                     FeatureRefs.SneakAttack.ToString()
                     //Cleric7
                 )
@@ -635,12 +640,15 @@ namespace AssaultMage.Archetypes
                 .AddToAddFeatures(9,
                     FeatureSelectionRefs.WizardFeatSelection.ToString(),
                     FeatureSelectionRefs.FighterFeatSelection.ToString(),
-                    FeatureRefs.TowerShieldSpecialistTouchShield.ToString(),
+                    //FeatureRefs.TowerShieldSpecialistTouchShield.ToString(),
                     FeatureRefs.ArmoredHulkResilienceOfSteel.ToString(),
-                    FeatureRefs.TowerShieldTraining.ToString(),
+                    //FeatureRefs.TowerShieldTraining.ToString(),
                     FeatureSelectionRefs.WeaponTrainingSelection.ToString(),
                     FeatureSelectionRefs.WeaponTrainingRankUpSelection.ToString(),
-                    FeatureRefs.SneakAttack.ToString()
+                    FeatureRefs.SneakAttack.ToString(),
+                    FeatureRefs.ShareTransmutation.ToString(),
+                    FeatureRefs.ArcaneWeaponPlus3.ToString(),
+                    FeatureRefs.ArcaneArmorEnchantPlus3.ToString()
                     //Cleric9
                 )
                 .AddToAddFeatures(10,
@@ -653,7 +661,7 @@ namespace AssaultMage.Archetypes
                 .AddToAddFeatures(11,
                     FeatureSelectionRefs.VivsectionistDiscoverySelection.ToString(),
                     FeatureRefs.ArmorTraining.ToString(),
-                    FeatureRefs.TowerShieldTraining.ToString(),
+                    //FeatureRefs.TowerShieldTraining.ToString(),
                     FeatureRefs.SneakAttack.ToString()
                     //Cleric11
                 )
@@ -669,7 +677,9 @@ namespace AssaultMage.Archetypes
                     FeatureSelectionRefs.BasicFeatSelection.ToString(),
                     FeatureSelectionRefs.WeaponTrainingSelection.ToString(),
                     FeatureSelectionRefs.WeaponTrainingRankUpSelection.ToString(),
-                    FeatureRefs.SneakAttack.ToString()
+                    FeatureRefs.SneakAttack.ToString(),
+                    FeatureRefs.ArcaneWeaponPlus4.ToString(),
+                    FeatureRefs.ArcaneArmorEnchantPlus4.ToString()
                     //Cleric13
                 )
                 .AddToAddFeatures(14,
@@ -700,7 +710,9 @@ namespace AssaultMage.Archetypes
                     FeatureSelectionRefs.FighterFeatSelection.ToString(),
                     FeatureSelectionRefs.WeaponTrainingSelection.ToString(),
                     FeatureSelectionRefs.WeaponTrainingRankUpSelection.ToString(),
-                    FeatureRefs.SneakAttack.ToString()
+                    FeatureRefs.SneakAttack.ToString(),
+                    FeatureRefs.ArcaneWeaponPlus5.ToString(),
+                    FeatureRefs.ArcaneArmorEnchantPlus5.ToString()
                     //Cleric17
                 )
                 .AddToAddFeatures(18,
@@ -732,7 +744,8 @@ namespace AssaultMage.Archetypes
                     FeatureRefs.BloodlineDraconicCopperPowerOfWyrms.ToString(),
                     FeatureRefs.BloodlineDraconicGoldPowerOfWyrms.ToString(),
                     FeatureRefs.BloodlineDraconicSilverPowerOfWyrms.ToString(),
-                    FeatureRefs.UniversalistSchoolQuickenFeature.ToString()
+                    FeatureRefs.UniversalistSchoolQuickenFeature.ToString(),
+                    FeatureRefs.TransmutationSupremacy.ToString()
                     //Cleric20
                 )
                 .Configure();
