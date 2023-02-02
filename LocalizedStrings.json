@@ -37,11 +37,22 @@
     {
         "Key": "SuperDodge.Name",
         "ProcessTemplates": false,
-        "enGB": "Shifting Projections"
+        "enGB": "Super Buff"
     },
 
     {
         "Key": "SuperDodge.Description",
+        "enGB": "The assault mage super buff"
+    },
+
+    {
+        "Key": "ShiftingProjection.Name",
+        "ProcessTemplates": false,
+        "enGB": "Shifting Projections"
+    },
+
+    {
+        "Key": "ShiftingProjection.Description",
         "enGB": "The assault mage had used distracting image to increasing his AC by his intelligence bonus"
     },
 

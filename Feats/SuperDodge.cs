@@ -53,7 +53,14 @@ namespace AssaultMage.Feats
             private static readonly string AbilityIcon = "assets/icons/armoredmage.jpg";
             internal static BlueprintActivatableAbility AbilityUltimateBuff;
 
-            public static void Configure()
+            private static readonly string ShiftingProjectionFeatName = "ShiftingProjection";
+            internal static readonly string ShiftingProjectionFeatGuid = "cc6acc5d-4017-4a8f-ba33-cf7319d458b8";
+            private static readonly string ShiftingProjectionDisplayName = "ShiftingProjection.Name";
+            private static readonly string ShiftingProjectionDescription = "ShiftingProjection.Description";
+            private static readonly string ShiftingProjectionIcon = "assets/icons/armoredmage.jpg";
+            internal static BlueprintFeature ShiftingProjectionFeat;
+
+        public static void Configure()
             {
                 if (Main.Enabled)
                 {
@@ -125,12 +132,21 @@ namespace AssaultMage.Feats
                     .SetIcon(Icon)
                     .AddFeatureTagsComponent(FeatureTag.ClassSpecific)
                     .SetIsClassFeature(true)
-                    //.AddDerivativeStatBonus(StatType.Intelligence, StatType.AC, ModifierDescriptor.Dodge)
-                    .AddDerivativeStatBonus(StatType.Intelligence, StatType.AC, ModifierDescriptor.Dodge)
                     .AddFacts(new() { AbilityUltimateBuff })
                     //.AddFacts(new() { AbilityUltimateBuff })
                     .Configure(delayed: true);
-            }
+
+            ShiftingProjectionFeat = FeatureConfigurator.New(ShiftingProjectionFeatName, ShiftingProjectionFeatGuid, FeatureGroup.Feat)
+                    .SetDisplayName(ShiftingProjectionDisplayName)
+                    .SetDescription(ShiftingProjectionDescription)
+                    .SetIcon(Icon)
+                    .AddFeatureTagsComponent(FeatureTag.ClassSpecific)
+                    .SetIsClassFeature(true)
+                    //.AddDerivativeStatBonus(StatType.Intelligence, StatType.AC, ModifierDescriptor.Dodge)
+                    .AddDerivativeStatBonus(StatType.Intelligence, StatType.AC, ModifierDescriptor.Dodge)
+                    .AddRecalculateOnStatChange(null, BlueprintCore.Blueprints.CustomConfigurators.ComponentMerge.Skip, StatType.Intelligence, false)
+                    .Configure(delayed: true);
+        }
     
 
             public static void ConfigureDisabled()

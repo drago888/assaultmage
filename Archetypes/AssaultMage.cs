@@ -518,6 +518,7 @@ namespace AssaultMage.Archetypes
                     FeatureRefs.ArcaneArmorMastery.ToString(),
                     Feats.ArmorAttune.ArmorAttuneFeat,
                     Feats.SuperDodge.SuperDodgeFeat,
+                    Feats.SuperDodge.ShiftingProjectionFeat,
                     /*FeatureSelectionRefs.SorcererBloodlineSelection.ToString(),
                     FeatureSelectionRefs.SorcererBloodlineSelection.ToString(),
                     FeatureSelectionRefs.SorcererBloodlineSelection.ToString(),
@@ -757,10 +758,13 @@ namespace AssaultMage.Archetypes
                 .Configure();
 
             FeatureConfigurator.For(Feats.SuperDodge.SuperDodgeFeat)
-                .SetReapplyOnLevelUp(true)
                 .AddPrerequisiteArchetypeLevel(AssaultMageArchetype, BaseClass, true, GroupType.All, false, 1)
                 .Configure();
 
+            FeatureConfigurator.For(Feats.SuperDodge.ShiftingProjectionFeat)
+                .SetReapplyOnLevelUp(true)
+                .AddPrerequisiteArchetypeLevel(AssaultMageArchetype, BaseClass, true, GroupType.All, false, 1)
+                .Configure();
         }
 
         private static void SetSpellList()
