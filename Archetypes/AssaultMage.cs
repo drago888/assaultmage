@@ -570,6 +570,7 @@ namespace AssaultMage.Archetypes
                     FeatureRefs.LightningReflexesImproved.ToString(),
                     FeatureRefs.IronWill.ToString(),
                     FeatureRefs.IronWillImproved.ToString(),
+                    FeatureRefs.ImmunityToNauseated.ToString(),
                     //FeatureRefs.ArcanePoolFeature.ToString(),
                     Cleric1
                 )
