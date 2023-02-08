@@ -143,8 +143,8 @@ namespace AssaultMage.Feats
                     .AddFeatureTagsComponent(FeatureTag.ClassSpecific)
                     .SetIsClassFeature(true)
                     //.AddDerivativeStatBonus(StatType.Intelligence, StatType.AC, ModifierDescriptor.Dodge)
-                    .AddDerivativeStatBonus(StatType.Intelligence, StatType.AC, ModifierDescriptor.Dodge)
-                    .AddDerivativeStatBonus(StatType.Intelligence, StatType.AC, ModifierDescriptor.Dodge)
+                    //.AddDerivativeStatBonus(StatType.Intelligence, StatType.AC, ModifierDescriptor.Dodge)
+                    /*.AddDerivativeStatBonus(StatType.Intelligence, StatType.AC, ModifierDescriptor.Dodge)
                     .AddDerivativeStatBonus(StatType.Intelligence, StatType.AC, ModifierDescriptor.Dodge)
                     .AddDerivativeStatBonus(StatType.Intelligence, StatType.AC, ModifierDescriptor.Dodge)
                     .AddDerivativeStatBonus(StatType.Intelligence, StatType.AC, ModifierDescriptor.Dodge)
@@ -154,11 +154,17 @@ namespace AssaultMage.Feats
                     .AddDerivativeStatBonus(StatType.Intelligence, StatType.AdditionalAttackBonus, ModifierDescriptor.UntypedStackable)
                     .AddDerivativeStatBonus(StatType.Intelligence, StatType.AdditionalAttackBonus, ModifierDescriptor.UntypedStackable)
                     .AddDerivativeStatBonus(StatType.Intelligence, StatType.AdditionalAttackBonus, ModifierDescriptor.UntypedStackable)
-                    .AddDerivativeStatBonus(StatType.Intelligence, StatType.AdditionalAttackBonus, ModifierDescriptor.UntypedStackable)
-                    .AddDerivativeStatBonus(StatType.Intelligence, StatType.Wisdom, ModifierDescriptor.Trait)
-                    .AddDerivativeStatBonus(StatType.Intelligence, StatType.Strength, ModifierDescriptor.Trait)
-                    .AddDerivativeStatBonus(StatType.Intelligence, StatType.Constitution, ModifierDescriptor.Trait)
-                    .AddDerivativeStatBonus(StatType.Intelligence, StatType.Dexterity, ModifierDescriptor.Trait)
+                    .AddDerivativeStatBonus(StatType.Intelligence, StatType.AdditionalAttackBonus, ModifierDescriptor.UntypedStackable)*/
+                    /*.AddDerivativeStatBonus(StatType.Intelligence, StatType.Intelligence, ModifierDescriptor.UntypedStackable)
+                    .AddDerivativeStatBonus(StatType.Intelligence, StatType.Intelligence, ModifierDescriptor.UntypedStackable)
+                    .AddDerivativeStatBonus(StatType.Intelligence, StatType.Intelligence, ModifierDescriptor.UntypedStackable)
+                    .AddDerivativeStatBonus(StatType.Intelligence, StatType.Intelligence, ModifierDescriptor.UntypedStackable)
+                    .AddDerivativeStatBonus(StatType.Intelligence, StatType.Intelligence, ModifierDescriptor.UntypedStackable)
+                    .AddDerivativeStatBonus(StatType.Intelligence, StatType.Wisdom, ModifierDescriptor.UntypedStackable)
+                    .AddDerivativeStatBonus(StatType.Intelligence, StatType.Strength, ModifierDescriptor.UntypedStackable)
+                    .AddDerivativeStatBonus(StatType.Intelligence, StatType.Constitution, ModifierDescriptor.UntypedStackable)
+                    .AddDerivativeStatBonus(StatType.Intelligence, StatType.Dexterity, ModifierDescriptor.UntypedStackable)*/
+                    .AddDerivativeStatBonus(StatType.Intelligence, StatType.AC, ModifierDescriptor.UntypedStackable)
                     .AddRecalculateOnStatChange(null, BlueprintCore.Blueprints.CustomConfigurators.ComponentMerge.Skip, StatType.Intelligence, false)
                     .Configure(delayed: true);
         }

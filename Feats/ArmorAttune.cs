@@ -38,8 +38,8 @@ namespace AssaultMage.Feats
 
         public static void ConfigureEnabled()
         {
-            System.Collections.Generic.List<Blueprint<BlueprintFeatureReference>> FighterFeats = new System.Collections.Generic.List<Blueprint<BlueprintFeatureReference>>();
-            FighterFeats.Add(FeatureRefs.ShieldFocusGreater.Reference.GetBlueprint());
+            //System.Collections.Generic.List<Blueprint<BlueprintFeatureReference>> FighterFeats = new System.Collections.Generic.List<Blueprint<BlueprintFeatureReference>>();
+            //FighterFeats.Add(FeatureRefs.ShieldFocusGreater.Reference.GetBlueprint());
 
             ArmorAttuneFeat = FeatureConfigurator.New(FeatName, FeatGuid, FeatureGroup.Feat)
                 .SetDisplayName(DisplayName)
