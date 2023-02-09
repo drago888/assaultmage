@@ -467,6 +467,55 @@ namespace AssaultMage
             ArmorAttune.Configure();
             SuperDodge.Configure();
             AssaultMage.Archetypes.AssaultMage.Configure();
+            BlueprintFeatureSelectMythicSpellbook AngelIncorporateSpellbook;
+            BlueprintFeatureSelectMythicSpellbook LichIncorporateSpellbook;
+            BlueprintSpellbookReference AssaultMageSpellBookReference;
+
+
+            AngelIncorporateSpellbook = (BlueprintFeatureSelectMythicSpellbook)ResourcesLibrary.TryGetBlueprint(BlueprintGuid.Parse("e1fbb0e0e610a3a4d91e5e5284587939"));
+            LichIncorporateSpellbook = (BlueprintFeatureSelectMythicSpellbook)ResourcesLibrary.TryGetBlueprint(BlueprintGuid.Parse("3f16e9caf7c683c40884c7c455ed26af"));
+            AssaultMageSpellBookReference = AssaultMage.Archetypes.AssaultMage.AssaultMageSpellbook.ToReference<BlueprintSpellbookReference>();
+
+            if (AngelIncorporateSpellbook != null)
+            {
+                Main.Logger.Info("Angel Spellbook found");
+
+                if (AssaultMageSpellBookReference != null)
+                {
+                    Main.Logger.Info("Assault Mage Spellbook reference found");
+                    AngelIncorporateSpellbook.m_AllowedSpellbooks = AngelIncorporateSpellbook.m_AllowedSpellbooks.AddToArray(AssaultMageSpellBookReference);
+
+                    foreach (BlueprintSpellbookReference i in AngelIncorporateSpellbook.m_AllowedSpellbooks)
+                    {
+                        Main.Logger.Info("Spellbook allowed - " + i.GetBlueprint().name);
+                    }
+                }
+            }
+            else
+            {
+                Main.Logger.Info("Angel Spellbook not found");
+            }
+
+            if (LichIncorporateSpellbook != null)
+            {
+                Main.Logger.Info("Lich Spellbook found");
+
+                if (AssaultMageSpellBookReference != null)
+                {
+                    Main.Logger.Info("Assault Mage Spellbook reference found");
+                    LichIncorporateSpellbook.m_AllowedSpellbooks = LichIncorporateSpellbook.m_AllowedSpellbooks.AddToArray(AssaultMageSpellBookReference);
+
+                    foreach (BlueprintSpellbookReference i in LichIncorporateSpellbook.m_AllowedSpellbooks)
+                    {
+                        Main.Logger.Info("Spellbook allowed - " + i.GetBlueprint().name);
+                    }
+                }
+            }
+            else
+            {
+                Main.Logger.Info("Lich Spellbook not found");
+            }
+
         }
     }
 }
