@@ -542,6 +542,8 @@ namespace AssaultMage.Archetypes
                     FeatureRefs.TricksterLoreReligionMadnessDomainRankFeature.ToString(),
                     FeatureRefs.TricksterLoreReligionCommunityDomainFeature.ToString(),
                     FeatureRefs.TricksterLoreReligionCommunityDomainRankFeature.ToString(),
+                    FeatureRefs.TricksterLoreReligionAnimalDomainFeature.ToString(),
+                    FeatureRefs.TricksterLoreReligionAnimalDomainRankFeature.ToString(),
                     FeatureRefs.FullCasterFeature.ToString(),
                     FeatureRefs.FighterProficiencies.ToString(),
                     FeatureRefs.BardProficiencies.ToString(),
