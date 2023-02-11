@@ -591,7 +591,7 @@ namespace AssaultMage.Archetypes
                     FeatureRefs.NobilityDomainBaseFeature.ToString(),
                     FeatureRefs.NobilityDomainSpellListFeature.ToString(),*/
                     FeatureRefs.NobilityDomainAllowed.ToString(),
-                    FeatureSelectionRefs.DomainsSelection.ToString(),
+                    //FeatureSelectionRefs.DomainsSelection.ToString(),
                     FeatureRefs.BloodlineDraconicBronzeArcana.ToString(),
                     FeatureRefs.BloodlineDraconicCopperArcana.ToString(),
                     FeatureRefs.BloodlineDraconicGoldArcana.ToString(),
@@ -662,8 +662,7 @@ namespace AssaultMage.Archetypes
                     FeatureSelectionRefs.FighterFeatSelection.ToString(),
                     FeatureSelectionRefs.FighterFeatSelection.ToString(),
                     FeatureSelectionRefs.FighterFeatSelection.ToString(),*/
-                    FeatureRefs.WeaponTrainingAxes.ToString(),
-                    FeatureRefs.WeaponTrainingClose.ToString(),
+                    FeatureSelectionRefs.WeaponTrainingSelection.ToString(),
                     FeatureSelectionRefs.WeaponTrainingRankUpSelection.ToString(),
                     FeatureSelectionRefs.BasicFeatSelection.ToString(),
                     FeatureSelectionRefs.BasicFeatSelection.ToString(),
