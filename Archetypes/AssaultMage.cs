@@ -668,7 +668,7 @@ namespace AssaultMage.Archetypes
                     FeatureSelectionRefs.WeaponTrainingRankUpSelection.ToString(),
                     FeatureSelectionRefs.BasicFeatSelection.ToString(),
                     FeatureSelectionRefs.BasicFeatSelection.ToString(),
-                    FeatureSelectionRefs.MythicFeatSelection.ToString(),
+                    //FeatureSelectionRefs.MythicFeatSelection.ToString(),
                     Cleric1
                 )
                 .AddToAddFeatures(2,
