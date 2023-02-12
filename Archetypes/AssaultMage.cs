@@ -561,7 +561,7 @@ namespace AssaultMage.Archetypes
                     FeatureSelectionRefs.SorcererBloodlineSelection.ToString(),*/
                     //FeatureRefs.CraneStyleFeat.ToString(),
                     //FeatureRefs.CautiousFighter.ToString(),
-                    //FeatureRefs.StudentOfWarMindOverMetal.ToString(),
+                    FeatureRefs.StudentOfWarMindOverMetal.ToString(),
                     //FeatureRefs.DefensiveStanceFeature.ToString(),
                     FeatureRefs.Toughness.ToString(),
                     //FeatureRefs.StalwartDefenderACBonus.ToString(),
