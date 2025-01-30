@@ -200,6 +200,20 @@ namespace AssaultMage.Archetypes
             //Main.Logger.Info("in configure {ArchetypeName} Archetype");
 
             StatType[] RecommendedStats = { StatType.Intelligence };
+            List<Blueprint<BlueprintArchetypeReference>> FakeArchetypes = new List<Blueprint<BlueprintArchetypeReference>>();
+            FakeArchetypes.Add(ArchetypeRefs.SwordSaintArchetype.Cast<BlueprintArchetypeReference>().Reference);
+            FakeArchetypes.Add(ArchetypeRefs.VivisectionistArchetype.Cast<BlueprintArchetypeReference>().Reference);
+            FakeArchetypes.Add(ArchetypeRefs.BrownFurTransmuterArchetype.Cast<BlueprintArchetypeReference>().Reference);
+            FakeArchetypes.Add(ArchetypeRefs.ArchaeologistArchetype.Cast<BlueprintArchetypeReference>().Reference);
+            FakeArchetypes.Add(ArchetypeRefs.TowerShieldSpecialistArchetype.Cast<BlueprintArchetypeReference>().Reference);
+            FakeArchetypes.Add(ArchetypeRefs.TraditionalMonk.Cast<BlueprintArchetypeReference>().Reference);
+            FakeArchetypes.Add(ArchetypeRefs.EnlightenedPhilosopherArchetype.Cast<BlueprintArchetypeReference>().Reference);
+            FakeArchetypes.Add(ArchetypeRefs.ThugArchetype.Cast<BlueprintArchetypeReference>().Reference);
+            FakeArchetypes.Add(ArchetypeRefs.CrossbloodedArchetype.Cast<BlueprintArchetypeReference>().Reference);
+            FakeArchetypes.Add(ArchetypeRefs.HexChannelerWitchArchetype.Cast<BlueprintArchetypeReference>().Reference);
+            FakeArchetypes.Add(ArchetypeRefs.SpellMasterArchetype.Cast<BlueprintArchetypeReference>().Reference);
+            FakeArchetypes.Add(ArchetypeRefs.InvulnerableRagerArchetype.Cast<BlueprintArchetypeReference>().Reference);
+            FakeArchetypes.Add(ArchetypeRefs.CrusaderArchetype.Cast<BlueprintArchetypeReference>().Reference);
 
             BlueprintFeature Cleric1 = FeatureConfigurator.New(Cleric1Name, Cleric1Guid, FeatureGroup.Feat)
                                            .SetDisplayName(Cleric1DisplayName)
@@ -224,6 +238,7 @@ namespace AssaultMage.Archetypes
                                            .AddClassLevelsForPrerequisites(BaseClass,
                                                 CharacterClassRefs.MagusClass.Reference.GetBlueprint(), null, 1)
                                            .AddConditionImmunity(Kingmaker.UnitLogic.UnitCondition.DevouredBySwarm)
+                                           .AddClassLevels(FakeArchetypes, null, false, 1)
                                            .AddImmunityToAbilityScoreDamage()
                                            /*.AddSpellbook(1, 
                                                          null, 
@@ -242,6 +257,7 @@ namespace AssaultMage.Archetypes
                                                           null,
                                                           BlueprintCore.Blueprints.CustomConfigurators.ComponentMerge.Skip,
                                                           SpellbookRefs.ClericSpellbook.Reference.GetBlueprint())
+                                            .AddClassLevels(FakeArchetypes, null, false, 2)
                                             .Configure();
 
             BlueprintFeature Cleric3 = FeatureConfigurator.New(Cleric3Name, Cleric3Guid, FeatureGroup.Feat)
@@ -255,6 +271,7 @@ namespace AssaultMage.Archetypes
                                                           null,
                                                           BlueprintCore.Blueprints.CustomConfigurators.ComponentMerge.Skip,
                                                           SpellbookRefs.ClericSpellbook.Reference.GetBlueprint())
+                                            .AddClassLevels(FakeArchetypes, null, false, 3)
                                             .Configure();
 
             BlueprintFeature Cleric4 = FeatureConfigurator.New(Cleric4Name, Cleric4Guid, FeatureGroup.Feat)
@@ -268,6 +285,7 @@ namespace AssaultMage.Archetypes
                                                           null,
                                                           BlueprintCore.Blueprints.CustomConfigurators.ComponentMerge.Skip,
                                                           SpellbookRefs.ClericSpellbook.Reference.GetBlueprint())
+                                            .AddClassLevels(FakeArchetypes, null, false, 4)
                                             .Configure();
 
             BlueprintFeature Cleric5 = FeatureConfigurator.New(Cleric5Name, Cleric5Guid, FeatureGroup.Feat)
@@ -281,6 +299,7 @@ namespace AssaultMage.Archetypes
                                                           null,
                                                           BlueprintCore.Blueprints.CustomConfigurators.ComponentMerge.Skip,
                                                           SpellbookRefs.ClericSpellbook.Reference.GetBlueprint())
+                                            .AddClassLevels(FakeArchetypes, null, false, 5)
                                             .Configure();
 
             BlueprintFeature Cleric6 = FeatureConfigurator.New(Cleric6Name, Cleric6Guid, FeatureGroup.Feat)
@@ -294,6 +313,7 @@ namespace AssaultMage.Archetypes
                                                           null,
                                                           BlueprintCore.Blueprints.CustomConfigurators.ComponentMerge.Skip,
                                                           SpellbookRefs.ClericSpellbook.Reference.GetBlueprint())
+                                            .AddClassLevels(FakeArchetypes, null, false, 6)
                                             .Configure();
 
             BlueprintFeature Cleric7 = FeatureConfigurator.New(Cleric7Name, Cleric7Guid, FeatureGroup.Feat)
@@ -307,6 +327,7 @@ namespace AssaultMage.Archetypes
                                                           null,
                                                           BlueprintCore.Blueprints.CustomConfigurators.ComponentMerge.Skip,
                                                           SpellbookRefs.ClericSpellbook.Reference.GetBlueprint())
+                                            .AddClassLevels(FakeArchetypes, null, false, 7)
                                             .Configure();
 
             BlueprintFeature Cleric8 = FeatureConfigurator.New(Cleric8Name, Cleric8Guid, FeatureGroup.Feat)
@@ -320,6 +341,7 @@ namespace AssaultMage.Archetypes
                                                           null,
                                                           BlueprintCore.Blueprints.CustomConfigurators.ComponentMerge.Skip,
                                                           SpellbookRefs.ClericSpellbook.Reference.GetBlueprint())
+                                           .AddClassLevels(FakeArchetypes, null, false, 8)
                                            .Configure();
 
             BlueprintFeature Cleric9 = FeatureConfigurator.New(Cleric9Name, Cleric9Guid, FeatureGroup.Feat)
@@ -333,6 +355,7 @@ namespace AssaultMage.Archetypes
                                                           null,
                                                           BlueprintCore.Blueprints.CustomConfigurators.ComponentMerge.Skip,
                                                           SpellbookRefs.ClericSpellbook.Reference.GetBlueprint())
+                                            .AddClassLevels(FakeArchetypes, null, false, 9)
                                             .Configure();
 
             BlueprintFeature Cleric10 = FeatureConfigurator.New(Cleric10Name, Cleric10Guid, FeatureGroup.Feat)
@@ -346,6 +369,7 @@ namespace AssaultMage.Archetypes
                                                           null,
                                                           BlueprintCore.Blueprints.CustomConfigurators.ComponentMerge.Skip,
                                                           SpellbookRefs.ClericSpellbook.Reference.GetBlueprint())
+                                            .AddClassLevels(FakeArchetypes, null, false, 10)
                                             .Configure();
 
             BlueprintFeature Cleric11 = FeatureConfigurator.New(Cleric11Name, Cleric11Guid, FeatureGroup.Feat)
@@ -359,6 +383,7 @@ namespace AssaultMage.Archetypes
                                                           null,
                                                           BlueprintCore.Blueprints.CustomConfigurators.ComponentMerge.Skip,
                                                           SpellbookRefs.ClericSpellbook.Reference.GetBlueprint())
+                                            .AddClassLevels(FakeArchetypes, null, false, 11)
                                             .Configure();
 
             BlueprintFeature Cleric12 = FeatureConfigurator.New(Cleric12Name, Cleric12Guid, FeatureGroup.Feat)
@@ -372,6 +397,7 @@ namespace AssaultMage.Archetypes
                                                           null,
                                                           BlueprintCore.Blueprints.CustomConfigurators.ComponentMerge.Skip,
                                                           SpellbookRefs.ClericSpellbook.Reference.GetBlueprint())
+                                            .AddClassLevels(FakeArchetypes, null, false, 12)
                                             .Configure();
 
             BlueprintFeature Cleric13 = FeatureConfigurator.New(Cleric13Name, Cleric13Guid, FeatureGroup.Feat)
@@ -385,6 +411,7 @@ namespace AssaultMage.Archetypes
                                                           null,
                                                           BlueprintCore.Blueprints.CustomConfigurators.ComponentMerge.Skip,
                                                           SpellbookRefs.ClericSpellbook.Reference.GetBlueprint())
+                                            .AddClassLevels(FakeArchetypes, null, false, 13)
                                             .Configure();
 
             BlueprintFeature Cleric14 = FeatureConfigurator.New(Cleric14Name, Cleric14Guid, FeatureGroup.Feat)
@@ -398,6 +425,7 @@ namespace AssaultMage.Archetypes
                                                           null,
                                                           BlueprintCore.Blueprints.CustomConfigurators.ComponentMerge.Skip,
                                                           SpellbookRefs.ClericSpellbook.Reference.GetBlueprint())
+                                            .AddClassLevels(FakeArchetypes, null, false, 14)
                                             .Configure();
 
             BlueprintFeature Cleric15 = FeatureConfigurator.New(Cleric15Name, Cleric15Guid, FeatureGroup.Feat)
@@ -411,6 +439,7 @@ namespace AssaultMage.Archetypes
                                                           null,
                                                           BlueprintCore.Blueprints.CustomConfigurators.ComponentMerge.Skip,
                                                           SpellbookRefs.ClericSpellbook.Reference.GetBlueprint())
+                                            .AddClassLevels(FakeArchetypes, null, false, 15)
                                             .Configure();
 
             BlueprintFeature Cleric16 = FeatureConfigurator.New(Cleric16Name, Cleric16Guid, FeatureGroup.Feat)
@@ -424,6 +453,7 @@ namespace AssaultMage.Archetypes
                                                           null,
                                                           BlueprintCore.Blueprints.CustomConfigurators.ComponentMerge.Skip,
                                                           SpellbookRefs.ClericSpellbook.Reference.GetBlueprint())
+                                            .AddClassLevels(FakeArchetypes, null, false, 16)
                                             .Configure();
 
             BlueprintFeature Cleric17 = FeatureConfigurator.New(Cleric17Name, Cleric17Guid, FeatureGroup.Feat)
@@ -437,6 +467,7 @@ namespace AssaultMage.Archetypes
                                                           null,
                                                           BlueprintCore.Blueprints.CustomConfigurators.ComponentMerge.Skip,
                                                           SpellbookRefs.ClericSpellbook.Reference.GetBlueprint())
+                                            .AddClassLevels(FakeArchetypes, null, false, 17)
                                             .Configure();
 
             BlueprintFeature Cleric18 = FeatureConfigurator.New(Cleric18Name, Cleric18Guid, FeatureGroup.Feat)
@@ -450,6 +481,7 @@ namespace AssaultMage.Archetypes
                                                           null,
                                                           BlueprintCore.Blueprints.CustomConfigurators.ComponentMerge.Skip,
                                                           SpellbookRefs.ClericSpellbook.Reference.GetBlueprint())
+                                            .AddClassLevels(FakeArchetypes, null, false, 18)
                                             .Configure();
 
             BlueprintFeature Cleric19 = FeatureConfigurator.New(Cleric19Name, Cleric19Guid, FeatureGroup.Feat)
@@ -463,6 +495,7 @@ namespace AssaultMage.Archetypes
                                                           null,
                                                           BlueprintCore.Blueprints.CustomConfigurators.ComponentMerge.Skip,
                                                           SpellbookRefs.ClericSpellbook.Reference.GetBlueprint())
+                                            .AddClassLevels(FakeArchetypes, null, false, 19)
                                             .Configure();
 
             BlueprintFeature Cleric20 = FeatureConfigurator.New(Cleric20Name, Cleric20Guid, FeatureGroup.Feat)
@@ -476,6 +509,7 @@ namespace AssaultMage.Archetypes
                                                           null,
                                                           BlueprintCore.Blueprints.CustomConfigurators.ComponentMerge.Skip,
                                                           SpellbookRefs.ClericSpellbook.Reference.GetBlueprint())
+                                            .AddClassLevels(FakeArchetypes, null, false, 20)
                                             .Configure();
 
 
@@ -700,9 +734,9 @@ namespace AssaultMage.Archetypes
                     FeatureRefs.ArcaneWeaponEnchancementMountFeature.ToString(),
                     FeatureSelectionRefs.DeitySelection.ToString(),
                     FeatureSelectionRefs.DomainsSelection.ToString(),
+                    FeatureSelectionRefs.DomainsSelection.ToString(),
+                    FeatureSelectionRefs.DomainsSelection.ToString(),
                     FeatureSelectionRefs.SwordSaintChosenWeaponSelection.ToString(),
-                    //FeatureSelectionRefs.DomainsSelection.ToString(),
-                    //FeatureSelectionRefs.DomainsSelection.ToString(),
                     FeatureSelectionRefs.WizardFeatSelection.ToString(),
                     FeatureSelectionRefs.WizardFeatSelection.ToString(),
                     FeatureSelectionRefs.WizardFeatSelection.ToString(),
