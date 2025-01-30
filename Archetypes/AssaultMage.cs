@@ -406,6 +406,8 @@ namespace AssaultMage.Archetypes
                     FeatureRefs.ShieldFocus.ToString(),
                     FeatureRefs.ShieldFocusGreater.ToString(),
                     FeatureRefs.ShieldMaster.ToString(),
+                    FeatureRefs.MountedCombat.ToString(),
+                    FeatureRefs.MountedShield.ToString(),
                     //FeatureRefs.RayShield.ToString(),
                     //FeatureRefs.ShieldFocusMythicFeat.ToString(),
                     FeatureRefs.ArmorFocusHeavy.ToString(),
