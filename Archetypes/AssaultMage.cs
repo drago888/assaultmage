@@ -397,6 +397,7 @@ namespace AssaultMage.Archetypes
                     FeatureRefs.ImmunityToSleep.ToString(),
                     FeatureRefs.ImmunityToStun.ToString(),
                     FeatureRefs.CavalierAnimalCompanion.ToString(),
+                    FeatureSelectionRefs.CavalierMountSelection.ToString(),
                     //FeatureRefs.TwoWeaponFighting.ToString(),
                     //FeatureRefs.BloodlineCelestialAscensionAbility.ToString(),
                     //FeatureRefs.BloodlineAbyssalDemonicMight.ToString(),
