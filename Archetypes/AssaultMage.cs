@@ -1766,6 +1766,198 @@ namespace AssaultMage.Archetypes
                         8,
                         8
                     }
+                },
+                // 29
+                new SpellsLevelEntry() {
+                    Count = new int[]
+                    {
+                        0,
+                        10,
+                        10,
+                        10,
+                        8,
+                        8,
+                        8,
+                        8,
+                        8,
+                        8
+                    }
+                },
+                // 30
+                new SpellsLevelEntry() {
+                    Count = new int[]
+                    {
+                        0,
+                        10,
+                        10,
+                        10,
+                        8,
+                        8,
+                        8,
+                        8,
+                        8,
+                        8
+                    }
+                },
+                // 31
+                new SpellsLevelEntry() {
+                    Count = new int[]
+                    {
+                        0,
+                        10,
+                        10,
+                        10,
+                        8,
+                        8,
+                        8,
+                        8,
+                        8,
+                        8
+                    }
+                },
+                // 32
+                new SpellsLevelEntry() {
+                    Count = new int[]
+                    {
+                        0,
+                        10,
+                        10,
+                        10,
+                        8,
+                        8,
+                        8,
+                        8,
+                        8,
+                        8
+                    }
+                },
+                // 33
+                new SpellsLevelEntry() {
+                    Count = new int[]
+                    {
+                        0,
+                        10,
+                        10,
+                        10,
+                        8,
+                        8,
+                        8,
+                        8,
+                        8,
+                        8
+                    }
+                },
+                // 34
+                new SpellsLevelEntry() {
+                    Count = new int[]
+                    {
+                        0,
+                        10,
+                        10,
+                        10,
+                        8,
+                        8,
+                        8,
+                        8,
+                        8,
+                        8
+                    }
+                },
+                // 35
+                new SpellsLevelEntry() {
+                    Count = new int[]
+                    {
+                        0,
+                        10,
+                        10,
+                        10,
+                        10,
+                        8,
+                        8,
+                        8,
+                        8,
+                        8
+                    }
+                },
+                // 36
+                new SpellsLevelEntry() {
+                    Count = new int[]
+                    {
+                        0,
+                        10,
+                        10,
+                        10,
+                        10,
+                        8,
+                        8,
+                        8,
+                        8,
+                        8
+                    }
+                },
+                // 37
+                new SpellsLevelEntry() {
+                    Count = new int[]
+                    {
+                        0,
+                        10,
+                        10,
+                        10,
+                        10,
+                        8,
+                        8,
+                        8,
+                        8,
+                        8
+                    }
+                },
+                // 38
+                new SpellsLevelEntry() {
+                    Count = new int[]
+                    {
+                        0,
+                        10,
+                        10,
+                        10,
+                        10,
+                        8,
+                        8,
+                        8,
+                        8,
+                        8
+                    }
+                },
+                // 39
+                new SpellsLevelEntry() {
+                    Count = new int[]
+                    {
+                        0,
+                        10,
+                        10,
+                        10,
+                        10,
+                        10,
+                        8,
+                        8,
+                        8,
+                        8
+                    }
+                },
+                // 40
+                new SpellsLevelEntry() {
+                    Count = new int[]
+                    {
+                        0,
+                        10,
+                        10,
+                        10,
+                        10,
+                        10,
+                        10,
+                        8,
+                        8,
+                        8
+                    }
                 }
             };
 
