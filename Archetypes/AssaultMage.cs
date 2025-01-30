@@ -533,7 +533,7 @@ namespace AssaultMage.Archetypes
                 .AddPrerequisiteMainCharacter(true, false, GroupType.All, false)
                 .ClearStartingItems()
                 .AddToStartingItems(
-                    ItemArmorRefs.FullplateStandard.Reference.Get(),
+                    //ItemArmorRefs.FullplateStandard.Reference.Get(),
                     ItemEquipmentUsableRefs.ScrollOfMageArmor.Reference.Get(),
                     ItemEquipmentUsableRefs.ScrollOfMageShield.Reference.Get(),
                     ItemEquipmentUsableRefs.ScrollOfMagicMissile.Reference.Get(),
@@ -598,7 +598,9 @@ namespace AssaultMage.Archetypes
                     Feats.ArmorAttune.ArmorAttuneFeat,
                     //Feats.SuperDodge.SuperDodgeFeat,
                     Feats.SuperDodge.ShiftingProjectionFeat,
-                    //FeatureRefs.SwordSaintCannyDefense.ToString(),
+                    FeatureRefs.SwordSaintCannyDefense.ToString(),
+                    FeatureRefs.MonkACBonus.ToString(),
+                    FeatureRefs.BloodragerFastMovement.ToString(),
                     //FeatureRefs.SwordSaintFighterTraining.ToString(),
                     //FeatureRefs.SwordSaintWeaponMastery.ToString(),
                     //FeatureRefs.SwordSaintPerfectStrikeFeature.ToString(),
