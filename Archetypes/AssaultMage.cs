@@ -24,6 +24,10 @@ using Kingmaker.Localization;
 using Kingmaker.PubSubSystem;
 using BlueprintCore.Actions.Builder.BasicEx;
 using BlueprintCore.Actions.Builder.UpgraderEx;
+using Kingmaker.UnitLogic;
+using Kingmaker.Designers.Mechanics.Facts;
+using Kingmaker.UnitLogic.FactLogic;
+using Kingmaker.UI.MVVM._VM.ServiceWindows.CharacterInfo.Sections.Progression.Main;
 
 namespace AssaultMage.Archetypes
 {
@@ -218,6 +222,21 @@ namespace AssaultMage.Archetypes
             FakeArchetypes.Add(ArchetypeRefs.InvulnerableRagerArchetype.Cast<BlueprintArchetypeReference>().Reference);
             FakeArchetypes.Add(ArchetypeRefs.CrusaderArchetype.Cast<BlueprintArchetypeReference>().Reference);
 
+            List<Blueprint<BlueprintCharacterClassReference>> FakeClasses = new List<Blueprint<BlueprintCharacterClassReference>>();
+            FakeClasses.Add(CharacterClassRefs.MagusClass.Cast<BlueprintCharacterClassReference>().Reference);
+            FakeClasses.Add(CharacterClassRefs.AlchemistClass.Cast<BlueprintCharacterClassReference>().Reference);
+            FakeClasses.Add(CharacterClassRefs.ArcanistClass.Cast<BlueprintCharacterClassReference>().Reference);
+            FakeClasses.Add(CharacterClassRefs.BardClass.Cast<BlueprintCharacterClassReference>().Reference);
+            FakeClasses.Add(CharacterClassRefs.FighterClass.Cast<BlueprintCharacterClassReference>().Reference);
+            FakeClasses.Add(CharacterClassRefs.MonkClass.Cast<BlueprintCharacterClassReference>().Reference);
+            FakeClasses.Add(CharacterClassRefs.OracleClass.Cast<BlueprintCharacterClassReference>().Reference);
+            FakeClasses.Add(CharacterClassRefs.RogueClass.Cast<BlueprintCharacterClassReference>().Reference);
+            FakeClasses.Add(CharacterClassRefs.SorcererClass.Cast<BlueprintCharacterClassReference>().Reference);
+            FakeClasses.Add(CharacterClassRefs.WitchClass.Cast<BlueprintCharacterClassReference>().Reference);
+            FakeClasses.Add(CharacterClassRefs.WizardClass.Cast<BlueprintCharacterClassReference>().Reference);
+            FakeClasses.Add(CharacterClassRefs.BarbarianClass.Cast<BlueprintCharacterClassReference>().Reference);
+            FakeClasses.Add(CharacterClassRefs.ClericClass.Cast<BlueprintCharacterClassReference>().Reference);
+
             BlueprintFeature Cleric1 = FeatureConfigurator.New(Cleric1Name, Cleric1Guid, FeatureGroup.Feat)
                                            .SetDisplayName(Cleric1DisplayName)
                                            .SetDescription(Cleric1Description)
@@ -334,8 +353,10 @@ namespace AssaultMage.Archetypes
                     //Feats.SuperDodge.SuperDodgeFeat,
                     Feats.SuperDodge.ShiftingProjectionFeat,
                     //FeatureRefs.SwordSaintCannyDefense.ToString(),
-                    FeatureRefs.MonkACBonus.ToString(),
+                    FeatureRefs.MonkACBonusUnlock.ToString(),
                     FeatureRefs.BloodragerFastMovement.ToString(),
+                    FeatureRefs.ArcaneAccuracyFeature.ToString(),
+                    FeatureRefs.MagicalHackFeature.ToString(), 
                     //FeatureRefs.SwordSaintFighterTraining.ToString(),
                     //FeatureRefs.SwordSaintWeaponMastery.ToString(),
                     //FeatureRefs.SwordSaintPerfectStrikeFeature.ToString(),
@@ -384,8 +405,8 @@ namespace AssaultMage.Archetypes
                     FeatureRefs.BloodlineDraconicGoldArcana.ToString(),
                     FeatureRefs.BloodlineDraconicSilverArcana.ToString(),
                     FeatureRefs.BloodlineArcaneArcana.ToString(),
-                    FeatureRefs.ArcanistArcaneReservoirFeature.ToString(),
-                    FeatureRefs.ImmunityToNauseated.ToString(),
+                    //FeatureRefs.ArcanistArcaneReservoirFeature.ToString(),
+                    /*FeatureRefs.ImmunityToNauseated.ToString(),
                     FeatureRefs.ImmunityToCharm.ToString(),
                     FeatureRefs.ImmunityToCompulsion.ToString(),
                     FeatureRefs.ImmunityToConfusion.ToString(),
@@ -395,8 +416,8 @@ namespace AssaultMage.Archetypes
                     FeatureRefs.ImmunityToParalysis.ToString(),
                     FeatureRefs.ImmunityToPetrification.ToString(),
                     FeatureRefs.ImmunityToSleep.ToString(),
-                    FeatureRefs.ImmunityToStun.ToString(),
-                    FeatureRefs.CavalierAnimalCompanion.ToString(),
+                    FeatureRefs.ImmunityToStun.ToString(),*/
+                    //FeatureRefs.CavalierAnimalCompanion.ToString(),
                     FeatureSelectionRefs.CavalierMountSelection.ToString(),
                     //FeatureRefs.TwoWeaponFighting.ToString(),
                     //FeatureRefs.BloodlineCelestialAscensionAbility.ToString(),
@@ -473,10 +494,14 @@ namespace AssaultMage.Archetypes
                     FeatureRefs.GreaterElementalFocusFire.ToString(),
                     FeatureRefs.ArcanePoolFeature.ToString(),
                     FeatureRefs.ArcaneWeaponEnchancementMountFeature.ToString(),
+                    FeatureRefs.ShieldBlockFeature.ToString(),
                     FeatureSelectionRefs.DeitySelection.ToString(),
                     FeatureSelectionRefs.DomainsSelection.ToString(),
                     FeatureSelectionRefs.DomainsSelection.ToString(),
                     FeatureSelectionRefs.DomainsSelection.ToString(),
+                    FeatureSelectionRefs.SecondDomainsSeparatistSelection.ToString(),
+                    FeatureSelectionRefs.SecondDomainsSeparatistSelection.ToString(),
+                    FeatureSelectionRefs.SecondDomainsSeparatistSelection.ToString(),
                     FeatureSelectionRefs.SwordSaintChosenWeaponSelection.ToString(),
                     FeatureSelectionRefs.WizardFeatSelection.ToString(),
                     FeatureSelectionRefs.WizardFeatSelection.ToString(),
@@ -596,6 +621,7 @@ namespace AssaultMage.Archetypes
                     FeatureRefs.SpellMasterItemBondSpecializationFeature.ToString(),
                     FeatureRefs.ArcaneWeaponPlus2.ToString(),
                     FeatureRefs.CavalierBanner.ToString(),
+                    FeatureRefs.HeavenStrikeFeature.ToString(),
                     //FeatureSelectionRefs.WeaponTrainingRankUpSelection.ToString(),
                     //FeatureSelectionRefs.BasicFeatSelection.ToString(),
                     FeatureSelectionRefs.BasicFeatSelection.ToString(),
@@ -757,6 +783,7 @@ namespace AssaultMage.Archetypes
                     FeatureRefs.SneakAttack.ToString(),
                     FeatureRefs.SpellMasterItemBondSpecializationFeature.ToString(),
                     FeatureRefs.FeatureWingsAngelSorcerer.ToString(),
+                    FeatureRefs.BloodlineFeyFeyMagicFeature.ToString(),
                     //FeatureSelectionRefs.BasicFeatSelection.ToString(),
                     FeatureSelectionRefs.BasicFeatSelection.ToString(),
                     FeatureSelectionRefs.WizardFeatSelection.ToString()
@@ -834,10 +861,13 @@ namespace AssaultMage.Archetypes
                     FeatureRefs.BloodlineCelestialAscensionAbility.ToString(),
                     FeatureRefs.BloodlineAbyssalDemonicMight.ToString(),
                     FeatureRefs.BloodlineDraconicGoldPowerOfWyrms.ToString(),
+                    FeatureRefs.BloodlineElementalWaterElementalBodyFeature.ToString(),
                     FeatureRefs.UniversalistSchoolQuickenFeature.ToString(),
                     FeatureRefs.TransmutationSupremacy.ToString(),
                     FeatureRefs.SwordSaintWeaponMastery.ToString(),
                     FeatureRefs.CavalierSupremeCharge.ToString(),
+                    FeatureRefs.DefenderGiftFeature.ToString(),
+                    FeatureRefs.DrunkenMasterDrinklevelupFeature.ToString(),
                     //FeatureSelectionRefs.BasicFeatSelection.ToString(),
                     //FeatureSelectionRefs.BasicFeatSelection.ToString(),
                     FeatureSelectionRefs.FighterFeatSelection.ToString(),
