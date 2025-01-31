@@ -484,6 +484,8 @@ namespace AssaultMage.Archetypes
                     FeatureRefs.CompletelyNormalSpellFeat.ToString(),
                     FeatureRefs.ReachSpellFeat.ToString(),
                     FeatureRefs.SelectiveSpellFeat.ToString(),
+                    FeatureRefs.IntensifiedSpell.ToString(),
+                    FeatureRefs.PiercingSpell.ToString(),
                     FeatureRefs.ElementalFocusAcid.ToString(),
                     FeatureRefs.GreaterElementalFocusAcid.ToString(),
                     FeatureRefs.ElementalFocusCold.ToString(),
