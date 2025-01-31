@@ -260,7 +260,7 @@ namespace AssaultMage.Archetypes
                                            .AddClassLevelsForPrerequisites(BaseClass,
                                                 CharacterClassRefs.MagusClass.Reference.GetBlueprint(), null, 1)
                                            .AddConditionImmunity(Kingmaker.UnitLogic.UnitCondition.DevouredBySwarm)
-                                           .AddClassLevels(FakeArchetypes, null, false, 1)
+                                           //.AddClassLevels(FakeArchetypes, BaseClass, false, 1)
                                            .AddImmunityToAbilityScoreDamage()
                                            /*.AddSpellbook(1, 
                                                          null, 
