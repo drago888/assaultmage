@@ -244,21 +244,74 @@ namespace AssaultMage.Archetypes
                                            .SetHideInCharacterSheetAndLevelUp(true)
                                            .SetHideNotAvailibleInUI(true)
                                            .RemoveFromGroups(FeatureGroup.Feat)
-                                           .AddChangeHitDie(Kingmaker.RuleSystem.DiceType.D12)
                                            .AddClassLevelsForPrerequisites(BaseClass,
-                                                CharacterClassRefs.FighterClass.Reference.GetBlueprint(), null, 1)
+                                                CharacterClassRefs.AlchemistClass.Reference.GetBlueprint(), null, 1)
                                            .AddClassLevelsForPrerequisites(BaseClass,
-                                                CharacterClassRefs.MonkClass.Reference.GetBlueprint(), null, 1)
+                                                CharacterClassRefs.ArcanistClass.Reference.GetBlueprint(), null, 1)
                                            .AddClassLevelsForPrerequisites(BaseClass,
-                                                CharacterClassRefs.WizardClass.Reference.GetBlueprint(), null, 1)
+                                                CharacterClassRefs.BarbarianClass.Reference.GetBlueprint(), null, 1)
                                            .AddClassLevelsForPrerequisites(BaseClass,
-                                                CharacterClassRefs.RogueClass.Reference.GetBlueprint(), null, 1)
+                                                CharacterClassRefs.BardClass.Reference.GetBlueprint(), null, 1)
+                                           .AddClassLevelsForPrerequisites(BaseClass,
+                                                CharacterClassRefs.BloodragerClass.Reference.GetBlueprint(), null, 1)
+                                           .AddClassLevelsForPrerequisites(BaseClass,
+                                                CharacterClassRefs.CavalierClass.Reference.GetBlueprint(), null, 1)
                                            .AddClassLevelsForPrerequisites(BaseClass,
                                                 CharacterClassRefs.ClericClass.Reference.GetBlueprint(), null, 1)
                                            .AddClassLevelsForPrerequisites(BaseClass,
                                                 CharacterClassRefs.DruidClass.Reference.GetBlueprint(), null, 1)
                                            .AddClassLevelsForPrerequisites(BaseClass,
+                                                CharacterClassRefs.FighterClass.Reference.GetBlueprint(), null, 1)
+                                           .AddClassLevelsForPrerequisites(BaseClass,
+                                                CharacterClassRefs.HunterClass.Reference.GetBlueprint(), null, 1)
+                                           .AddClassLevelsForPrerequisites(BaseClass,
+                                                CharacterClassRefs.InquisitorClass.Reference.GetBlueprint(), null, 1)
+                                           .AddClassLevelsForPrerequisites(BaseClass,
+                                                CharacterClassRefs.KineticistClass.Reference.GetBlueprint(), null, 1)
+                                           .AddClassLevelsForPrerequisites(BaseClass,
                                                 CharacterClassRefs.MagusClass.Reference.GetBlueprint(), null, 1)
+                                           .AddClassLevelsForPrerequisites(BaseClass,
+                                                CharacterClassRefs.MonkClass.Reference.GetBlueprint(), null, 1)
+                                           .AddClassLevelsForPrerequisites(BaseClass,
+                                                CharacterClassRefs.OracleClass.Reference.GetBlueprint(), null, 1)
+                                           .AddClassLevelsForPrerequisites(BaseClass,
+                                                CharacterClassRefs.PaladinClass.Reference.GetBlueprint(), null, 1)
+                                           .AddClassLevelsForPrerequisites(BaseClass,
+                                                CharacterClassRefs.RangerClass.Reference.GetBlueprint(), null, 1)
+                                           .AddClassLevelsForPrerequisites(BaseClass,
+                                                CharacterClassRefs.RogueClass.Reference.GetBlueprint(), null, 1)
+                                           .AddClassLevelsForPrerequisites(BaseClass,
+                                                CharacterClassRefs.ShamanClass.Reference.GetBlueprint(), null, 1)
+                                           .AddClassLevelsForPrerequisites(BaseClass,
+                                                CharacterClassRefs.ShifterClass.Reference.GetBlueprint(), null, 1)
+                                           .AddClassLevelsForPrerequisites(BaseClass,
+                                                CharacterClassRefs.SorcererClass.Reference.GetBlueprint(), null, 1)
+                                           .AddClassLevelsForPrerequisites(BaseClass,
+                                                CharacterClassRefs.WarpriestClass.Reference.GetBlueprint(), null, 1)
+                                           .AddClassLevelsForPrerequisites(BaseClass,
+                                                CharacterClassRefs.WitchClass.Reference.GetBlueprint(), null, 1)
+                                           .AddClassLevelsForPrerequisites(BaseClass,
+                                                CharacterClassRefs.WizardClass.Reference.GetBlueprint(), null, 1)
+                                           .AddClassLevelsForPrerequisites(BaseClass,
+                                                CharacterClassRefs.AeonMythicClass.Reference.GetBlueprint(), null, 1)
+                                           .AddClassLevelsForPrerequisites(BaseClass,
+                                                CharacterClassRefs.AngelMythicClass.Reference.GetBlueprint(), null, 1)
+                                           .AddClassLevelsForPrerequisites(BaseClass,
+                                                CharacterClassRefs.AzataMythicClass.Reference.GetBlueprint(), null, 1)
+                                           .AddClassLevelsForPrerequisites(BaseClass,
+                                                CharacterClassRefs.DemonMythicClass.Reference.GetBlueprint(), null, 1)
+                                           .AddClassLevelsForPrerequisites(BaseClass,
+                                                CharacterClassRefs.DevilMythicClass.Reference.GetBlueprint(), null, 1)
+                                           .AddClassLevelsForPrerequisites(BaseClass,
+                                                CharacterClassRefs.GoldenDragonClass.Reference.GetBlueprint(), null, 1)
+                                           .AddClassLevelsForPrerequisites(BaseClass,
+                                                CharacterClassRefs.LichMythicClass.Reference.GetBlueprint(), null, 1)
+                                           .AddClassLevelsForPrerequisites(BaseClass,
+                                                CharacterClassRefs.LegendClass.Reference.GetBlueprint(), null, 1)
+                                           .AddClassLevelsForPrerequisites(BaseClass,
+                                                CharacterClassRefs.TricksterMythicClass.Reference.GetBlueprint(), null, 1)
+                                           .AddClassLevelsForPrerequisites(BaseClass,
+                                                CharacterClassRefs.SwarmThatWalksClass.Reference.GetBlueprint(), null, 1)
                                            .AddConditionImmunity(Kingmaker.UnitLogic.UnitCondition.DevouredBySwarm)
                                            //.AddClassLevels(FakeArchetypes, BaseClass, false, 1)
                                            .AddImmunityToAbilityScoreDamage()
@@ -267,6 +320,16 @@ namespace AssaultMage.Archetypes
                                                          BlueprintCore.Blueprints.CustomConfigurators.ComponentMerge.Skip, 
                                                          SpellbookRefs.ClericSpellbook.Reference.Get())*/
                                            .Configure();
+
+            BlueprintFeature HD = FeatureConfigurator.New(Cleric2Name, Cleric2Guid, FeatureGroup.Feat)
+                                            .SetDisplayName(Cleric1DisplayName)
+                                            .SetDescription(Cleric1Description)
+                                            .SetHideInUI(true)
+                                            .SetHideInCharacterSheetAndLevelUp(true)
+                                            .SetHideNotAvailibleInUI(true)
+                                            .RemoveFromGroups(FeatureGroup.Feat)
+                                            .AddChangeHitDie(Kingmaker.RuleSystem.DiceType.D12)
+                                            .Configure();
 
 
             AssaultMageArchetype = ArchetypeConfigurator.New(
@@ -302,6 +365,7 @@ namespace AssaultMage.Archetypes
             
             ArchetypeConfigurator.For(AssaultMageArchetype)
                 .AddToAddFeatures(1,
+                    HD,
                     FeatureRefs.TricksterStatFocusAC.ToString(),
                     FeatureRefs.TricksterStatFocusAttack.ToString(),
                     FeatureRefs.TricksterStatFocusSaveFortitude.ToString(),
@@ -356,7 +420,7 @@ namespace AssaultMage.Archetypes
                     FeatureRefs.MonkACBonusUnlock.ToString(),
                     FeatureRefs.BloodragerFastMovement.ToString(),
                     FeatureRefs.ArcaneAccuracyFeature.ToString(),
-                    FeatureRefs.MagicalHackFeature.ToString(), 
+                    //FeatureRefs.MagicalHackFeature.ToString(), 
                     //FeatureRefs.SwordSaintFighterTraining.ToString(),
                     //FeatureRefs.SwordSaintWeaponMastery.ToString(),
                     //FeatureRefs.SwordSaintPerfectStrikeFeature.ToString(),
@@ -405,7 +469,7 @@ namespace AssaultMage.Archetypes
                     FeatureRefs.BloodlineDraconicGoldArcana.ToString(),
                     FeatureRefs.BloodlineDraconicSilverArcana.ToString(),
                     FeatureRefs.BloodlineArcaneArcana.ToString(),
-                    //FeatureRefs.ArcanistArcaneReservoirFeature.ToString(),
+                    FeatureRefs.ArcanistArcaneReservoirFeature.ToString(),
                     /*FeatureRefs.ImmunityToNauseated.ToString(),
                     FeatureRefs.ImmunityToCharm.ToString(),
                     FeatureRefs.ImmunityToCompulsion.ToString(),
@@ -559,6 +623,7 @@ namespace AssaultMage.Archetypes
                     Cleric1
                 )
                 .AddToAddFeatures(2,
+                    HD,
                     //FeatureSelectionRefs.DiscoverySelection.ToString(),
                     FeatureSelectionRefs.VivsectionistDiscoverySelection.ToString(),
                     FeatureRefs.InvulnerableRagerDamageReduction.ToString(),
@@ -578,6 +643,7 @@ namespace AssaultMage.Archetypes
                 //Cleric2
                 )
                 .AddToAddFeatures(3,
+                    HD,
                     FeatureRefs.ArmorTraining.ToString(),
                     FeatureRefs.TowerShieldTraining.ToString(),
                     FeatureRefs.SneakAttack.ToString(),
@@ -593,6 +659,7 @@ namespace AssaultMage.Archetypes
                 //Cleric3
                 )
                 .AddToAddFeatures(4,
+                    HD,
                     //FeatureSelectionRefs.DiscoverySelection.ToString(),
                     FeatureSelectionRefs.VivsectionistDiscoverySelection.ToString(),
                     FeatureRefs.InvulnerableRagerDamageReduction.ToString(),
@@ -610,6 +677,7 @@ namespace AssaultMage.Archetypes
                 //Cleric4
                 )
                 .AddToAddFeatures(5,
+                    HD,
                     FeatureRefs.PurityOfBody.ToString(),
                     FeatureRefs.ImprovedEvasion.ToString(),
                     //FeatureRefs.ImprovedUncannyDodgeTalent.ToString(),
@@ -635,6 +703,7 @@ namespace AssaultMage.Archetypes
                 //Cleric5
                 )
                 .AddToAddFeatures(6,
+                    HD,
                     //FeatureSelectionRefs.DiscoverySelection.ToString(),
                     FeatureSelectionRefs.VivsectionistDiscoverySelection.ToString(),
                     FeatureRefs.ArmoredHulkResilienceOfSteel.ToString(),
@@ -649,6 +718,7 @@ namespace AssaultMage.Archetypes
                     //Cleric6
                 )
                 .AddToAddFeatures(7,
+                    HD,
                     //FeatureSelectionRefs.WizardFeatSelection.ToString(),
                     //FeatureSelectionRefs.FighterFeatSelection.ToString(),
                     FeatureRefs.EnlightenedPhilosopherRevelationMentalAcuity.ToString(),
@@ -664,6 +734,7 @@ namespace AssaultMage.Archetypes
                     //Cleric7
                 )
                 .AddToAddFeatures(8,
+                    HD,
                     //FeatureSelectionRefs.DiscoverySelection.ToString(),
                     FeatureSelectionRefs.VivsectionistDiscoverySelection.ToString(),
                     FeatureRefs.InvulnerableRagerDamageReduction.ToString(),
@@ -682,6 +753,7 @@ namespace AssaultMage.Archetypes
                     //Cleric8
                 )
                 .AddToAddFeatures(9,
+                    HD,
                     //FeatureSelectionRefs.WizardFeatSelection.ToString(),
                     //FeatureSelectionRefs.FighterFeatSelection.ToString(),
                     FeatureRefs.TowerShieldSpecialistTouchShield.ToString(),
@@ -704,6 +776,7 @@ namespace AssaultMage.Archetypes
                     //Cleric9
                 )
                 .AddToAddFeatures(10,
+                    HD,
                     //FeatureSelectionRefs.DiscoverySelection.ToString(),
                     FeatureSelectionRefs.VivsectionistDiscoverySelection.ToString(),
                     FeatureRefs.EnlightenedPhilosopherRevelationMentalAcuity.ToString(),
@@ -720,6 +793,7 @@ namespace AssaultMage.Archetypes
                 //Cleric10
                 )
                 .AddToAddFeatures(11,
+                    HD,
                     //FeatureSelectionRefs.WeaponTrainingRankUpSelection.ToString(),
                     FeatureRefs.ArmorTraining.ToString(),
                     FeatureRefs.TowerShieldTraining.ToString(),
@@ -733,6 +807,7 @@ namespace AssaultMage.Archetypes
                 //Cleric11
                 )
                 .AddToAddFeatures(12,
+                    HD,
                     //FeatureSelectionRefs.DiscoverySelection.ToString(),
                     FeatureSelectionRefs.VivsectionistDiscoverySelection.ToString(),
                     //FeatureSelectionRefs.WeaponTrainingRankUpSelection.ToString(),
@@ -748,6 +823,7 @@ namespace AssaultMage.Archetypes
                 //Cleric12
                 )
                 .AddToAddFeatures(13,
+                    HD,
                     FeatureRefs.EnlightenedPhilosopherRevelationMentalAcuity.ToString(),
                     FeatureRefs.ArcaneWeaponPlus4.ToString(),
                     FeatureRefs.SwordSaintInstantFocus.ToString(),
@@ -765,6 +841,7 @@ namespace AssaultMage.Archetypes
                 //Cleric13
                 )
                 .AddToAddFeatures(14,
+                    HD,
                     //FeatureSelectionRefs.DiscoverySelection.ToString(),
                     FeatureSelectionRefs.VivsectionistDiscoverySelection.ToString(),
                     FeatureRefs.PersistantMutagen.ToString(),
@@ -779,6 +856,7 @@ namespace AssaultMage.Archetypes
                 //Cleric14
                 )
                 .AddToAddFeatures(15,
+                    HD,
                     FeatureRefs.ArmoredHulkResilienceOfSteel.ToString(),
                     FeatureRefs.ArmorTraining.ToString(),
                     FeatureRefs.TowerShieldTraining.ToString(),
@@ -793,6 +871,7 @@ namespace AssaultMage.Archetypes
                 //Cleric15
                 )
                 .AddToAddFeatures(16,
+                    HD,
                     //FeatureSelectionRefs.DiscoverySelection.ToString(),
                     FeatureSelectionRefs.VivsectionistDiscoverySelection.ToString(),
                     FeatureRefs.EnlightenedPhilosopherRevelationMentalAcuity.ToString(),
@@ -808,6 +887,7 @@ namespace AssaultMage.Archetypes
                 //Cleric16
                 )
                 .AddToAddFeatures(17,
+                    HD,
                     //FeatureSelectionRefs.WizardFeatSelection.ToString(),
                     //FeatureSelectionRefs.FighterFeatSelection.ToString(),
                     //FeatureSelectionRefs.WeaponTrainingSelection.ToString(),
@@ -823,6 +903,7 @@ namespace AssaultMage.Archetypes
                 //Cleric17
                 )
                 .AddToAddFeatures(18,
+                    HD,
                     //FeatureSelectionRefs.DiscoverySelection.ToString(),
                     FeatureSelectionRefs.VivsectionistDiscoverySelection.ToString(),
                     //FeatureSelectionRefs.WizardFeatSelection.ToString(),
@@ -836,6 +917,7 @@ namespace AssaultMage.Archetypes
                 //Cleric18
                 )
                 .AddToAddFeatures(19,
+                    HD,
                     FeatureRefs.EnlightenedPhilosopherRevelationMentalAcuity.ToString(),
                     //FeatureSelectionRefs.WizardFeatSelection.ToString(),
                     FeatureRefs.ArmorMastery.ToString(),
@@ -848,6 +930,7 @@ namespace AssaultMage.Archetypes
                 //Cleric19
                 )
                 .AddToAddFeatures(20,
+                    HD,
                     FeatureRefs.AwakenedIntellect.ToString(),
                     FeatureSelectionRefs.GrandDiscoverySelection.ToString(),
                     FeatureRefs.InvulnerableRagerDamageReduction.ToString(),
@@ -870,6 +953,7 @@ namespace AssaultMage.Archetypes
                     FeatureRefs.CavalierSupremeCharge.ToString(),
                     FeatureRefs.DefenderGiftFeature.ToString(),
                     FeatureRefs.DrunkenCapstoneFeature.ToString(),
+                    FeatureRefs.SplitTimelineFeature.ToString(),
                     //FeatureSelectionRefs.BasicFeatSelection.ToString(),
                     //FeatureSelectionRefs.BasicFeatSelection.ToString(),
                     FeatureSelectionRefs.FighterFeatSelection.ToString(),
