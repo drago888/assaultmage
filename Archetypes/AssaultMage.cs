@@ -470,6 +470,7 @@ namespace AssaultMage.Archetypes
                     FeatureRefs.ImmunityToStun.ToString(),*/
                     //FeatureRefs.CavalierAnimalCompanion.ToString(),
                     FeatureSelectionRefs.CavalierMountSelection.ToString(),
+                    FeatureRefs.CompanionBoon.ToString(),
                     //FeatureRefs.TwoWeaponFighting.ToString(),
                     //FeatureRefs.BloodlineCelestialAscensionAbility.ToString(),
                     //FeatureRefs.BloodlineAbyssalDemonicMight.ToString(),
@@ -547,6 +548,7 @@ namespace AssaultMage.Archetypes
                     FeatureRefs.GreaterElementalFocusFire.ToString(),
                     FeatureRefs.ArcanePoolFeature.ToString(),
                     FeatureRefs.ShieldBlockFeature.ToString(),
+                    FeatureRefs.ShieldBashFeature.ToString(),
                     FeatureSelectionRefs.DeitySelection.ToString(),
                     FeatureSelectionRefs.DomainsSelection.ToString(),
                     FeatureSelectionRefs.DomainsSelection.ToString(),
@@ -614,10 +616,11 @@ namespace AssaultMage.Archetypes
                     FeatureSelectionRefs.VivsectionistDiscoverySelection.ToString(),
                     FeatureRefs.InvulnerableRagerDamageReduction.ToString(),
                     FeatureRefs.Evasion.ToString(),
-                    FeatureRefs.UncannyDodge.ToString(),
+                    FeatureRefs.UncannyDodgeTalent.ToString(),
                     FeatureRefs.ArmoredHulkArmoredSwiftness.ToString(),
                     FeatureRefs.BrewPotions.ToString(),
                     FeatureRefs.StudentOfWarMindOverMetal.ToString(),
+                    FeatureRefs.AnimalCompanionRank.ToString(),
                     FeatureSelectionRefs.FighterFeatSelection.ToString(),
                     FeatureSelectionRefs.RogueTalentSelection.ToString()
                     //FeatureSelectionRefs.WeaponTrainingRankUpSelection.ToString(),
@@ -632,6 +635,7 @@ namespace AssaultMage.Archetypes
                     FeatureRefs.TowerShieldTraining.ToString(),
                     FeatureRefs.PowerfulChange.ToString(),
                     FeatureRefs.CavalierCharge.ToString(),
+                    FeatureRefs.AnimalCompanionRank.ToString(),
                     //FeatureSelectionRefs.WeaponTrainingRankUpSelection.ToString(),
                     FeatureSelectionRefs.BasicFeatSelection.ToString()
                     //FeatureSelectionRefs.BasicFeatSelection.ToString(),
@@ -650,6 +654,7 @@ namespace AssaultMage.Archetypes
                     //FeatureSelectionRefs.BasicFeatSelection.ToString(),
                     //FeatureSelectionRefs.BasicFeatSelection.ToString(),
                     //FeatureSelectionRefs.BasicFeatSelection.ToString(),
+                    FeatureRefs.AnimalCompanionRank.ToString(),
                     FeatureSelectionRefs.FighterFeatSelection.ToString(),
                     FeatureSelectionRefs.RogueTalentSelection.ToString()
                     //FeatureSelectionRefs.MythicFeatSelection.ToString()
@@ -660,7 +665,7 @@ namespace AssaultMage.Archetypes
                 .AddToAddFeatures(5,
                     HD,
                     FeatureRefs.ImprovedEvasion.ToString(),
-                    FeatureRefs.ImprovedUncannyDodge.ToString(),
+                    FeatureRefs.ImprovedUncannyDodgeTalent.ToString(),
                     FeatureRefs.ArmoredHulkImprovedArmoredSwiftness.ToString(),
                     FeatureRefs.SneakAttack.ToString(),
                     FeatureRefs.CavalierBanner.ToString(),
@@ -672,6 +677,7 @@ namespace AssaultMage.Archetypes
                     //FeatureRefs.TowerShieldTraining.ToString(),
                     FeatureRefs.SpellMasterItemBondSpecializationFeature.ToString(),
                     FeatureRefs.HeavenStrikeFeature.ToString(),
+                    FeatureRefs.AnimalCompanionRank.ToString(),
                     //FeatureSelectionRefs.WeaponTrainingRankUpSelection.ToString(),
                     //FeatureSelectionRefs.BasicFeatSelection.ToString(),
                     FeatureSelectionRefs.BasicFeatSelection.ToString(),
@@ -691,6 +697,7 @@ namespace AssaultMage.Archetypes
                     //FeatureSelectionRefs.BasicFeatSelection.ToString(),
                     //FeatureSelectionRefs.BasicFeatSelection.ToString(),
                     //FeatureSelectionRefs.BasicFeatSelection.ToString(),
+                    FeatureRefs.AnimalCompanionRank.ToString(),
                     FeatureSelectionRefs.FighterFeatSelection.ToString(),
                     FeatureSelectionRefs.RogueTalentSelection.ToString()
                     //FeatureSelectionRefs.MythicFeatSelection.ToString()
@@ -706,6 +713,7 @@ namespace AssaultMage.Archetypes
                     //FeatureSelectionRefs.FighterFeatSelection.ToString(),
                     FeatureRefs.SwordSaintLightningDraw.ToString(),
                     FeatureRefs.ArmoredBattlemageArcaneHeavyArmor.ToString(),
+                    FeatureRefs.AnimalCompanionRank.ToString(),
                     //FeatureRefs.EnlightenedPhilosopherRevelationMentalAcuity.ToString(),
                     //FeatureSelectionRefs.WeaponTrainingRankUpSelection.ToString(),
                     //FeatureSelectionRefs.BasicFeatSelection.ToString(),
@@ -723,6 +731,7 @@ namespace AssaultMage.Archetypes
                     //FeatureSelectionRefs.BasicFeatSelection.ToString(),
                     //FeatureSelectionRefs.BasicFeatSelection.ToString(),
                     //FeatureSelectionRefs.BasicFeatSelection.ToString(),
+                    FeatureRefs.AnimalCompanionRank.ToString(),
                     FeatureSelectionRefs.FighterFeatSelection.ToString(),
                     FeatureSelectionRefs.RogueTalentSelection.ToString()
                     //FeatureSelectionRefs.MythicFeatSelection.ToString()
@@ -746,6 +755,7 @@ namespace AssaultMage.Archetypes
                     //FeatureSelectionRefs.WeaponTrainingSelection.ToString(),
                     //FeatureSelectionRefs.WeaponTrainingRankUpSelection.ToString(),
                     FeatureRefs.ShareTransmutation.ToString(),
+                    FeatureRefs.AnimalCompanionRank.ToString(),
                     //FeatureSelectionRefs.BasicFeatSelection.ToString(),
                     FeatureSelectionRefs.BasicFeatSelection.ToString()
                     //FeatureSelectionRefs.MythicFeatSelection.ToString()
@@ -762,6 +772,7 @@ namespace AssaultMage.Archetypes
                     //FeatureSelectionRefs.WeaponTrainingRankUpSelection.ToString(),
                     //FeatureSelectionRefs.BasicFeatSelection.ToString(),
                     //FeatureSelectionRefs.BasicFeatSelection.ToString(),
+                    FeatureRefs.AnimalCompanionRank.ToString(),
                     FeatureSelectionRefs.FighterFeatSelection.ToString(),
                     FeatureSelectionRefs.RogueTalentSelection.ToString(),
                     FeatureSelectionRefs.ExtraRogueTalentSelection.ToString(),
@@ -776,6 +787,7 @@ namespace AssaultMage.Archetypes
                     FeatureRefs.TowerShieldTraining.ToString(),
                     FeatureRefs.CavalierMightyCharge.ToString(),
                     FeatureRefs.SwordSaintSuperiorReflexes.ToString(),
+                    FeatureRefs.AnimalCompanionRank.ToString(),
                     //FeatureSelectionRefs.BasicFeatSelection.ToString(),
                     FeatureSelectionRefs.BasicFeatSelection.ToString(),
                     FeatureSelectionRefs.ExtraRogueTalentSelection.ToString()
@@ -790,6 +802,7 @@ namespace AssaultMage.Archetypes
                     FeatureRefs.ArmoredHulkResilienceOfSteel.ToString(),
                     FeatureRefs.KnightOfTheWallDefensiveChallenge.ToString(),
                     FeatureRefs.UniversalistSchoolEmpowerFeature.ToString(),
+                    FeatureRefs.AnimalCompanionRank.ToString(),
                     //FeatureSelectionRefs.BasicFeatSelection.ToString(),
                     //FeatureSelectionRefs.BasicFeatSelection.ToString(),
                     FeatureSelectionRefs.FighterFeatSelection.ToString(),
@@ -806,6 +819,7 @@ namespace AssaultMage.Archetypes
                     FeatureSelectionRefs.WeaponTrainingRankUpSelection.ToString(),
                     FeatureRefs.SwordSaintInstantFocus.ToString(),
                     FeatureRefs.ArcaneWeaponPlus4.ToString(),
+                    FeatureRefs.AnimalCompanionRank.ToString(),
                     //FeatureSelectionRefs.WeaponTrainingSelection.ToString(),
                     //FeatureSelectionRefs.BasicFeatSelection.ToString(),
                     //FeatureSelectionRefs.BasicFeatSelection.ToString(),
@@ -821,6 +835,7 @@ namespace AssaultMage.Archetypes
                     FeatureRefs.InvulnerableRagerDamageReduction.ToString(),
                     FeatureRefs.CavalierBannerGreater.ToString(),
                     FeatureRefs.PersistantMutagen.ToString(),
+                    FeatureRefs.AnimalCompanionRank.ToString(),
                     //FeatureSelectionRefs.BasicFeatSelection.ToString(),
                     //FeatureSelectionRefs.BasicFeatSelection.ToString(),
                     //FeatureSelectionRefs.WizardFeatSelection.ToString(),
@@ -838,6 +853,7 @@ namespace AssaultMage.Archetypes
                     FeatureRefs.SpellMasterItemBondSpecializationFeature.ToString(),
                     FeatureRefs.FeatureWingsAngelSorcerer.ToString(),
                     FeatureRefs.BloodlineFeyFeyMagicFeature.ToString(),
+                    FeatureRefs.AnimalCompanionRank.ToString(),
                     //FeatureSelectionRefs.BasicFeatSelection.ToString(),
                     FeatureSelectionRefs.BasicFeatSelection.ToString(),
                     FeatureSelectionRefs.WizardFeatSelection.ToString()
@@ -851,6 +867,7 @@ namespace AssaultMage.Archetypes
                     FeatureRefs.InvulnerableRagerDamageReduction.ToString(),
                     FeatureRefs.Counterstrike.ToString(),
                     FeatureRefs.UniversalistSchoolMaximizeFeature.ToString(),
+                    FeatureRefs.AnimalCompanionRank.ToString(),
                     //FeatureSelectionRefs.BasicFeatSelection.ToString(),
                     //FeatureSelectionRefs.BasicFeatSelection.ToString(),
                     //FeatureSelectionRefs.BasicFeatSelection.ToString(),
@@ -868,6 +885,7 @@ namespace AssaultMage.Archetypes
                     FeatureSelectionRefs.WeaponTrainingSelection.ToString(),
                     FeatureSelectionRefs.WeaponTrainingRankUpSelection.ToString(),
                     FeatureRefs.ArcaneWeaponPlus5.ToString(),
+                    FeatureRefs.AnimalCompanionRank.ToString(),
                     //FeatureSelectionRefs.BasicFeatSelection.ToString(),
                     FeatureSelectionRefs.BasicFeatSelection.ToString()
                     //FeatureSelectionRefs.MythicFeatSelection.ToString()
@@ -880,6 +898,7 @@ namespace AssaultMage.Archetypes
                     FeatureSelectionRefs.VivsectionistDiscoverySelection.ToString(),
                     FeatureRefs.InvulnerableRagerDamageReduction.ToString(),
                     FeatureRefs.ArmoredHulkResilienceOfSteel.ToString(),
+                    FeatureRefs.AnimalCompanionRank.ToString(),
                     //FeatureSelectionRefs.BasicFeatSelection.ToString(),
                     //FeatureSelectionRefs.BasicFeatSelection.ToString(),
                     FeatureSelectionRefs.FighterFeatSelection.ToString(),
@@ -896,6 +915,7 @@ namespace AssaultMage.Archetypes
                     FeatureRefs.SneakAttack.ToString(),
                     FeatureRefs.TowerShieldTraining.ToString(),
                     FeatureRefs.SwordSaintPerfectReflexes.ToString(),
+                    FeatureRefs.AnimalCompanionRank.ToString(),
                     //FeatureSelectionRefs.BasicFeatSelection.ToString(),
                     FeatureSelectionRefs.BasicFeatSelection.ToString()
                     //FeatureSelectionRefs.MythicFeatSelection.ToString()
@@ -926,6 +946,7 @@ namespace AssaultMage.Archetypes
                     FeatureRefs.DefenderGiftFeature.ToString(),
                     FeatureRefs.DrunkenCapstoneFeature.ToString(),
                     FeatureRefs.SplitTimelineFeature.ToString(),
+                    FeatureRefs.AnimalCompanionRank.ToString(),
                     //FeatureSelectionRefs.BasicFeatSelection.ToString(),
                     //FeatureSelectionRefs.BasicFeatSelection.ToString(),
                     FeatureSelectionRefs.FighterFeatSelection.ToString(),

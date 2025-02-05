@@ -168,6 +168,7 @@ namespace AssaultMage.Feats
                                     .SetIcon(ConBuffIcon)
                                     .SetFlags(BlueprintBuff.Flags.HiddenInUi)
                                     .AddBuffActions(BuffAction)
+                                    .AddTimerContextActions(BuffAction, 120, null, true)
                                     .Configure();
 
             UltimateBuff = BuffConfigurator.New(BuffName, BuffGuid)
