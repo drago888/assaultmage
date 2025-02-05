@@ -6,6 +6,8 @@ using Kingmaker.Blueprints;
 using Kingmaker.Blueprints.Classes;
 using Kingmaker.Blueprints.Classes.Selection;
 using Kingmaker.EntitySystem.Stats;
+using Kingmaker.Enums;
+using Kingmaker.UnitLogic.Mechanics.Properties;
 using static Kingmaker.Blueprints.Classes.Prerequisites.Prerequisite;
 
 namespace AssaultMage.Feats
@@ -20,14 +22,16 @@ namespace AssaultMage.Feats
 
         private static readonly string DisplayName = "ArmorAttune.Name";
         private static readonly string Description = "ArmorAttune.Description";
-        private static readonly string Icon = "assets/icons/magicarmor.png";
+        //private static readonly string Icon = "assets/icons/magicarmor.png";
+        private static readonly string Icon = null;
         internal static BlueprintFeature ArmorAttuneFeat;
 
         public static void Configure()
         {
             if (Main.Enabled)
             {
-                ConfigureEnabled();
+                //ConfigureEnabled();
+                ConfigureDisabled();
             }
             else
             {
@@ -47,7 +51,7 @@ namespace AssaultMage.Feats
                 .SetIcon(Icon)
                 .AddFeatureTagsComponent(FeatureTag.ClassSpecific)
                 .SetIsClassFeature(true)
-                .AddArcaneSpellFailureIncrease(-20)
+                //.AddArcaneSpellFailureIncrease(-20)
                 //.AddStatBonus(Kingmaker.Enums.ModifierDescriptor.Competence, false, StatType.Wisdom, 2)
                 //.AddSpellsPerDay(4, new int[] {1,2,3,4,5 })
                 //.AddSpellsPerDay(3, new int[] { 6,7,8 })
@@ -60,7 +64,7 @@ namespace AssaultMage.Feats
 
         public static void ConfigureDisabled()
         {
-            FeatureConfigurator.New(FeatName, FeatGuid, FeatureGroup.Feat).Configure();
+            //FeatureConfigurator.New(FeatName, FeatGuid, FeatureGroup.Feat).Configure();
         }
 
 
