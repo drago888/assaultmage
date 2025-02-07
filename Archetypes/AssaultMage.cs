@@ -29,6 +29,8 @@ using Kingmaker.Designers.Mechanics.Facts;
 using Kingmaker.UnitLogic.FactLogic;
 using Kingmaker.UI.MVVM._VM.ServiceWindows.CharacterInfo.Sections.Progression.Main;
 using AssaultMage.Feats;
+using Kingmaker.UnitLogic.Buffs.Components;
+using Kingmaker.Items.Slots;
 
 namespace AssaultMage.Archetypes
 {
@@ -224,20 +226,23 @@ namespace AssaultMage.Archetypes
             FakeArchetypes.Add(ArchetypeRefs.CrusaderArchetype.Cast<BlueprintArchetypeReference>().Reference);
 
             List<Blueprint<BlueprintCharacterClassReference>> FakeClasses = new List<Blueprint<BlueprintCharacterClassReference>>();
-            FakeClasses.Add(CharacterClassRefs.MagusClass.Cast<BlueprintCharacterClassReference>().Reference);
-            FakeClasses.Add(CharacterClassRefs.AlchemistClass.Cast<BlueprintCharacterClassReference>().Reference);
-            FakeClasses.Add(CharacterClassRefs.ArcanistClass.Cast<BlueprintCharacterClassReference>().Reference);
-            FakeClasses.Add(CharacterClassRefs.BardClass.Cast<BlueprintCharacterClassReference>().Reference);
-            FakeClasses.Add(CharacterClassRefs.FighterClass.Cast<BlueprintCharacterClassReference>().Reference);
-            FakeClasses.Add(CharacterClassRefs.MonkClass.Cast<BlueprintCharacterClassReference>().Reference);
-            FakeClasses.Add(CharacterClassRefs.OracleClass.Cast<BlueprintCharacterClassReference>().Reference);
-            FakeClasses.Add(CharacterClassRefs.RogueClass.Cast<BlueprintCharacterClassReference>().Reference);
-            FakeClasses.Add(CharacterClassRefs.SorcererClass.Cast<BlueprintCharacterClassReference>().Reference);
-            FakeClasses.Add(CharacterClassRefs.WitchClass.Cast<BlueprintCharacterClassReference>().Reference);
-            FakeClasses.Add(CharacterClassRefs.WizardClass.Cast<BlueprintCharacterClassReference>().Reference);
-            FakeClasses.Add(CharacterClassRefs.BarbarianClass.Cast<BlueprintCharacterClassReference>().Reference);
-            FakeClasses.Add(CharacterClassRefs.ClericClass.Cast<BlueprintCharacterClassReference>().Reference);
+            FakeClasses.Add(CharacterClassRefs.MagusClass.Reference.Get());
+            FakeClasses.Add(CharacterClassRefs.AlchemistClass.Reference.Get());
+            FakeClasses.Add(CharacterClassRefs.ArcanistClass.Reference.Get());
+            FakeClasses.Add(CharacterClassRefs.BardClass.Reference.Get());
+            FakeClasses.Add(CharacterClassRefs.FighterClass.Reference.Get());
+            FakeClasses.Add(CharacterClassRefs.MonkClass.Reference.Get());
+            FakeClasses.Add(CharacterClassRefs.OracleClass.Reference.Get());
+            FakeClasses.Add(CharacterClassRefs.RogueClass.Reference.Get());
+            FakeClasses.Add(CharacterClassRefs.SorcererClass.Reference.Get());
+            FakeClasses.Add(CharacterClassRefs.WitchClass.Reference.Get());
+            FakeClasses.Add(CharacterClassRefs.WizardClass.Reference.Get());
+            FakeClasses.Add(CharacterClassRefs.BarbarianClass.Reference.Get());
+            FakeClasses.Add(CharacterClassRefs.ClericClass.Reference.Get());
 
+            List<Blueprint<BlueprintAbilityReference>> BindedAbilities = new List<Blueprint<BlueprintAbilityReference>>();
+            BindedAbilities.Add(AbilityResourceRefs.ArcanePoolResourse.Reference.Get());
+                
             BlueprintFeature Cleric1 = FeatureConfigurator.New(Cleric1Name, Cleric1Guid, FeatureGroup.Feat)
                                            .SetDisplayName(Cleric1DisplayName)
                                            .SetDescription(Cleric1Description)
@@ -247,41 +252,42 @@ namespace AssaultMage.Archetypes
                                            .RemoveFromGroups(FeatureGroup.Feat)
                                            .AddClassLevelsForPrerequisites(BaseClass,
                                                 CharacterClassRefs.AlchemistClass.Reference.GetBlueprint(), null, 1)
-                                           .AddClassLevelsForPrerequisites(BaseClass,
-                                                CharacterClassRefs.ArcanistClass.Reference.GetBlueprint(), null, 1)
+                                           /*.AddClassLevelsForPrerequisites(BaseClass,
+                                                CharacterClassRefs.ArcanistClass.Reference.GetBlueprint())*/
                                            .AddClassLevelsForPrerequisites(BaseClass,
                                                 CharacterClassRefs.BarbarianClass.Reference.GetBlueprint(), null, 1)
                                            .AddClassLevelsForPrerequisites(BaseClass,
                                                 CharacterClassRefs.BardClass.Reference.GetBlueprint(), null, 1)
-                                           .AddClassLevelsForPrerequisites(BaseClass,
-                                                CharacterClassRefs.BloodragerClass.Reference.GetBlueprint(), null, 1)
+                                           /*.AddClassLevelsForPrerequisites(BaseClass,
+                                                CharacterClassRefs.BloodragerClass.Reference.GetBlueprint(), null, 1)*/
                                            .AddClassLevelsForPrerequisites(BaseClass,
                                                 CharacterClassRefs.CavalierClass.Reference.GetBlueprint(), null, 1)
-                                           .AddClassLevelsForPrerequisites(BaseClass,
-                                                CharacterClassRefs.ClericClass.Reference.GetBlueprint(), null, 1)
-                                           .AddClassLevelsForPrerequisites(BaseClass,
-                                                CharacterClassRefs.DruidClass.Reference.GetBlueprint(), null, 1)
+                                           // already cleric class
+                                           /*.AddClassLevelsForPrerequisites(BaseClass,
+                                                CharacterClassRefs.ClericClass.Reference.GetBlueprint(), null, 1)*/
+                                           /*.AddClassLevelsForPrerequisites(BaseClass,
+                                                CharacterClassRefs.DruidClass.Reference.GetBlueprint(), null, 1)*/
                                            .AddClassLevelsForPrerequisites(BaseClass,
                                                 CharacterClassRefs.FighterClass.Reference.GetBlueprint(), null, 1)
-                                           .AddClassLevelsForPrerequisites(BaseClass,
+                                           /*.AddClassLevelsForPrerequisites(BaseClass,
                                                 CharacterClassRefs.HunterClass.Reference.GetBlueprint(), null, 1)
                                            .AddClassLevelsForPrerequisites(BaseClass,
                                                 CharacterClassRefs.InquisitorClass.Reference.GetBlueprint(), null, 1)
                                            .AddClassLevelsForPrerequisites(BaseClass,
-                                                CharacterClassRefs.KineticistClass.Reference.GetBlueprint(), null, 1)
+                                                CharacterClassRefs.KineticistClass.Reference.GetBlueprint(), null, 1)*/
                                            .AddClassLevelsForPrerequisites(BaseClass,
                                                 CharacterClassRefs.MagusClass.Reference.GetBlueprint(), null, 1)
-                                           .AddClassLevelsForPrerequisites(BaseClass,
+                                           /*.AddClassLevelsForPrerequisites(BaseClass,
                                                 CharacterClassRefs.MonkClass.Reference.GetBlueprint(), null, 1)
                                            .AddClassLevelsForPrerequisites(BaseClass,
                                                 CharacterClassRefs.OracleClass.Reference.GetBlueprint(), null, 1)
                                            .AddClassLevelsForPrerequisites(BaseClass,
                                                 CharacterClassRefs.PaladinClass.Reference.GetBlueprint(), null, 1)
                                            .AddClassLevelsForPrerequisites(BaseClass,
-                                                CharacterClassRefs.RangerClass.Reference.GetBlueprint(), null, 1)
+                                                CharacterClassRefs.RangerClass.Reference.GetBlueprint(), null, 1)*/
                                            .AddClassLevelsForPrerequisites(BaseClass,
                                                 CharacterClassRefs.RogueClass.Reference.GetBlueprint(), null, 1)
-                                           .AddClassLevelsForPrerequisites(BaseClass,
+                                           /*.AddClassLevelsForPrerequisites(BaseClass,
                                                 CharacterClassRefs.ShamanClass.Reference.GetBlueprint(), null, 1)
                                            .AddClassLevelsForPrerequisites(BaseClass,
                                                 CharacterClassRefs.ShifterClass.Reference.GetBlueprint(), null, 1)
@@ -290,10 +296,10 @@ namespace AssaultMage.Archetypes
                                            .AddClassLevelsForPrerequisites(BaseClass,
                                                 CharacterClassRefs.WarpriestClass.Reference.GetBlueprint(), null, 1)
                                            .AddClassLevelsForPrerequisites(BaseClass,
-                                                CharacterClassRefs.WitchClass.Reference.GetBlueprint(), null, 1)
+                                                CharacterClassRefs.WitchClass.Reference.GetBlueprint(), null, 1)*/
                                            .AddClassLevelsForPrerequisites(BaseClass,
                                                 CharacterClassRefs.WizardClass.Reference.GetBlueprint(), null, 1)
-                                           .AddClassLevelsForPrerequisites(BaseClass,
+                                           /*.AddClassLevelsForPrerequisites(BaseClass,
                                                 CharacterClassRefs.AeonMythicClass.Reference.GetBlueprint(), null, 1)
                                            .AddClassLevelsForPrerequisites(BaseClass,
                                                 CharacterClassRefs.AngelMythicClass.Reference.GetBlueprint(), null, 1)
@@ -312,7 +318,7 @@ namespace AssaultMage.Archetypes
                                            .AddClassLevelsForPrerequisites(BaseClass,
                                                 CharacterClassRefs.TricksterMythicClass.Reference.GetBlueprint(), null, 1)
                                            .AddClassLevelsForPrerequisites(BaseClass,
-                                                CharacterClassRefs.SwarmThatWalksClass.Reference.GetBlueprint(), null, 1)
+                                                CharacterClassRefs.SwarmThatWalksClass.Reference.GetBlueprint(), null, 1)*/
                                            .AddReplaceStatForPrerequisites(StatType.Intelligence, StatType.Strength)
                                            .AddReplaceStatForPrerequisites(StatType.Intelligence, StatType.Dexterity)
                                            .AddReplaceStatForPrerequisites(StatType.Intelligence, StatType.Constitution)
@@ -320,11 +326,13 @@ namespace AssaultMage.Archetypes
                                            .AddReplaceStatForPrerequisites(StatType.Intelligence, StatType.Charisma)
                                            //.AddConditionImmunity(Kingmaker.UnitLogic.UnitCondition.DevouredBySwarm)
                                            //.AddClassLevels(FakeArchetypes, BaseClass, false, 1)
-                                           .AddImmunityToAbilityScoreDamage()
+                                           //.AddImmunityToAbilityScoreDamage()
                                            /*.AddSpellbook(1, 
                                                          null, 
                                                          BlueprintCore.Blueprints.CustomConfigurators.ComponentMerge.Skip, 
                                                          SpellbookRefs.ClericSpellbook.Reference.Get())*/
+
+                                           //.AddBindAbilitiesToClass(BindedAbilities, null, null, null, BaseClass, true, 10)
                                            .Configure();
 
             BlueprintFeature HD = FeatureConfigurator.New(Cleric2Name, Cleric2Guid, FeatureGroup.Feat)
@@ -357,6 +365,7 @@ namespace AssaultMage.Archetypes
                 .ClearStartingItems()
                 .AddToStartingItems(
                     //ItemArmorRefs.FullplateStandard.Reference.Get(),
+                    //ItemArmorRefs.ChainmailStandard.Reference.Get(),
                     ItemEquipmentUsableRefs.ScrollOfMageArmor.Reference.Get(),
                     ItemEquipmentUsableRefs.ScrollOfMageShield.Reference.Get(),
                     ItemEquipmentUsableRefs.ScrollOfMagicMissile.Reference.Get(),
@@ -371,8 +380,187 @@ namespace AssaultMage.Archetypes
             
             ArchetypeConfigurator.For(AssaultMageArchetype)
                 .AddToAddFeatures(1,
-                    HD,
-                    /*FeatureRefs.TricksterStatFocusAC.ToString(),
+                    // alchemist
+                    //FeatureRefs.AlchemistProficiencies.ToString(),
+
+                    //Bombs are useless as based on alchemist class
+                    //FeatureRefs.AlchemistBombsFeature.ToString(),
+                    FeatureRefs.MutagenFeature.ToString(),
+                    FeatureRefs.AlchemistThrowAnything.ToString(),
+                    FeatureRefs.BrewPotions.ToString(),
+                    FeatureRefs.DismissAreaEffectFeature.ToString(),
+
+                    // vivisectionists
+                    //FeatureRefs.SneakAttack.ToString(),
+
+                    //arcanists
+                    //FeatureRefs.ArcanistCantripsFeature.ToString(),
+                    //FeatureRefs.ArcanistProficiencies.ToString(),
+                    //FeatureRefs.RayCalculateFeature.ToString(),
+                    //FeatureRefs.TouchCalculateFeature.ToString(),
+                    //FeatureRefs.ArcanistArcaneReservoirFeature.ToString(),
+                    //FeatureRefs.ArcanistConsumeSpellsFeature.ToString(),
+                    // arcanist exploit are mostly useless as most use arcanist levels
+                    //FeatureSelectionRefs.ArcanistExploitSelection.ToString(),
+
+                    // barbarian
+                    //FeatureRefs.FastMovement.ToString(),
+                    //FeatureRefs.RageFeature.ToString(),
+                    //FeatureRefs.BarbarianProficiencies.ToString(),
+
+                    // armored hulk
+                    FeatureRefs.ArmoredHulkIndomitableStance.ToString(),
+                    //FeatureRefs.HeavyArmorProficiency.ToString(),
+
+                    // bard
+                    FeatureRefs.BardProficiencies.ToString(),
+                    //FeatureRefs.BardCantripsFeature.ToString(),
+                    //FeatureRefs.BardicPerformanceResourceFact.ToString(),
+                    //FeatureRefs.InspireCourageFeature.ToString(),
+                    FeatureRefs.BardicKnowledge.ToString(),
+                    FeatureRefs.TouchCalculateFeature.ToString(),
+                    FeatureRefs.RayCalculateFeature.ToString(),
+                    FeatureRefs.DetectMagic.ToString(),
+
+                    // Cavalier
+                    //FeatureRefs.CavalierChallengeFeature.ToString(),
+                    //FeatureSelectionRefs.CavalierOrderSelection.ToString(),
+                    //FeatureRefs.CavalierTacticianFeature.ToString(),
+                    //FeatureSelectionRefs.CavalierTacticianFeatSelection.ToString(),
+                    FeatureSelectionRefs.CavalierMountSelection.ToString(),
+                    //FeatureRefs.CavalierProficiencies.ToString(),
+
+                    // knights of the wall
+                    FeatureRefs.ShieldFocus.ToString(),
+
+                    // fighter
+                    //FeatureSelectionRefs.FighterFeatSelection.ToString(),
+                    FeatureRefs.FighterProficiencies.ToString(),
+
+                    // defender of the hearth
+                    FeatureRefs.ShieldBlockFeature.ToString(),
+
+                    // magus
+                    //FeatureRefs.ArcanePoolFeature.ToString(),
+                    //FeatureRefs.SpellCombatFeature.ToString(),
+                    //FeatureRefs.MagusProficiencies.ToString(),
+                    //FeatureRefs.MagusCantripsFeature.ToString(),
+                    //FeatureRefs.TouchCalculateFeature.ToString(),
+                    //FeatureRefs.RayCalculateFeature.ToString(),
+                    //FeatureRefs.DetectMagic.ToString(),
+
+                    // armored battlemage
+                    FeatureRefs.ArmoredBattlemageArcanePoolFeature.ToString(),
+                    FeatureRefs.ArmoredBattlemageMediumArmor.ToString(),
+
+                    // sword saint
+                    FeatureSelectionRefs.SwordSaintChosenWeaponSelection.ToString(),
+                    //FeatureRefs.SwordSaintCannyDefense.ToString(),
+
+                    // rogue
+                    FeatureRefs.SneakAttack.ToString(),
+                    //FeatureRefs.RogueProficiencies.ToString(),
+                    FeatureRefs.WeaponFinesse.ToString(),
+                    //FeatureRefs.Trapfinding.ToString(),
+
+                    // thug
+                    FeatureRefs.ThugFrightening.ToString(),
+
+                    // wizard
+                    FeatureSelectionRefs.WizardFeatSelection.ToString(),
+                    //FeatureRefs.TouchCalculateFeature.ToString(),
+                    //FeatureRefs.RayCalculateFeature.ToString(),
+                    FeatureRefs.WizardCantripsFeature.ToString(),
+                    //FeatureSelectionRefs.SpecialistSchoolSelection.ToString(),
+                    //FeatureRefs.WizardProficiencies.ToString(),
+                    FeatureRefs.FullCasterFeature.ToString(),
+                    //FeatureSelectionRefs.ArcaneBondSelection.ToString(),
+                    //FeatureRefs.DetectMagic.ToString(),
+                    FeatureRefs.ScribingScrolls.ToString(),
+
+                    // spell master
+                    // 0933849149cfc9244ac05d6a5b57fd80 - specialist school progression
+                    // Item bond is useless as replaced by cleric healing spell conversion
+                    //FeatureRefs.ItemBondFeature.ToString(),
+                    FeatureRefs.SpellMasterFocusedSpellsFeature.ToString(),
+
+                    // school
+                    //FeatureRefs.UniversalistSchoolBaseFeature.ToString(),
+
+
+                    // free feats
+                    FeatureRefs.WitchHexIceplantFeature.ToString(),
+                    FeatureRefs.CautiousFighter.ToString(),
+                    //FeatureRefs.DefensiveStanceFeature.ToString(),
+                    FeatureRefs.Toughness.ToString(),
+                    //FeatureRefs.StalwartDefenderACBonus.ToString(),
+                    FeatureRefs.CompanionBoon.ToString(),
+                    FeatureRefs.ShieldFocus.ToString(),
+                    FeatureRefs.ShieldFocusGreater.ToString(),
+                    FeatureRefs.ShieldMaster.ToString(),
+                    FeatureRefs.MountedCombat.ToString(),
+                    FeatureRefs.MountedShield.ToString(),
+                    FeatureRefs.ArmorFocusHeavy.ToString(),
+                    FeatureRefs.Dodge.ToString(),
+                    FeatureRefs.GreatFortitude.ToString(),
+                    FeatureRefs.GreatFortitudeImproved.ToString(),
+                    //FeatureRefs.GreatFortitudeMythicFeat.ToString(),
+                    FeatureRefs.LightningReflexes.ToString(),
+                    FeatureRefs.LightningReflexesImproved.ToString(),
+                    //FeatureRefs.LightningReflexesMythicFeat.ToString(),
+                    FeatureRefs.IronWill.ToString(),
+                    FeatureRefs.IronWillImproved.ToString(),
+                    //FeatureRefs.IronWillMythicFeat.ToString(),
+                    FeatureRefs.CombatCasting.ToString(),
+                    FeatureRefs.FastLearner.ToString(),
+                    FeatureRefs.Ironhide.ToString(),
+                    FeatureRefs.CraneStyleFeat.ToString(),
+                    //FeatureRefs.CraneStyleRiposteFeat.ToString(),
+                    FeatureRefs.CombatExpertiseFeature.ToString(),
+                    //FeatureRefs.CombatReflexes.ToString(),
+                    FeatureRefs.UncannyDodgeTalent.ToString(),
+
+                    FeatureRefs.BolsteredSpellFeat.ToString(),
+                    FeatureRefs.EmpowerSpellFeat.ToString(),
+                    FeatureRefs.ExtendSpellFeat.ToString(),
+                    FeatureRefs.HeightenSpellFeat.ToString(),
+                    FeatureRefs.MaximizeSpellFeat.ToString(),
+                    FeatureRefs.PersistentSpellFeat.ToString(),
+                    FeatureRefs.QuickenSpellFeat.ToString(),
+                    //FeatureRefs.CompletelyNormalSpellFeat.ToString(),
+                    FeatureRefs.ReachSpellFeat.ToString(),
+                    FeatureRefs.SelectiveSpellFeat.ToString(),
+                    FeatureRefs.IntensifiedSpell.ToString(),
+                    FeatureRefs.PiercingSpell.ToString(),
+
+                    FeatureRefs.ElementalFocusAcid.ToString(),
+                    FeatureRefs.GreaterElementalFocusAcid.ToString(),
+                    FeatureRefs.ElementalFocusCold.ToString(),
+                    FeatureRefs.GreaterElementalFocusCold.ToString(),
+                    FeatureRefs.ElementalFocusElectricity.ToString(),
+                    FeatureRefs.GreaterElementalFocusElectricity.ToString(),
+                    FeatureRefs.ElementalFocusFire.ToString(),
+                    FeatureRefs.GreaterElementalFocusFire.ToString(),
+
+                    // self created feats
+                    //Feats.ArmorAttune.ArmorAttuneFeat,
+                    Feats.SuperDodge.SuperDodgeFeat,
+                    Feats.SuperDodge.ShiftingProjectionFeat,
+
+                    // deity and domains
+                    FeatureSelectionRefs.DeitySelection.ToString(),
+                    FeatureSelectionRefs.DomainsSelection.ToString(),
+                    FeatureSelectionRefs.DomainsSelection.ToString(),
+                    FeatureSelectionRefs.DomainsSelection.ToString(),
+                    FeatureSelectionRefs.SecondDomainsSeparatistSelection.ToString(),
+                    FeatureSelectionRefs.SecondDomainsSeparatistSelection.ToString(),
+                    FeatureSelectionRefs.SecondDomainsSeparatistSelection.ToString(),
+
+                    // free familiar
+                    FeatureSelectionRefs.WitchFamiliarSelection.ToString(),
+
+                    /*
+                    FeatureRefs.TricksterStatFocusAC.ToString(),
                     FeatureRefs.TricksterStatFocusAttack.ToString(),
                     FeatureRefs.TricksterStatFocusSaveFortitude.ToString(),
                     FeatureRefs.TricksterStatFocusSaveReflex.ToString(),
@@ -412,51 +600,29 @@ namespace AssaultMage.Archetypes
                     FeatureRefs.TricksterLoreReligionAnimalDomainFeature.ToString(),
                     FeatureRefs.TricksterLoreReligionAnimalDomainRankFeature.ToString(),
                     FeatureRefs.TricksterLoreReligionLuckDomainFeature.ToString(),
-                    FeatureRefs.TricksterLoreReligionLuckDomainRankFeature.ToString(),*/
-                    FeatureRefs.FullCasterFeature.ToString(),
-                    FeatureRefs.FighterProficiencies.ToString(),
-                    FeatureRefs.BardProficiencies.ToString(),
-                    FeatureRefs.TowerShieldProficiency.ToString(),
+                    FeatureRefs.TricksterLoreReligionLuckDomainRankFeature.ToString(),
+                    */
+
+                    /*
                     FeatureRefs.ArcaneWeaponEnchancementMountFeature.ToString(),
-                    FeatureRefs.WitchHexIceplantFeature.ToString(),
-                    //FeatureRefs.ArcaneArmorTraining.ToString(),
-                    //FeatureRefs.ArcaneArmorMastery.ToString(),
-                    //Feats.ArmorAttune.ArmorAttuneFeat,
-                    FeatureRefs.ArmoredBattlemageMediumArmor.ToString(),
-                    FeatureRefs.ItemBondFeature.ToString(),
-                    //FeatureRefs.ArcaneHeavyArmor.ToString(),
-                    Feats.SuperDodge.SuperDodgeFeat,
-                    Feats.SuperDodge.ShiftingProjectionFeat,
-                    FeatureRefs.SwordSaintCannyDefense.ToString(),
                     FeatureRefs.MonkACBonusUnlock.ToString(),
                     FeatureRefs.BloodragerFastMovement.ToString(),
                     FeatureRefs.ArcaneAccuracyFeature.ToString(),
                     //FeatureRefs.MagicalHackFeature.ToString(), 
-                    //FeatureRefs.SwordSaintFighterTraining.ToString(),
-                    //FeatureRefs.SwordSaintWeaponMastery.ToString(),
-                    //FeatureRefs.SwordSaintPerfectStrikeFeature.ToString(),
-                    /*FeatureSelectionRefs.SorcererBloodlineSelection.ToString(),
-                    FeatureSelectionRefs.SorcererBloodlineSelection.ToString(),
-                    FeatureSelectionRefs.SorcererBloodlineSelection.ToString(),
-                    FeatureSelectionRefs.SorcererBloodlineSelection.ToString(),*/
-                    FeatureRefs.CautiousFighter.ToString(),
-                    //FeatureRefs.DefensiveStanceFeature.ToString(),
-                    FeatureRefs.Toughness.ToString(),
-                    //FeatureRefs.StalwartDefenderACBonus.ToString(),
-                    //FeatureRefs.SpellMasterItemBondSpecializationFeature.ToString(),
-                    FeatureRefs.UniversalistSchoolBaseFeature.ToString(),
-                    //FeatureSelectionRefs.ArcaneBondSelection.ToString(),
-                    //FeatureSelectionRefs.SpecialistSchoolSelection.ToString(),
-                    FeatureRefs.ScribingScrolls.ToString(),
-                    FeatureRefs.ThugFrightening.ToString(),
-                    FeatureRefs.SneakAttack.ToString(),
-                    /*FeatureRefs.BloodlineDraconicBronzeArcana.ToString(),
+                    */
+
+                    /*
+                    FeatureRefs.BloodlineDraconicBronzeArcana.ToString(),
                     FeatureRefs.BloodlineDraconicCopperArcana.ToString(),
                     FeatureRefs.BloodlineDraconicGoldArcana.ToString(),
                     FeatureRefs.BloodlineDraconicSilverArcana.ToString(),
-                    FeatureRefs.BloodlineArcaneArcana.ToString(),*/
+                    FeatureRefs.BloodlineArcaneArcana.ToString(),
                     //FeatureRefs.BloodlineElementalWaterArcana.ToString(),
-                    FeatureRefs.ArcanistArcaneReservoirFeature.ToString(),
+                    //FeatureRefs.BloodlineCelestialAscensionAbility.ToString(),
+                    //FeatureRefs.BloodlineAbyssalDemonicMight.ToString(),
+                    */
+
+
                     /*FeatureRefs.ImmunityToNauseated.ToString(),
                     FeatureRefs.ImmunityToCharm.ToString(),
                     FeatureRefs.ImmunityToCompulsion.ToString(),
@@ -469,94 +635,26 @@ namespace AssaultMage.Archetypes
                     FeatureRefs.ImmunityToSleep.ToString(),
                     FeatureRefs.ImmunityToStun.ToString(),*/
                     //FeatureRefs.CavalierAnimalCompanion.ToString(),
-                    FeatureSelectionRefs.CavalierMountSelection.ToString(),
-                    FeatureRefs.CompanionBoon.ToString(),
+
+                    /*
                     //FeatureRefs.TwoWeaponFighting.ToString(),
-                    //FeatureRefs.BloodlineCelestialAscensionAbility.ToString(),
-                    //FeatureRefs.BloodlineAbyssalDemonicMight.ToString(),
-                    //FeatureRefs.BloodlineDraconicGoldPowerOfWyrms.ToString(),
-                    //FeatureRefs.ArcanePoolFeature.ToString(),
                     //FeatureRefs.MissileShield.ToString(),
-                    FeatureRefs.ShieldFocus.ToString(),
-                    FeatureRefs.ShieldFocusGreater.ToString(),
-                    FeatureRefs.ShieldMaster.ToString(),
-                    FeatureRefs.MountedCombat.ToString(),
-                    FeatureRefs.MountedShield.ToString(),
                     //FeatureRefs.RayShield.ToString(),
                     //FeatureRefs.ShieldFocusMythicFeat.ToString(),
-                    FeatureRefs.ArmorFocusHeavy.ToString(),
-                    FeatureRefs.Dodge.ToString(),
                     //FeatureRefs.DodgeMythicFeat.ToString(),
-                    FeatureRefs.GreatFortitude.ToString(),
-                    FeatureRefs.GreatFortitudeImproved.ToString(),
-                    //FeatureRefs.GreatFortitudeMythicFeat.ToString(),
-                    FeatureRefs.LightningReflexes.ToString(),
-                    FeatureRefs.LightningReflexesImproved.ToString(),
-                    //FeatureRefs.LightningReflexesMythicFeat.ToString(),
-                    FeatureRefs.IronWill.ToString(),
-                    FeatureRefs.IronWillImproved.ToString(),
-                    //FeatureRefs.IronWillMythicFeat.ToString(),
                     FeatureRefs.Ironguts.ToString(),
                     FeatureRefs.BlindFight.ToString(),
                     FeatureRefs.BlindFightImproved.ToString(),
                     FeatureRefs.BlindFightGreater.ToString(),
-                    FeatureRefs.CombatCasting.ToString(),
                     FeatureRefs.CriticalFocus.ToString(),
                     FeatureRefs.CriticalMastery.ToString(),
-                    FeatureRefs.FastLearner.ToString(),
-                    FeatureRefs.Ironhide.ToString(),
                     FeatureRefs.PenetratingStrike.ToString(),
                     FeatureRefs.GreaterPenetratingStrike.ToString(),
                     FeatureRefs.SpellPenetration.ToString(),
-                    FeatureRefs.GreaterSpellPenetration.ToString(),
-                    //FeatureRefs.DragonDiscipleNaturalArmor.ToString(),
-                    //FeatureRefs.DragonDiscipleNaturalArmor.ToString(),
-                    //FeatureRefs.DragonDiscipleNaturalArmor.ToString(),
-                    //FeatureRefs.BloodlineDraconicGoldResistancesAbilityLevel1.ToString(),
-                    //FeatureRefs.BloodlineDraconicGoldResistancesAbilityLevel2.ToString(),
-                    //FeatureRefs.BloodlineDraconicGoldResistancesAbilityLevel3.ToString(),
-                    //FeatureRefs.BloodlineDraconicGoldResistancesAbilityAddLevel1.ToString(),
-                    //FeatureRefs.BloodlineDraconicGoldResistancesAbilityAddLevel2.ToString(),
-                    /*FeatureRefs.ArmorTraining.ToString(),
-                    FeatureRefs.ArmorTraining.ToString(),
-                    FeatureRefs.ArmorTraining.ToString(),
-                    FeatureRefs.ArmorTraining.ToString(),*/
-                    FeatureRefs.CraneStyleFeat.ToString(),
-                    FeatureRefs.CraneStyleRiposteFeat.ToString(),
-                    FeatureRefs.CombatExpertiseFeature.ToString(),
-                    FeatureRefs.CombatReflexes.ToString(),
-                    FeatureRefs.MutagenFeature.ToString(),
-                    FeatureRefs.BolsteredSpellFeat.ToString(),
-                    FeatureRefs.EmpowerSpellFeat.ToString(),
-                    FeatureRefs.ExtendSpellFeat.ToString(),
-                    FeatureRefs.HeightenSpellFeat.ToString(),
-                    FeatureRefs.MaximizeSpellFeat.ToString(),
-                    FeatureRefs.PersistentSpellFeat.ToString(),
-                    FeatureRefs.QuickenSpellFeat.ToString(),
-                    //FeatureRefs.CompletelyNormalSpellFeat.ToString(),
-                    FeatureRefs.ReachSpellFeat.ToString(),
-                    FeatureRefs.SelectiveSpellFeat.ToString(),
-                    FeatureRefs.IntensifiedSpell.ToString(),
-                    FeatureRefs.PiercingSpell.ToString(),
-                    FeatureRefs.ElementalFocusAcid.ToString(),
-                    FeatureRefs.GreaterElementalFocusAcid.ToString(),
-                    FeatureRefs.ElementalFocusCold.ToString(),
-                    FeatureRefs.GreaterElementalFocusCold.ToString(),
-                    FeatureRefs.ElementalFocusElectricity.ToString(),
-                    FeatureRefs.GreaterElementalFocusElectricity.ToString(),
-                    FeatureRefs.ElementalFocusFire.ToString(),
-                    FeatureRefs.GreaterElementalFocusFire.ToString(),
-                    FeatureRefs.ArcanePoolFeature.ToString(),
-                    FeatureRefs.ShieldBlockFeature.ToString(),
+                    FeatureRefs.GreaterSpellPenetration.ToString(),*/
+
+                    /*
                     FeatureRefs.ShieldBashFeature.ToString(),
-                    FeatureSelectionRefs.DeitySelection.ToString(),
-                    FeatureSelectionRefs.DomainsSelection.ToString(),
-                    FeatureSelectionRefs.DomainsSelection.ToString(),
-                    FeatureSelectionRefs.DomainsSelection.ToString(),
-                    FeatureSelectionRefs.SecondDomainsSeparatistSelection.ToString(),
-                    FeatureSelectionRefs.SecondDomainsSeparatistSelection.ToString(),
-                    FeatureSelectionRefs.SecondDomainsSeparatistSelection.ToString(),
-                    FeatureSelectionRefs.SwordSaintChosenWeaponSelection.ToString(),
                     /*FeatureSelectionRefs.WizardFeatSelection.ToString(),
                     FeatureSelectionRefs.WizardFeatSelection.ToString(),
                     FeatureSelectionRefs.WizardFeatSelection.ToString(),
@@ -573,6 +671,8 @@ namespace AssaultMage.Archetypes
                     FeatureSelectionRefs.WizardFeatSelection.ToString(),
                     FeatureSelectionRefs.WizardFeatSelection.ToString(),
                     FeatureSelectionRefs.WizardFeatSelection.ToString(),*/
+
+                    /*
                     FeatureRefs.SpellMasterFocusedSpellsFeature.ToString(),
                     /*FeatureRefs.SpellFocusAbjuration.ToString(),
                     FeatureRefs.GreaterSpellFocusAbjuration.ToString(),
@@ -603,335 +703,1009 @@ namespace AssaultMage.Archetypes
                     //FeatureSelectionRefs.BasicFeatSelection.ToString(),
                     //FeatureSelectionRefs.BasicFeatSelection.ToString(),
                     //FeatureSelectionRefs.BasicFeatSelection.ToString(),
+
+                    /*
                     FeatureSelectionRefs.BasicFeatSelection.ToString(),
                     FeatureSelectionRefs.FighterFeatSelection.ToString(),
                     FeatureSelectionRefs.WizardFeatSelection.ToString(),
                     //FeatureSelectionRefs.RogueTalentSelection.ToString(),
                     //FeatureSelectionRefs.MythicFeatSelection.ToString(),
-                    FeatureSelectionRefs.WitchFamiliarSelection.ToString(),
-                    Cleric1
+                    */
+                    Cleric1,
+                    HD
                 )
                 .AddToAddFeatures(2,
-                    HD,
+                    // alchemist
+                    //FeatureSelectionRefs.DiscoverySelection.ToString(),
+                    FeatureRefs.PoisonResistance.ToString(),
+
+                    // vivisectionists
                     FeatureSelectionRefs.VivsectionistDiscoverySelection.ToString(),
-                    FeatureRefs.InvulnerableRagerDamageReduction.ToString(),
-                    FeatureRefs.Evasion.ToString(),
-                    FeatureRefs.UncannyDodgeTalent.ToString(),
+
+                    // arcanist
+
+                    // barbarian
+                    //FeatureSelectionRefs.RagePowerSelection.ToString(),
+                    //FeatureRefs.UncannyDodgeChecker.ToString(),
+
+                    // armored hulk
                     FeatureRefs.ArmoredHulkArmoredSwiftness.ToString(),
-                    FeatureRefs.BrewPotions.ToString(),
+
+                    // invulnerable rager
+                    FeatureRefs.InvulnerableRagerDamageReduction.ToString(),
+
+                    // bard
+                    FeatureSelectionRefs.BardTalentSelection_0.ToString(),
+                    FeatureRefs.BardWellVersed.ToString(),
+
+                    // cavalier
+
+                    // fighter
+                    FeatureSelectionRefs.FighterFeatSelection.ToString(),
+                    //FeatureRefs.Bravery.ToString(),
+
+                    // magus
+                    //FeatureRefs.SpellStrikeFeature.ToString(),
+
+                    // rogue
+                    FeatureRefs.Evasion.ToString(),
+                    FeatureSelectionRefs.RogueTalentSelection.ToString(),
+
+                    // wizard
+                    
+                    // free feats
+                    FeatureRefs.ImprovedUncannyDodgeTalent.ToString(),
                     FeatureRefs.StudentOfWarMindOverMetal.ToString(),
+
+                    // level up animal
                     FeatureRefs.AnimalCompanionRank.ToString(),
+
+                    /*
                     FeatureSelectionRefs.FighterFeatSelection.ToString(),
                     FeatureSelectionRefs.RogueTalentSelection.ToString()
                     //FeatureSelectionRefs.WeaponTrainingRankUpSelection.ToString(),
-                    //FeatureSelectionRefs.MythicFeatSelection.ToString()
-                //Cleric2
+                    //FeatureSelectionRefs.MythicFeatSelection.ToString()*/
+                    HD
                 )
                 .AddToAddFeatures(3,
-                    HD,
+                    // alchemist
+                    //FeatureRefs.AlchemistBombsFeature.ToString(),
+
+                    // vivisectionists
+                    //FeatureRefs.SneakAttack.ToString(),
+
+                    //arcanists
+                    //FeatureSelectionRefs.ArcanistExploitSelection.ToString(),
+
+                    // brown fur transmuter
+                    // powerful change is useless as it only affects spells from arcanists slot
+                    //FeatureRefs.PowerfulChange.ToString(),
+
+                    // barbarian
+                    //FeatureRefs.DangerSenseBarbarian.ToString(),
+
+                    // armored hulk
                     FeatureRefs.ArmoredHulkResilienceOfSteel.ToString(),
-                    FeatureRefs.ArmorTraining.ToString(),
-                    FeatureRefs.SneakAttack.ToString(),
-                    FeatureRefs.TowerShieldTraining.ToString(),
-                    FeatureRefs.PowerfulChange.ToString(),
+
+                    // bard
+                    //FeatureRefs.InspireCompetenceFeature.ToString(),
+
+                    // cavalier
                     FeatureRefs.CavalierCharge.ToString(),
+
+                    // fighter
+                    FeatureRefs.ArmorTraining.ToString(),
+
+                    // magus
+                    FeatureSelectionRefs.MagusArcanaSelection.ToString(),
+
+                    // armored battlemage
+                    //FeatureRefs.ArmorTraining.ToString(),
+
+                    // rogue
+                    FeatureRefs.SneakAttack.ToString(),
+                    FeatureSelectionRefs.FinesseTrainingSelection.ToString(),
+                    //FeatureRefs.DangerSenseRogue.ToString(),
+
+                    // thug
+                    FeatureRefs.ThugBrutalBeatingFeature.ToString(),
+
+                    // wizard
+
+                    // level up animal
                     FeatureRefs.AnimalCompanionRank.ToString(),
-                    //FeatureSelectionRefs.WeaponTrainingRankUpSelection.ToString(),
+
+                    /*
                     FeatureSelectionRefs.BasicFeatSelection.ToString()
                     //FeatureSelectionRefs.BasicFeatSelection.ToString(),
                     //FeatureSelectionRefs.FighterFeatSelection.ToString(),
                     //FeatureSelectionRefs.WizardFeatSelection.ToString(),
-                    //FeatureSelectionRefs.MythicFeatSelection.ToString()
-                //Cleric3
+                    //FeatureSelectionRefs.MythicFeatSelection.ToString()*/
+                    HD
                 )
                 .AddToAddFeatures(4,
-                    HD,
+                    // alchemist
+                    //FeatureSelectionRefs.DiscoverySelection.ToString(),
+
+                    // vivisectionists
                     FeatureSelectionRefs.VivsectionistDiscoverySelection.ToString(),
+
+                    // arcanist
+
+                    // barbarian
+                    //FeatureSelectionRefs.RagePowerSelection.ToString(),
+
+                    // invulnerable rager
                     FeatureRefs.InvulnerableRagerDamageReduction.ToString(),
-                    FeatureRefs.SwordSaintPerfectStrikeFeature.ToString(),
+
+                    // bard
+
+                    // cavalier
+
+                    // knights of the wall
                     FeatureRefs.KnightOfTheWallDeflectiveShield.ToString(),
-                    //FeatureSelectionRefs.WeaponTrainingRankUpSelection.ToString(),
-                    //FeatureSelectionRefs.BasicFeatSelection.ToString(),
-                    //FeatureSelectionRefs.BasicFeatSelection.ToString(),
-                    //FeatureSelectionRefs.BasicFeatSelection.ToString(),
+
+                    // fighter
+                    FeatureSelectionRefs.FighterFeatSelection.ToString(),
+
+                    // magus
+                    //FeatureRefs.MagusSpellRecallFeature.ToString(),
+
+                    // sword saint
+                    FeatureRefs.SwordSaintPerfectStrikeFeature.ToString(),
+
+                    // rogue
+                    FeatureSelectionRefs.RogueTalentSelection.ToString(),
+                    //FeatureRefs.DebilitatingInjury.ToString(),
+                    //FeatureRefs.UncannyDodgeChecker.ToString(),
+
+                    // wizard
+
+                    // level up animal
                     FeatureRefs.AnimalCompanionRank.ToString(),
+
+                    /*
                     FeatureSelectionRefs.FighterFeatSelection.ToString(),
                     FeatureSelectionRefs.RogueTalentSelection.ToString()
                     //FeatureSelectionRefs.MythicFeatSelection.ToString()
-                //FeatureRefs.AnimalDomainGreaterFeature.ToString(),
-                //FeatureSelectionRefs.AnimalCompanionSelectionDomain.ToString()
-                //Cleric4
+                    */
+                    HD
                 )
                 .AddToAddFeatures(5,
-                    HD,
-                    FeatureRefs.ImprovedEvasion.ToString(),
-                    FeatureRefs.ImprovedUncannyDodgeTalent.ToString(),
+                    // alchemist
+                    //FeatureRefs.AlchemistBombsFeature.ToString(),
+                    FeatureRefs.PoisonResistance.ToString(),
+
+                    // vivisectionists
+                    //FeatureRefs.SneakAttack.ToString(),
+
+                    //arcanists
+                    //FeatureSelectionRefs.ArcanistExploitSelection.ToString(),
+
+                    //barbarian
+                    //FeatureRefs.ImprovedUncannyDodge.ToString(),
+
+                    //armored hulk
                     FeatureRefs.ArmoredHulkImprovedArmoredSwiftness.ToString(),
-                    FeatureRefs.SneakAttack.ToString(),
-                    FeatureRefs.CavalierBanner.ToString(),
+
+                    // bard
+                    //FeatureRefs.InspireCourageFeature.ToString(),
+                    FeatureRefs.BardLoreMaster.ToString(),
+
+                    // cavalier
+                    //FeatureRefs.CavalierBanner.ToString(),
+
+                    // fighter
                     FeatureSelectionRefs.WeaponTrainingSelection.ToString(),
-                    FeatureRefs.ArcaneWeaponPlus2.ToString(),
-                    FeatureRefs.PurityOfBody.ToString(),
-                    //FeatureRefs.TowerShieldNegatePenalty.ToString(),
-                    //FeatureRefs.ArmorTraining.ToString(),
-                    //FeatureRefs.TowerShieldTraining.ToString(),
-                    FeatureRefs.SpellMasterItemBondSpecializationFeature.ToString(),
+
+                    // defender of the hearth
                     FeatureRefs.HeavenStrikeFeature.ToString(),
+
+                    // magus
+                    FeatureSelectionRefs.MagusFeatSelection.ToString(),
+                    //FeatureRefs.ArcaneWeaponPlus2.ToString(),
+
+                    // armored battlemage
+                    FeatureRefs.ArcaneArmorEnchantPlus2.ToString(),
+
+                    // rogue
+                    FeatureRefs.SneakAttack.ToString(),
+
+                    // wizard
+                    //FeatureSelectionRefs.WizardFeatSelection.ToString(),
+
+                    // spell master
+                    //FeatureRefs.SpellMasterItemBondSpecializationFeature.ToString(),
+
+                    // free ability
+                    FeatureRefs.PurityOfBody.ToString(),
+
+                    // level up animal
                     FeatureRefs.AnimalCompanionRank.ToString(),
-                    //FeatureSelectionRefs.WeaponTrainingRankUpSelection.ToString(),
+
+                    /*
                     //FeatureSelectionRefs.BasicFeatSelection.ToString(),
                     FeatureSelectionRefs.BasicFeatSelection.ToString(),
                     FeatureSelectionRefs.WizardFeatSelection.ToString()
                     //FeatureSelectionRefs.FighterFeatSelection.ToString(),
                     //FeatureSelectionRefs.MythicFeatSelection.ToString()
-                    //FeatureRefs.ArcaneWeaponPlus2.ToString(),
-                    //FeatureRefs.ArcaneArmorEnchantPlus2.ToString()
-                //Cleric5
+                    */
+                    HD
                 )
                 .AddToAddFeatures(6,
-                    HD,
+                    // alchemist
+                    //FeatureSelectionRefs.DiscoverySelection.ToString(),
+
+                    // vivisectionists
                     FeatureSelectionRefs.VivsectionistDiscoverySelection.ToString(),
-                    FeatureRefs.InvulnerableRagerDamageReduction.ToString(),
+
+                    // arcanist
+
+                    // barbarian
+                    //FeatureSelectionRefs.RagePowerSelection.ToString(),
+                    //FeatureRefs.DangerSenseBarbarian.ToString(),
+
+                    // armored hulk
                     FeatureRefs.ArmoredHulkResilienceOfSteel.ToString(),
-                    //FeatureSelectionRefs.WeaponTrainingRankUpSelection.ToString(),
-                    //FeatureSelectionRefs.BasicFeatSelection.ToString(),
-                    //FeatureSelectionRefs.BasicFeatSelection.ToString(),
-                    //FeatureSelectionRefs.BasicFeatSelection.ToString(),
+
+                    // invulnerable rager
+                    FeatureRefs.InvulnerableRagerDamageReduction.ToString(),
+
+                    // bard
+                    FeatureSelectionRefs.BardTalentSelection_0.ToString(),
+                    //FeatureRefs.FascinateFeature.ToString(),
+
+                    // cavalier 
+                    FeatureSelectionRefs.CavalierBonusFeatSelection.ToString(),
+
+                    // fighter
+                    FeatureSelectionRefs.FighterFeatSelection.ToString(),
+                    FeatureRefs.Bravery.ToString(),
+
+                    // magus
+                    FeatureSelectionRefs.MagusArcanaSelection.ToString(),
+
+                    // sword saint
+                    //FeatureRefs.SwordSaintFighterTraining.ToString(),
+                    FeatureRefs.SwordSaintLightningDraw.ToString(),
+
+                    // rogue
+                    FeatureSelectionRefs.RogueTalentSelection.ToString(),
+                    //FeatureRefs.DangerSenseRogue.ToString(),
+
+                    // wizard
+
+                    // Simulate gaining 2 extra arcane pool upon reaching this level
+                    FeatureRefs.ExtraArcanePool.ToString(),
+
+                    // level up animal
                     FeatureRefs.AnimalCompanionRank.ToString(),
+
+                    /*
                     FeatureSelectionRefs.FighterFeatSelection.ToString(),
                     FeatureSelectionRefs.RogueTalentSelection.ToString()
                     //FeatureSelectionRefs.MythicFeatSelection.ToString()
-                    //Cleric6
+                    */
+                    HD
                 )
                 .AddToAddFeatures(7,
-                    HD,
-                    Feats.SuperDodge.MentalAcuity1Feat,
+                    // alchemist
+                    //FeatureRefs.AlchemistBombsFeature.ToString(),
+
+                    // vivisectionists
+                    //FeatureRefs.SneakAttack.ToString(),
+
+                    //arcanists
+                    //FeatureSelectionRefs.ArcanistExploitSelection.ToString(),
+
+                    // barbarian
+                    //FeatureRefs.DamageReduction.ToString(),
+
+                    // bard
+                    //FeatureRefs.InspireCompetenceFeature.ToString(),
+                    //FeatureRefs.BardMovePerformance.ToString(),
+
+                    // cavalier
+
+                    // fighter
                     FeatureRefs.ArmorTraining.ToString(),
-                    FeatureRefs.SneakAttack.ToString(),
-                    FeatureRefs.TowerShieldTraining.ToString(),
-                    //FeatureSelectionRefs.WizardFeatSelection.ToString(),
-                    //FeatureSelectionRefs.FighterFeatSelection.ToString(),
-                    FeatureRefs.SwordSaintLightningDraw.ToString(),
+
+                    // magus
+                    //FeatureRefs.ArcaneMediumArmor.ToString(),
+
+                    // armored battlemage
                     FeatureRefs.ArmoredBattlemageArcaneHeavyArmor.ToString(),
+
+                    // rogue
+                    FeatureRefs.SneakAttack.ToString(),
+
+                    // wizard
+
+                    // self created feats
+                    Feats.SuperDodge.MentalAcuity1Feat,
+
+                    // level up animal
                     FeatureRefs.AnimalCompanionRank.ToString(),
-                    //FeatureRefs.EnlightenedPhilosopherRevelationMentalAcuity.ToString(),
-                    //FeatureSelectionRefs.WeaponTrainingRankUpSelection.ToString(),
-                    //FeatureSelectionRefs.BasicFeatSelection.ToString(),
-                    FeatureSelectionRefs.BasicFeatSelection.ToString(),
-                    FeatureSelectionRefs.ExtraRogueTalentSelection.ToString()
+
+                    /*
+                    FeatureSelectionRefs.BasicFeatSelection.ToString()
+                    //FeatureSelectionRefs.ExtraRogueTalentSelection.ToString()
                     //FeatureSelectionRefs.MythicFeatSelection.ToString()
-                    //Cleric7
+                    */
+                    HD
                 )
                 .AddToAddFeatures(8,
-                    HD,
+                    // alchemist
+                    //FeatureSelectionRefs.DiscoverySelection.ToString(),
+                    FeatureRefs.PoisonResistance.ToString(),
+
+                    // vivisectionists
                     FeatureSelectionRefs.VivsectionistDiscoverySelection.ToString(),
+
+                    // arcanist
+
+                    // barbarian
+                    //FeatureSelectionRefs.RagePowerSelection.ToString(),
+
+                    // invulnerable rager
                     FeatureRefs.InvulnerableRagerDamageReduction.ToString(),
-                    FeatureRefs.UniversalistSchoolExtendReachFeature.ToString(),
-                    //FeatureSelectionRefs.WeaponTrainingRankUpSelection.ToString(),
-                    //FeatureSelectionRefs.BasicFeatSelection.ToString(),
-                    //FeatureSelectionRefs.BasicFeatSelection.ToString(),
-                    //FeatureSelectionRefs.BasicFeatSelection.ToString(),
-                    FeatureRefs.AnimalCompanionRank.ToString(),
+
+                    // bard
+                    //FeatureRefs.DirgeOfDoomFeature.ToString(),
+
+                    // cavalier
+
+                    // fighter
                     FeatureSelectionRefs.FighterFeatSelection.ToString(),
-                    FeatureSelectionRefs.RogueTalentSelection.ToString()
-                    //FeatureSelectionRefs.MythicFeatSelection.ToString()
-                    //FeatureRefs.CommunityDomainGreaterFeature.ToString(),
-                    //FeatureRefs.CommunityBlessingMajorFeature.ToString(),
-                    //FeatureRefs.NobilityDomainGreaterFeature.ToString(),
-                    //FeatureRefs.NobilityBlessingMajorFeature.ToString()
-                    //Cleric8
-                )
-                .AddToAddFeatures(9,
-                    HD,
-                    FeatureRefs.ArmoredHulkResilienceOfSteel.ToString(),
-                    FeatureRefs.TowerShieldSpecialistTouchShield.ToString(),
-                    FeatureRefs.SneakAttack.ToString(),
-                    FeatureSelectionRefs.WeaponTrainingSelection.ToString(),
-                    FeatureSelectionRefs.WeaponTrainingRankUpSelection.ToString(),
-                    FeatureRefs.SwordSaintCriticalPerfection.ToString(),
-                    FeatureRefs.KnightOfTheWallSoulShield.ToString(),
-                    FeatureRefs.ArcaneWeaponPlus3.ToString(),
-                    //FeatureRefs.TowerShieldTraining.ToString(),
-                    //FeatureSelectionRefs.WeaponTrainingSelection.ToString(),
-                    //FeatureSelectionRefs.WeaponTrainingRankUpSelection.ToString(),
-                    FeatureRefs.ShareTransmutation.ToString(),
+
+                    // magus
+                    //FeatureRefs.ImprovedSpellCombat.ToString(),
+
+                    // armored battlemage
+                    //FeatureRefs.ArmorTraining.ToString(),
+
+                    // rogue
+                    FeatureSelectionRefs.RogueTalentSelection.ToString(),
+                    //FeatureRefs.ImprovedUncannyDodge.ToString(),
+
+                    // wizard
+
+                    // free ability
+                    //FeatureRefs.UniversalistSchoolExtendReachFeature.ToString(),
+
+
+                    // level up animal
                     FeatureRefs.AnimalCompanionRank.ToString(),
-                    //FeatureSelectionRefs.BasicFeatSelection.ToString(),
-                    FeatureSelectionRefs.BasicFeatSelection.ToString()
-                    //FeatureSelectionRefs.MythicFeatSelection.ToString()
-                    //FeatureRefs.ArcaneWeaponPlus3.ToString(),
-                    //FeatureRefs.ArcaneArmorEnchantPlus3.ToString()
-                    //Cleric9
-                )
-                .AddToAddFeatures(10,
-                    HD,
-                    Feats.SuperDodge.MentalAcuity2Feat,
-                    FeatureSelectionRefs.VivsectionistDiscoverySelection.ToString(),
-                    FeatureRefs.InvulnerableRagerDamageReduction.ToString(),
-                    FeatureRefs.SpellMasterItemBondSpecializationFeature.ToString(),
-                    //FeatureSelectionRefs.WeaponTrainingRankUpSelection.ToString(),
-                    //FeatureSelectionRefs.BasicFeatSelection.ToString(),
-                    //FeatureSelectionRefs.BasicFeatSelection.ToString(),
-                    FeatureRefs.AnimalCompanionRank.ToString(),
+
+                    /*
                     FeatureSelectionRefs.FighterFeatSelection.ToString(),
                     FeatureSelectionRefs.RogueTalentSelection.ToString(),
-                    FeatureSelectionRefs.ExtraRogueTalentSelection.ToString(),
+                    //Cleric8
+                    */
+                    HD
+                )
+                .AddToAddFeatures(9,
+                    // alchemist
+                    //FeatureRefs.AlchemistBombsFeature.ToString(),
+
+                    // vivisectionists
+                    //FeatureRefs.SneakAttack.ToString(),
+
+                    //arcanists
+                    //FeatureSelectionRefs.ArcanistExploitSelection.ToString(),
+
+                    // brown fur transmuter
+                    // Share Transmutation is useless as it affects only arcanist spell slots
+                    //FeatureRefs.ShareTransmutation.ToString(),
+
+                    // barbarian
+                    //FeatureRefs.DangerSenseBarbarian.ToString(),
+
+                    // armored hulk
+                    FeatureRefs.ArmoredHulkResilienceOfSteel.ToString(),
+
+                    // bard
+                    //FeatureRefs.InspireGreatnessFeature.ToString(),
+
+                    // cavalier
+                    //FeatureSelectionRefs.CavalierTacticianFeatSelection.ToString(),
+                    //FeatureRefs.CavalierTacticianGreater.ToString(),
+
+                    // knights of the wall
+                    FeatureRefs.KnightOfTheWallSoulShield.ToString(),
+
+                    // fighter
+                    FeatureSelectionRefs.WeaponTrainingSelection.ToString(),
+                    FeatureSelectionRefs.WeaponTrainingRankUpSelection.ToString(),
+
+                    // magus
+                    FeatureSelectionRefs.MagusArcanaSelection.ToString(),
+                    //FeatureRefs.ArcaneWeaponPlus3.ToString(),
+
+                    // armored battlemage
+                    FeatureRefs.ArcaneArmorEnchantPlus3.ToString(),
+
+                    // sword saint
+                    FeatureRefs.SwordSaintCriticalPerfection.ToString(),
+
+                    // rogue
+                    FeatureRefs.SneakAttack.ToString(),
+                    //FeatureRefs.DangerSenseRogue.ToString(),
+
+                    // wizard
+
+                    // level up animal
+                    FeatureRefs.AnimalCompanionRank.ToString(),
+
+                    /*
+                    FeatureSelectionRefs.BasicFeatSelection.ToString()
+                    //FeatureSelectionRefs.MythicFeatSelection.ToString()
+                    //Cleric9
+                    */
+                    HD
+                )
+                .AddToAddFeatures(10,
+                    // alchemist
+                    //FeatureSelectionRefs.DiscoverySelection.ToString(),
+                    FeatureRefs.PoisonImmunity.ToString(),
+
+                    // vivisectionists
+                    //FeatureRefs.AdvanceTalents.ToString(),
+
+                    // vivisectionists
+                    FeatureSelectionRefs.VivsectionistDiscoverySelection.ToString(),
+
+                    // arcanist
+
+                    // barbarian
+                    //FeatureSelectionRefs.RagePowerSelection.ToString(),
+                    //FeatureRefs.DamageReduction.ToString(),
+
+                    // invulnerable rager
+                    FeatureRefs.InvulnerableRagerDamageReduction.ToString(),
+
+                    // bard
+                    FeatureSelectionRefs.BardTalentSelection_0.ToString(),
+                    FeatureRefs.BardJackOfAllTrades.ToString(),
+
+                    // cavalier
+
+                    // fighter
+                    FeatureSelectionRefs.FighterFeatSelection.ToString(),
+                    FeatureRefs.Bravery.ToString(),
+
+                    // magus
+                    //FeatureRefs.FighterTraining.ToString(),
+
+                    // rogue
+                    FeatureSelectionRefs.RogueTalentSelection.ToString(),
+                    FeatureRefs.AdvanceTalents.ToString(),
+
+                    // wizard
+                    FeatureSelectionRefs.WizardFeatSelection.ToString(),
+
+                    // spell master
+                    //FeatureRefs.SpellMasterItemBondSpecializationFeature.ToString(),
+
+                    // Simulate gaining 2 extra arcane pool upon reaching this level
+                    FeatureRefs.ExtraArcanePool.ToString(),
+
+                    // self created ability
+                    Feats.SuperDodge.MentalAcuity2Feat,
+
+                    // level up animal
+                    FeatureRefs.AnimalCompanionRank.ToString(),
+
+                    /*
+                    FeatureSelectionRefs.FighterFeatSelection.ToString(),
+                    FeatureRefs.AdvanceTalents.ToString(),
+                    //FeatureSelectionRefs.ExtraRogueTalentSelection.ToString(),
                     FeatureSelectionRefs.WizardFeatSelection.ToString()
                     //FeatureSelectionRefs.MythicFeatSelection.ToString()
                 //Cleric10
+                    */
+                    HD
                 )
                 .AddToAddFeatures(11,
-                    HD,
-                    FeatureRefs.ArmorTraining.ToString(),
-                    FeatureRefs.SneakAttack.ToString(),
-                    FeatureRefs.TowerShieldTraining.ToString(),
+                    // alchemist
+                    //FeatureRefs.AlchemistBombsFeature.ToString(),
+
+                    // vivisectionists
+                    //FeatureRefs.SneakAttack.ToString(),
+
+                    //arcanists
+                    //FeatureRefs.ArcanistGreaterExploitsFeature.ToString(),
+                    //FeatureSelectionRefs.ArcanistExploitSelection.ToString(),
+
+                    // barbarian
+                    //FeatureRefs.GreaterRageFeature.ToString(),
+
+                    // bard
+                    //FeatureRefs.InspireCompetenceFeature.ToString(),
+                    //FeatureRefs.InspireCourageFeature.ToString(),
+
+                    // cavalier
                     FeatureRefs.CavalierMightyCharge.ToString(),
+
+                    // fighter
+                    FeatureRefs.ArmorTraining.ToString(),
+
+                    // magus
+                    FeatureSelectionRefs.MagusFeatSelection.ToString(),
+                    //FeatureRefs.MagusImprovedSpellRecallFeature.ToString(),
+
+                    // sword saint
                     FeatureRefs.SwordSaintSuperiorReflexes.ToString(),
+
+                    // rogue
+                    FeatureRefs.SneakAttack.ToString(),
+                    FeatureSelectionRefs.FinesseTrainingSelection.ToString(),
+
+                    // wizard
+
+                    // level up animal
                     FeatureRefs.AnimalCompanionRank.ToString(),
+
+                    /*
                     //FeatureSelectionRefs.BasicFeatSelection.ToString(),
-                    FeatureSelectionRefs.BasicFeatSelection.ToString(),
-                    FeatureSelectionRefs.ExtraRogueTalentSelection.ToString()
+                    FeatureSelectionRefs.BasicFeatSelection.ToString()
+                    //FeatureSelectionRefs.ExtraRogueTalentSelection.ToString()
                     //FeatureSelectionRefs.MythicFeatSelection.ToString()
                 //Cleric11
+                    */
+                    HD
                 )
                 .AddToAddFeatures(12,
-                    HD,
+                    // alchemist
+                    //FeatureSelectionRefs.DiscoverySelection.ToString(),
+
+                    // vivisectionists
                     FeatureSelectionRefs.VivsectionistDiscoverySelection.ToString(),
-                    //FeatureSelectionRefs.WeaponTrainingRankUpSelection.ToString(),
-                    FeatureRefs.InvulnerableRagerDamageReduction.ToString(),
+
+                    // arcanist
+
+                    // barbarian
+                    //FeatureSelectionRefs.RagePowerSelection.ToString(),
+                    //FeatureRefs.DangerSenseBarbarian.ToString(),
+
+                    // armored hulk
                     FeatureRefs.ArmoredHulkResilienceOfSteel.ToString(),
-                    FeatureRefs.KnightOfTheWallDefensiveChallenge.ToString(),
-                    FeatureRefs.UniversalistSchoolEmpowerFeature.ToString(),
+
+                    // invulnerable rager
+                    FeatureRefs.InvulnerableRagerDamageReduction.ToString(),
+
+                    // bard
+                    FeatureRefs.SoothingPerformanceFeature.ToString(),
+
+                    // cavalier
+                    FeatureSelectionRefs.CavalierBonusFeatSelection.ToString(),
+                    //FeatureRefs.CavalierDemandingChallenge.ToString(),
+
+                    // knights of the wall
+                    //FeatureRefs.KnightOfTheWallDefensiveChallenge.ToString(),
+
+                    // fighter
+                    FeatureSelectionRefs.FighterFeatSelection.ToString(),
+
+                    // magus
+                    FeatureSelectionRefs.MagusArcanaSelection.ToString(),
+
+                    // rogue
+                    FeatureSelectionRefs.RogueTalentSelection.ToString(),
+                    //FeatureRefs.DangerSenseRogue.ToString(),
+
+                    // wizard
+
+                    // free ability
+                    //FeatureRefs.UniversalistSchoolEmpowerFeature.ToString(),
+
+
+                    // level up animal
                     FeatureRefs.AnimalCompanionRank.ToString(),
-                    //FeatureSelectionRefs.BasicFeatSelection.ToString(),
-                    //FeatureSelectionRefs.BasicFeatSelection.ToString(),
+
+                    /*
                     FeatureSelectionRefs.FighterFeatSelection.ToString(),
                     FeatureSelectionRefs.RogueTalentSelection.ToString()
                     //FeatureSelectionRefs.MythicFeatSelection.ToString()
                 //Cleric12
+                    */
+                    HD
                 )
                 .AddToAddFeatures(13,
-                    HD,
-                    Feats.SuperDodge.MentalAcuity3Feat,
-                    FeatureRefs.SneakAttack.ToString(),
-                    FeatureRefs.TowerShieldTotalCover.ToString(),
+                    // alchemist
+                    //FeatureRefs.AlchemistBombsFeature.ToString(),
+
+                    // vivisectionists
+                    //FeatureRefs.SneakAttack.ToString(),
+
+                    //arcanists
+                    //FeatureSelectionRefs.ArcanistExploitSelection.ToString(),
+
+                    // barbarian
+                    //FeatureRefs.DamageReduction.ToString(),
+
+                    // bard
+                    //FeatureRefs.BardSwiftPerformance.ToString(),
+
+                    // cavalier
+
+                    // fighter
                     FeatureSelectionRefs.WeaponTrainingSelection.ToString(),
                     FeatureSelectionRefs.WeaponTrainingRankUpSelection.ToString(),
+
+                    // magus
+                    //FeatureRefs.ArcaneWeaponPlus4.ToString(),
+                    //FeatureRefs.ArcaneHeavyArmor.ToString(),
+
+                    // armored battlemage
+                    //FeatureRefs.ArmorTraining.ToString(),
+                    FeatureRefs.ArcaneArmorEnchantPlus4.ToString(),
+
+                    // sword saint
                     FeatureRefs.SwordSaintInstantFocus.ToString(),
-                    FeatureRefs.ArcaneWeaponPlus4.ToString(),
+
+                    // rogue
+                    FeatureRefs.SneakAttack.ToString(),
+
+                    // wizard
+
+                    // self created feats
+                    Feats.SuperDodge.MentalAcuity3Feat,
+
+                    // level up animal
                     FeatureRefs.AnimalCompanionRank.ToString(),
-                    //FeatureSelectionRefs.WeaponTrainingSelection.ToString(),
-                    //FeatureSelectionRefs.BasicFeatSelection.ToString(),
-                    //FeatureSelectionRefs.BasicFeatSelection.ToString(),
-                    FeatureSelectionRefs.BasicFeatSelection.ToString()
+
+                    /*
                     //FeatureSelectionRefs.MythicFeatSelection.ToString()
-                //FeatureRefs.ArcaneWeaponPlus4.ToString(),
-                //FeatureRefs.ArcaneArmorEnchantPlus4.ToString()
-                //Cleric13
+                //Cleric13*/
+                    HD
                 )
                 .AddToAddFeatures(14,
-                    HD,
-                    FeatureSelectionRefs.VivsectionistDiscoverySelection.ToString(),
-                    FeatureRefs.InvulnerableRagerDamageReduction.ToString(),
-                    FeatureRefs.CavalierBannerGreater.ToString(),
+                    // alchemist
+                    //FeatureSelectionRefs.DiscoverySelection.ToString(),
                     FeatureRefs.PersistantMutagen.ToString(),
+
+                    // vivisectionists
+                    FeatureSelectionRefs.VivsectionistDiscoverySelection.ToString(),
+
+                    // arcanist
+
+                    // barbarian
+                    //FeatureSelectionRefs.RagePowerSelection.ToString(),
+                    FeatureRefs.IndomitableWill.ToString(),
+
+                    // invulnerable rager
+                    FeatureRefs.InvulnerableRagerDamageReduction.ToString(),
+
+                    // bard
+                    FeatureSelectionRefs.BardTalentSelection_0.ToString(),
+                    //FeatureRefs.FrighteningTuneFeature.ToString(),
+
+                    // cavalier
+                    //FeatureRefs.CavalierBannerGreater.ToString(),
+
+                    // fighter
+                    FeatureSelectionRefs.FighterFeatSelection.ToString(),
+                    FeatureRefs.Bravery.ToString(),
+
+                    // magus
+
+                    //rogue
+                    FeatureSelectionRefs.RogueTalentSelection.ToString(),
+
+                    // wizard
+
+                    // Simulate gaining 2 extra arcane pool upon reaching this level
+                    FeatureRefs.ExtraArcanePool.ToString(),
+
+                    // level up animal
                     FeatureRefs.AnimalCompanionRank.ToString(),
-                    //FeatureSelectionRefs.BasicFeatSelection.ToString(),
-                    //FeatureSelectionRefs.BasicFeatSelection.ToString(),
+
+                    /*
                     //FeatureSelectionRefs.WizardFeatSelection.ToString(),
                     FeatureSelectionRefs.FighterFeatSelection.ToString(),
                     FeatureSelectionRefs.RogueTalentSelection.ToString()
                     //FeatureSelectionRefs.MythicFeatSelection.ToString()
                 //Cleric14
+                    */
+                    HD
                 )
                 .AddToAddFeatures(15,
-                    HD,
+                    // alchemist
+                    //FeatureRefs.AlchemistBombsFeature.ToString(),
+
+                    // vivisectionists
+                    //FeatureRefs.SneakAttack.ToString(),
+
+                    //arcanists
+                    //FeatureSelectionRefs.ArcanistExploitSelection.ToString(),
+
+                    // barbarian
+                    //FeatureRefs.DangerSenseBarbarian.ToString(),
+
+                    // armored hulk
                     FeatureRefs.ArmoredHulkResilienceOfSteel.ToString(),
+
+                    // bard
+                    //FeatureRefs.InspireCompetenceFeature.ToString(),
+                    //FeatureRefs.InspireHeroicsFeature.ToString(),
+
+                    // cavalier
+
+                    // fighter
                     FeatureRefs.ArmorTraining.ToString(),
+
+                    // magus
+                    FeatureSelectionRefs.MagusArcanaSelection.ToString(),
+
+                    // rogue
                     FeatureRefs.SneakAttack.ToString(),
-                    FeatureRefs.TowerShieldTraining.ToString(),
-                    FeatureRefs.SpellMasterItemBondSpecializationFeature.ToString(),
+                    //FeatureRefs.DangerSenseRogue.ToString(),
+
+                    // wizard
+                    //FeatureSelectionRefs.WizardFeatSelection.ToString(),
+
+                    // spell master
+                    //FeatureRefs.SpellMasterItemBondSpecializationFeature.ToString(),
+
+                    // free ability
                     FeatureRefs.FeatureWingsAngelSorcerer.ToString(),
                     FeatureRefs.BloodlineFeyFeyMagicFeature.ToString(),
+
+                    // level up animal
                     FeatureRefs.AnimalCompanionRank.ToString(),
-                    //FeatureSelectionRefs.BasicFeatSelection.ToString(),
+
+                    /*
                     FeatureSelectionRefs.BasicFeatSelection.ToString(),
                     FeatureSelectionRefs.WizardFeatSelection.ToString()
                     //FeatureSelectionRefs.MythicFeatSelection.ToString()
                 //Cleric15
+                    */
+                    HD
                 )
                 .AddToAddFeatures(16,
-                    HD,
-                    Feats.SuperDodge.MentalAcuity4Feat,
+                    // alchemist
+                    //FeatureSelectionRefs.DiscoverySelection.ToString(),
+
+                    // vivisectionists
                     FeatureSelectionRefs.VivsectionistDiscoverySelection.ToString(),
+
+                    // arcanist
+
+                    // barbarian
+                    //FeatureSelectionRefs.RagePowerSelection.ToString(),
+                    //FeatureRefs.DamageReduction.ToString(),
+
+                    // invulnerable rager
                     FeatureRefs.InvulnerableRagerDamageReduction.ToString(),
+
+                    // bard
+
+                    // cavalier
+
+                    // fighter
+                    FeatureSelectionRefs.FighterFeatSelection.ToString(),
+
+                    // magus
                     FeatureRefs.Counterstrike.ToString(),
-                    FeatureRefs.UniversalistSchoolMaximizeFeature.ToString(),
+
+                    // rogue
+                    FeatureSelectionRefs.RogueTalentSelection.ToString(),
+
+                    // wizard
+
+                    // free ability
+                    //FeatureRefs.UniversalistSchoolMaximizeFeature.ToString(),
+
+                    // self created feat
+                    Feats.SuperDodge.MentalAcuity4Feat,
+
+                    // level up animal
                     FeatureRefs.AnimalCompanionRank.ToString(),
-                    //FeatureSelectionRefs.BasicFeatSelection.ToString(),
-                    //FeatureSelectionRefs.BasicFeatSelection.ToString(),
-                    //FeatureSelectionRefs.BasicFeatSelection.ToString(),
+
+                    /*
                     FeatureSelectionRefs.FighterFeatSelection.ToString(),
                     FeatureSelectionRefs.RogueTalentSelection.ToString()
                     //FeatureSelectionRefs.MythicFeatSelection.ToString()
                 //Cleric16
+                    */
+                    HD
                 )
                 .AddToAddFeatures(17,
-                    HD,
-                   //FeatureSelectionRefs.WizardFeatSelection.ToString(),
-                   //FeatureSelectionRefs.FighterFeatSelection.ToString(),
-                   //FeatureSelectionRefs.WeaponTrainingSelection.ToString(),
-                    FeatureRefs.SneakAttack.ToString(),
+                    // alchemist
+                    //FeatureRefs.AlchemistBombsFeature.ToString(),
+
+                    // vivisectionists
+                    //FeatureRefs.SneakAttack.ToString(),
+
+                    //arcanists
+                    //FeatureSelectionRefs.ArcanistExploitSelection.ToString(),
+
+                    // barbarian
+                    //FeatureRefs.TirelessRage.ToString(),
+
+                    // bard
+                    //FeatureRefs.InspireCourageFeature.ToString(),
+
+                    // cavalier
+                    //FeatureSelectionRefs.CavalierTacticianFeatSelection.ToString(),
+
+                    // fighter
                     FeatureSelectionRefs.WeaponTrainingSelection.ToString(),
                     FeatureSelectionRefs.WeaponTrainingRankUpSelection.ToString(),
-                    FeatureRefs.ArcaneWeaponPlus5.ToString(),
+
+                    // magus
+                    FeatureSelectionRefs.MagusFeatSelection.ToString(),
+                    //FeatureRefs.ArcaneWeaponPlus5.ToString(),
+
+                    // armored battlemage
+                    FeatureRefs.ArcaneArmorEnchantPlus5.ToString(),
+
+                    // rogue
+                    FeatureRefs.SneakAttack.ToString(),
+
+                    // wizard
+
+                    // level up animal
                     FeatureRefs.AnimalCompanionRank.ToString(),
-                    //FeatureSelectionRefs.BasicFeatSelection.ToString(),
-                    FeatureSelectionRefs.BasicFeatSelection.ToString()
+                    /*
                     //FeatureSelectionRefs.MythicFeatSelection.ToString()
-                //FeatureRefs.ArcaneWeaponPlus5.ToString(),
-                //FeatureRefs.ArcaneArmorEnchantPlus5.ToString()
                 //Cleric17
+                    */
+                    HD
                 )
                 .AddToAddFeatures(18,
-                    HD,
+                    // alchemist
+                    //FeatureSelectionRefs.DiscoverySelection.ToString(),
+
+                    // vivisectionists
                     FeatureSelectionRefs.VivsectionistDiscoverySelection.ToString(),
-                    FeatureRefs.InvulnerableRagerDamageReduction.ToString(),
+
+                    // barbarian
+                    //FeatureSelectionRefs.RagePowerSelection.ToString(),
+                    //FeatureRefs.DangerSenseBarbarian.ToString(),
+
+                    // armored hulk
                     FeatureRefs.ArmoredHulkResilienceOfSteel.ToString(),
+
+                    // invulnerable rager
+                    FeatureRefs.InvulnerableRagerDamageReduction.ToString(),
+
+                    // bard
+                    FeatureSelectionRefs.BardTalentSelection_0.ToString(),
+
+                    // cavalier
+                    FeatureSelectionRefs.CavalierBonusFeatSelection.ToString(),
+
+                    // fighter
+                    FeatureSelectionRefs.FighterFeatSelection.ToString(),
+                    FeatureRefs.Bravery.ToString(),
+
+                    // magus
+                    FeatureSelectionRefs.MagusArcanaSelection.ToString(),
+
+                    // armored battlemage
+                    //FeatureRefs.ArmorTraining.ToString(),
+
+                    // rogue
+                    FeatureSelectionRefs.RogueTalentSelection.ToString(),
+                    //FeatureRefs.DangerSenseRogue.ToString(),
+
+                    // wizard
+
+                    // Simulate gaining 2 extra arcane pool upon reaching this level
+                    FeatureRefs.ExtraArcanePool.ToString(),
+
+                    // level up animal
                     FeatureRefs.AnimalCompanionRank.ToString(),
-                    //FeatureSelectionRefs.BasicFeatSelection.ToString(),
-                    //FeatureSelectionRefs.BasicFeatSelection.ToString(),
+                    /*
                     FeatureSelectionRefs.FighterFeatSelection.ToString(),
                     FeatureSelectionRefs.RogueTalentSelection.ToString()
                     //FeatureSelectionRefs.MythicFeatSelection.ToString()
                 //Cleric18
+                    */
+                    HD
                 )
                 .AddToAddFeatures(19,
-                    HD,
-                    Feats.SuperDodge.MentalAcuity5Feat,
-                    //FeatureRefs.EnlightenedPhilosopherRevelationMentalAcuity.ToString(),
-                    //FeatureSelectionRefs.WizardFeatSelection.ToString(),
+                    // alchemist
+                    //FeatureRefs.AlchemistBombsFeature.ToString(),
+
+                    // vivisectionists
+                    //FeatureRefs.SneakAttack.ToString(),
+
+                    //arcanists
+                    //FeatureSelectionRefs.ArcanistExploitSelection.ToString(),
+
+                    // barbarian
+                    //FeatureRefs.DamageReduction.ToString(),
+
+                    // bard
+                    //FeatureRefs.InspireCompetenceFeature.ToString(),
+
+                    // cavalier
+
+                    // fighter
                     FeatureRefs.ArmorMastery.ToString(),
-                    FeatureRefs.SneakAttack.ToString(),
-                    FeatureRefs.TowerShieldTraining.ToString(),
+
+                    // magus
+                    //FeatureRefs.GreaterSpellAccess.ToString(),
+
+                    // sword saint
                     FeatureRefs.SwordSaintPerfectReflexes.ToString(),
+
+                    // rogue
+                    FeatureRefs.SneakAttack.ToString(),
+                    FeatureSelectionRefs.FinesseTrainingSelection.ToString(),
+
+                    // wizard
+
+
+                    // self created feats
+                    Feats.SuperDodge.MentalAcuity5Feat,
+
+                    // level up animal
                     FeatureRefs.AnimalCompanionRank.ToString(),
-                    //FeatureSelectionRefs.BasicFeatSelection.ToString(),
-                    FeatureSelectionRefs.BasicFeatSelection.ToString()
+
+                    /*
                     //FeatureSelectionRefs.MythicFeatSelection.ToString()
                 //Cleric19
+                    */
+                    HD
                 )
                 .AddToAddFeatures(20,
-                    HD,
-                    FeatureRefs.InvulnerableRagerDamageReduction.ToString(),
-                    FeatureRefs.AwakenedIntellect.ToString(),
+                    // alchemist
                     FeatureSelectionRefs.GrandDiscoverySelection.ToString(),
+                    //FeatureSelectionRefs.DiscoverySelection.ToString(),
+                    //FeatureSelectionRefs.DiscoverySelection.ToString(),
+
+                    // vivisectionists
+                    // addition GrandDiscovery for this archetype
+                    FeatureSelectionRefs.GrandDiscoverySelection.ToString(),
+
+                    //arcanists
+                    //FeatureRefs.ArcanistMagicalSupremacy.ToString(),
+
+                    // brown fur transmuter
+                    // only useful feature is the extend spell as change and share is not useable 
+                    FeatureRefs.TransmutationSupremacy.ToString(),
+
+                    // barbarian
+                    //FeatureSelectionRefs.RagePowerSelection.ToString(),
+                    //FeatureRefs.MightyRage.ToString(),
+
+                    // invulnerable rager
+                    FeatureRefs.InvulnerableRagerDamageReduction.ToString(),
+
+                    // bard
+                    //FeatureRefs.DeadlyPerformanceFeature.ToString(),
+
+                    // cavalier
                     FeatureRefs.CavalierSupremeCharge.ToString(),
+
+                    // fighter
+                    FeatureSelectionRefs.FighterFeatSelection.ToString(),
                     FeatureSelectionRefs.WeaponMasterySelection.ToString(),
+
+                    // defender of the hearth
+                    FeatureRefs.DefenderGiftFeature.ToString(),
+
+                    // magus
+                    FeatureRefs.TrueMagusFeature.ToString(),
+
+                    // sword saint
                     FeatureRefs.SwordSaintWeaponMastery.ToString(),
-                    FeatureRefs.TrueMutagen.ToString(),
-                    FeatureRefs.MasterStrike.ToString(),
-                    FeatureRefs.SpellMasterItemBondSpecializationFeature.ToString(),
+
+                    // rogue
+                    FeatureSelectionRefs.RogueTalentSelection.ToString(),
+                    //FeatureRefs.MasterStrike.ToString(),
+
+                    // wizard
+                    FeatureSelectionRefs.WizardFeatSelection.ToString(),
+
+                    // spell master
+                    //FeatureRefs.SpellMasterItemBondSpecializationFeature.ToString(),
+
+                    // free ability
                     //FeatureRefs.BloodlineDraconicBronzePowerOfWyrms.ToString(),
                     //FeatureRefs.BloodlineDraconicCopperPowerOfWyrms.ToString(),
                     //FeatureRefs.BloodlineDraconicGoldPowerOfWyrms.ToString(),
@@ -941,12 +1715,15 @@ namespace AssaultMage.Archetypes
                     FeatureRefs.BloodlineAbyssalDemonicMight.ToString(),
                     FeatureRefs.BloodlineDraconicGoldPowerOfWyrms.ToString(),
                     FeatureRefs.BloodlineElementalWaterElementalBodyFeature.ToString(),
-                    FeatureRefs.UniversalistSchoolQuickenFeature.ToString(),
-                    FeatureRefs.TransmutationSupremacy.ToString(),
-                    FeatureRefs.DefenderGiftFeature.ToString(),
+                    //FeatureRefs.UniversalistSchoolQuickenFeature.ToString(),
                     FeatureRefs.DrunkenCapstoneFeature.ToString(),
                     FeatureRefs.SplitTimelineFeature.ToString(),
+
+
+                    // level up animal
                     FeatureRefs.AnimalCompanionRank.ToString(),
+
+                    /*
                     //FeatureSelectionRefs.BasicFeatSelection.ToString(),
                     //FeatureSelectionRefs.BasicFeatSelection.ToString(),
                     FeatureSelectionRefs.FighterFeatSelection.ToString(),
@@ -954,6 +1731,8 @@ namespace AssaultMage.Archetypes
                     FeatureSelectionRefs.WizardFeatSelection.ToString()
                     //FeatureSelectionRefs.MythicFeatSelection.ToString()
                 //Cleric20
+                    */
+                    HD
                 )
                 .Configure();
                 
@@ -993,6 +1772,11 @@ namespace AssaultMage.Archetypes
                 .Configure();
 
             FeatureConfigurator.For(Feats.SuperDodge.MentalAcuity5Feat)
+                .SetReapplyOnLevelUp(true)
+                .AddPrerequisiteArchetypeLevel(AssaultMageArchetype, BaseClass, true, GroupType.All, false, null, 19)
+                .Configure();
+
+            FeatureConfigurator.For(Feats.SuperDodge.AddArcanePoolFeat)
                 .SetReapplyOnLevelUp(true)
                 .AddPrerequisiteArchetypeLevel(AssaultMageArchetype, BaseClass, true, GroupType.All, false, null, 19)
                 .Configure();

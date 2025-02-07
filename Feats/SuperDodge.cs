@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AssaultMage.Archetypes;
 using BlueprintCore.Actions.Builder;
 using BlueprintCore.Actions.Builder.BasicEx;
 using BlueprintCore.Actions.Builder.ContextEx;
@@ -105,6 +106,13 @@ namespace AssaultMage.Feats
             private static readonly string MentalAcuity5Description = "MentalAcuity5.Description";
             private static readonly string MentalAcuity5Icon = null;
             internal static BlueprintFeature MentalAcuity5Feat;
+
+            private static readonly string AddArcanePoolFeatName = "AddArcanePool";
+            internal static readonly string AddArcanePoolFeatGuid = "f7b3cc69-2753-497a-aeb1-97826be31788";
+            private static readonly string AddArcanePoolDisplayName = "AddArcanePool.Name";
+            private static readonly string AddArcanePoolDescription = "AddArcanePool.Description";
+            private static readonly string AddArcanePoolIcon = null;
+            internal static BlueprintFeature AddArcanePoolFeat;
 
 
         public static void Configure()
@@ -329,6 +337,23 @@ namespace AssaultMage.Feats
                     .AddBuffSkillBonus(StatType.Intelligence, 5, ModifierDescriptor.Inherent)
                     .AddRecalculateOnStatChange(null, BlueprintCore.Blueprints.CustomConfigurators.ComponentMerge.Skip, StatType.Intelligence, false)
                     .Configure(delayed: true);
+
+            AddArcanePoolFeat = FeatureConfigurator.New(AddArcanePoolFeatName, AddArcanePoolFeatGuid, FeatureGroup.Feat)
+                    .SetDisplayName(AddArcanePoolDisplayName)
+                    .SetDescription(AddArcanePoolDescription)
+                    //.SetIcon(Icon)
+                    .AddFeatureTagsComponent(FeatureTag.ClassSpecific)
+                    .SetIsClassFeature(true)
+                    .SetHideInUI(false)
+                    .SetHideInCharacterSheetAndLevelUp(false)
+                    .SetHideNotAvailibleInUI(false)
+                    .RemoveFromGroups(FeatureGroup.Feat)
+                    //.AddIncreaseResourcesByClass(AssaultMage.Archetypes.AssaultMage.AssaultMageArchetype, 100, null, null, BlueprintCore.Blueprints.CustomConfigurators.ComponentMerge.Replace, AbilityResourceRefs.ArcanePoolResourse.Reference.Get() )
+                    //.AddAbilityResources(100, AbilityResourceRefs.ArcanePoolResourse.Reference.GetBlueprint(), true, true, false)
+                    //.AddIncreaseResourceAmount(AbilityResourceRefs.ArcanePoolResourse.ToString(), 100)
+                    //.AddIncreaseResourceAmountBySharedValue(false, AbilityResourceRefs.ArcanePoolResourse.Reference.ToString(), 100)
+                    .Configure(delayed: false);
+
         }
     
 

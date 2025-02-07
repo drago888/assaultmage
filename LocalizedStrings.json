@@ -112,6 +112,18 @@
   },
 
   {
+    "Key": "AddArcanePool.Name",
+    "ProcessTemplates": false,
+    "enGB": "Add 1 to Arcane Pool"
+  },
+
+  {
+    "Key": "AddArcanePool.Description",
+    "enGB": "Add 1 to Arcane Pool"
+  },
+
+
+  {
     "Key": "AssaultMage.Spellbook",
     "ProcessTemplates": false,
     "enGB": "The assault mage spellbook."
