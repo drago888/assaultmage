@@ -488,6 +488,7 @@ namespace AssaultMage.Archetypes
 
                     // school
                     //FeatureRefs.UniversalistSchoolBaseFeature.ToString(),
+                    ProgressionRefs.SpecialisationSchoolUniversalistProgression.ToString(),
 
                     // dragon disciple
                     FeatureRefs.DragonDiscipleNaturalArmor.ToString(),
