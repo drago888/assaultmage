@@ -378,7 +378,7 @@ namespace AssaultMage.Archetypes
                 .SetRecommendedAttributes(RecommendedStats)
                 .SetOverrideAttributeRecommendations(true)
                 .SetAddSkillPoints(4)
-                .Configure();
+                .Configure(delayed: true);
             
             ArchetypeConfigurator.For(AssaultMageArchetype)
                 .AddToAddFeatures(1,
@@ -488,7 +488,7 @@ namespace AssaultMage.Archetypes
 
                     // school
                     //FeatureRefs.UniversalistSchoolBaseFeature.ToString(),
-                    ProgressionRefs.SpecialisationSchoolUniversalistProgression.ToString(),
+                    //ProgressionRefs.SpecialisationSchoolUniversalistProgression.ToString(),
 
                     // dragon disciple
                     FeatureRefs.DragonDiscipleNaturalArmor.ToString(),

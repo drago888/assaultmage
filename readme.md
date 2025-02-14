@@ -27,4 +27,6 @@ See <a href="https://wittlewolfie.github.io/WW-Blueprint-Core/articles/intro.htm
 If need to recreate the assets bundle, add in some icons for the below location
 	a. assets/icons/magicarmor.png
 	b. assets/icons/armoredmage.jpg
+
+As of 14/2/2025, WW Blueprint core have some issues with new spells introduced in DLC not appearing in spell selection (eg wizards), thus abandon it atm
 	
