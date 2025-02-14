@@ -144,7 +144,7 @@ namespace AssaultMage.Feats
 
 
             var BuffAction = ActionsBuilder.New()
-                            .CastSpell(AbilityRefs.ShieldOfFaith.Reference.GetBlueprint(), true, false, false, true, false, null, null, null, false, false, false)
+                            /*.CastSpell(AbilityRefs.ShieldOfFaith.Reference.GetBlueprint(), true, false, false, true, false, null, null, null, false, false, false)
                             .CastSpell(AbilityRefs.HeroismGreater.Reference.GetBlueprint(), true, false, false, true, false, null, null, null, false, false, false)
                             .CastSpell(AbilityRefs.Barkskin.Reference.GetBlueprint(), true, false, false, true, false, null, null, null, false, false, false)
                             //.CastSpell(AbilityRefs.MagicalVestment.Reference.GetBlueprint(), true, false, false, true, false, null, null, null, false, false, false)
@@ -168,7 +168,31 @@ namespace AssaultMage.Feats
                             .ApplyBuffPermanent(BuffRefs.TrueSeeingBuff.Reference.GetBlueprint(), true, false, true, false, null, null, true)
                             .ApplyBuffPermanent(BuffRefs.LuckDomainBaseBuff.Reference.GetBlueprint(), true, false, true, false, null, null, true)
                             .ApplyBuffPermanent(BuffRefs.FreedomOfMovementBuff.Reference.GetBlueprint(), true, false, true, false, null, null, true)
-                            .ApplyBuffPermanent(BuffRefs.NobilityDomainGreaterBuff.Reference.GetBlueprint(), true, false, false, false, null, null, true);
+                            .ApplyBuffPermanent(BuffRefs.NobilityDomainGreaterBuff.Reference.GetBlueprint(), true, false, false, false, null, null, true)*/
+                            //.Build();
+
+                            .ApplyBuffPermanent(BuffRefs.LuckDomainBaseBuff.Reference.GetBlueprint(), true, false, true, false, null, null, true)
+                            .ApplyBuffPermanent(BuffRefs.GuidanceBuff.Reference.GetBlueprint(), true, false, true, false, null, null, true)
+                            .BuffActionAddStatBonus(ModifierDescriptor.UntypedStackable, StatType.AC, 20)
+                            .BuffActionAddStatBonus(ModifierDescriptor.UntypedStackable, StatType.AdditionalAttackBonus, 20)
+                            .BuffActionAddStatBonus(ModifierDescriptor.UntypedStackable, StatType.AdditionalCMB, 20)
+                            .BuffActionAddStatBonus(ModifierDescriptor.UntypedStackable, StatType.AdditionalCMD, 20)
+                            .BuffActionAddStatBonus(ModifierDescriptor.UntypedStackable, StatType.SkillKnowledgeArcana, 20)
+                            .BuffActionAddStatBonus(ModifierDescriptor.UntypedStackable, StatType.SkillKnowledgeWorld, 20)
+                            .BuffActionAddStatBonus(ModifierDescriptor.UntypedStackable, StatType.SkillLoreNature, 20)
+                            .BuffActionAddStatBonus(ModifierDescriptor.UntypedStackable, StatType.SkillLoreReligion, 20)
+                            .BuffActionAddStatBonus(ModifierDescriptor.UntypedStackable, StatType.SkillAthletics, 20)
+                            .BuffActionAddStatBonus(ModifierDescriptor.UntypedStackable, StatType.SkillMobility, 20)
+                            .BuffActionAddStatBonus(ModifierDescriptor.UntypedStackable, StatType.SkillPerception, 20)
+                            .BuffActionAddStatBonus(ModifierDescriptor.UntypedStackable, StatType.SkillPersuasion, 20)
+                            .BuffActionAddStatBonus(ModifierDescriptor.UntypedStackable, StatType.SkillStealth, 20)
+                            .BuffActionAddStatBonus(ModifierDescriptor.UntypedStackable, StatType.SkillThievery, 20)
+                            .BuffActionAddStatBonus(ModifierDescriptor.UntypedStackable, StatType.SkillUseMagicDevice, 20)
+                            .BuffActionAddStatBonus(ModifierDescriptor.UntypedStackable, StatType.SaveFortitude, 20)
+                            .BuffActionAddStatBonus(ModifierDescriptor.UntypedStackable, StatType.SaveWill, 20)
+                            .BuffActionAddStatBonus(ModifierDescriptor.UntypedStackable, StatType.SaveReflex, 20);
+                            
+                     
 
             ConUltimateBuff = BuffConfigurator.New(ConBuffName, ConBuffGuid)
                                     .SetDisplayName(ConBuffDisplayName)
@@ -176,7 +200,7 @@ namespace AssaultMage.Feats
                                     .SetIcon(ConBuffIcon)
                                     .SetFlags(BlueprintBuff.Flags.HiddenInUi)
                                     .AddBuffActions(BuffAction)
-                                    .AddTimerContextActions(BuffAction, 120, null, true)
+                                    //.AddTimerContextActions(BuffAction, 120, null, true)
                                     .Configure();
 
             UltimateBuff = BuffConfigurator.New(BuffName, BuffGuid)
@@ -344,14 +368,12 @@ namespace AssaultMage.Feats
                     //.SetIcon(Icon)
                     .AddFeatureTagsComponent(FeatureTag.ClassSpecific)
                     .SetIsClassFeature(true)
-                    .SetHideInUI(false)
-                    .SetHideInCharacterSheetAndLevelUp(false)
-                    .SetHideNotAvailibleInUI(false)
+                    .SetHideInUI(true)
+                    .SetHideInCharacterSheetAndLevelUp(true)
+                    .SetHideNotAvailibleInUI(true)
                     .RemoveFromGroups(FeatureGroup.Feat)
-                    //.AddIncreaseResourcesByClass(AssaultMage.Archetypes.AssaultMage.AssaultMageArchetype, 100, null, null, BlueprintCore.Blueprints.CustomConfigurators.ComponentMerge.Replace, AbilityResourceRefs.ArcanePoolResourse.Reference.Get() )
-                    //.AddAbilityResources(100, AbilityResourceRefs.ArcanePoolResourse.Reference.GetBlueprint(), true, true, false)
-                    //.AddIncreaseResourceAmount(AbilityResourceRefs.ArcanePoolResourse.ToString(), 100)
-                    //.AddIncreaseResourceAmountBySharedValue(false, AbilityResourceRefs.ArcanePoolResourse.Reference.ToString(), 100)
+                    .AddIncreaseResourceAmount(AbilityResourceRefs.ArcanePoolResourse.ToString(), 1)
+                    .AddRecalculateOnStatChange(null, BlueprintCore.Blueprints.CustomConfigurators.ComponentMerge.Skip, StatType.Intelligence, false)
                     .Configure(delayed: false);
 
         }

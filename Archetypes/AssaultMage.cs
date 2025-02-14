@@ -31,6 +31,8 @@ using Kingmaker.UI.MVVM._VM.ServiceWindows.CharacterInfo.Sections.Progression.Ma
 using AssaultMage.Feats;
 using Kingmaker.UnitLogic.Buffs.Components;
 using Kingmaker.Items.Slots;
+using Kingmaker.Designers.Mechanics.Buffs;
+using System.ComponentModel;
 
 namespace AssaultMage.Archetypes
 {
@@ -482,11 +484,13 @@ namespace AssaultMage.Archetypes
                     // 0933849149cfc9244ac05d6a5b57fd80 - specialist school progression
                     // Item bond is useless as replaced by cleric healing spell conversion
                     //FeatureRefs.ItemBondFeature.ToString(),
-                    FeatureRefs.SpellMasterFocusedSpellsFeature.ToString(),
+                    //FeatureRefs.SpellMasterFocusedSpellsFeature.ToString(),
 
                     // school
                     //FeatureRefs.UniversalistSchoolBaseFeature.ToString(),
 
+                    // dragon disciple
+                    FeatureRefs.DragonDiscipleNaturalArmor.ToString(),
 
                     // free feats
                     FeatureRefs.WitchHexIceplantFeature.ToString(),
@@ -544,8 +548,8 @@ namespace AssaultMage.Archetypes
 
                     // self created feats
                     //Feats.ArmorAttune.ArmorAttuneFeat,
-                    Feats.SuperDodge.SuperDodgeFeat,
-                    Feats.SuperDodge.ShiftingProjectionFeat,
+                    /*Feats.SuperDodge.SuperDodgeFeat,
+                    Feats.SuperDodge.ShiftingProjectionFeat,*/
 
                     // deity and domains
                     FeatureSelectionRefs.DeitySelection.ToString(),
@@ -752,6 +756,9 @@ namespace AssaultMage.Archetypes
                     FeatureSelectionRefs.RogueTalentSelection.ToString(),
 
                     // wizard
+
+                    // dragon disciple
+                    FeatureRefs.DragonDiscipleStrength.ToString(),
                     
                     // free feats
                     FeatureRefs.ImprovedUncannyDodgeTalent.ToString(),
@@ -860,6 +867,13 @@ namespace AssaultMage.Archetypes
                     //FeatureRefs.UncannyDodgeChecker.ToString(),
 
                     // wizard
+
+                    // dragon disciple
+                    FeatureRefs.DragonDiscipleStrength.ToString(),
+                    FeatureRefs.DragonDiscipleNaturalArmor.ToString(),
+
+                    // self created feat
+                    Feats.SuperDodge.AddArcanePoolFeat,
 
                     // level up animal
                     FeatureRefs.AnimalCompanionRank.ToString(),
@@ -975,8 +989,11 @@ namespace AssaultMage.Archetypes
 
                     // wizard
 
-                    // Simulate gaining 2 extra arcane pool upon reaching this level
-                    FeatureRefs.ExtraArcanePool.ToString(),
+                    // dragon disciple
+                    FeatureRefs.DragonDiscipleConstitution.ToString(),
+
+                    // self created feat
+                    Feats.SuperDodge.AddArcanePoolFeat,
 
                     // level up animal
                     FeatureRefs.AnimalCompanionRank.ToString(),
@@ -1020,6 +1037,9 @@ namespace AssaultMage.Archetypes
                     FeatureRefs.SneakAttack.ToString(),
 
                     // wizard
+
+                    // dragon disciple
+                    FeatureRefs.DragonDiscipleNaturalArmor.ToString(),
 
                     // self created feats
                     Feats.SuperDodge.MentalAcuity1Feat,
@@ -1070,9 +1090,14 @@ namespace AssaultMage.Archetypes
 
                     // wizard
 
+                    // dragon disciple
+                    FeatureRefs.DragonDiscipleIntelligence.ToString(),
+
                     // free ability
                     //FeatureRefs.UniversalistSchoolExtendReachFeature.ToString(),
 
+                    // self created feat
+                    Feats.SuperDodge.AddArcanePoolFeat,
 
                     // level up animal
                     FeatureRefs.AnimalCompanionRank.ToString(),
@@ -1187,8 +1212,8 @@ namespace AssaultMage.Archetypes
                     // spell master
                     //FeatureRefs.SpellMasterItemBondSpecializationFeature.ToString(),
 
-                    // Simulate gaining 2 extra arcane pool upon reaching this level
-                    FeatureRefs.ExtraArcanePool.ToString(),
+                    // self created feat
+                    Feats.SuperDodge.AddArcanePoolFeat,
 
                     // self created ability
                     Feats.SuperDodge.MentalAcuity2Feat,
@@ -1299,6 +1324,8 @@ namespace AssaultMage.Archetypes
                     // free ability
                     //FeatureRefs.UniversalistSchoolEmpowerFeature.ToString(),
 
+                    // self created feat
+                    Feats.SuperDodge.AddArcanePoolFeat,
 
                     // level up animal
                     FeatureRefs.AnimalCompanionRank.ToString(),
@@ -1395,8 +1422,8 @@ namespace AssaultMage.Archetypes
 
                     // wizard
 
-                    // Simulate gaining 2 extra arcane pool upon reaching this level
-                    FeatureRefs.ExtraArcanePool.ToString(),
+                    // self created feat
+                    Feats.SuperDodge.AddArcanePoolFeat,
 
                     // level up animal
                     FeatureRefs.AnimalCompanionRank.ToString(),
@@ -1499,6 +1526,7 @@ namespace AssaultMage.Archetypes
 
                     // self created feat
                     Feats.SuperDodge.MentalAcuity4Feat,
+                    Feats.SuperDodge.AddArcanePoolFeat,
 
                     // level up animal
                     FeatureRefs.AnimalCompanionRank.ToString(),
@@ -1593,8 +1621,8 @@ namespace AssaultMage.Archetypes
 
                     // wizard
 
-                    // Simulate gaining 2 extra arcane pool upon reaching this level
-                    FeatureRefs.ExtraArcanePool.ToString(),
+                    // self created feat
+                    Feats.SuperDodge.AddArcanePoolFeat,
 
                     // level up animal
                     FeatureRefs.AnimalCompanionRank.ToString(),
@@ -1719,6 +1747,8 @@ namespace AssaultMage.Archetypes
                     FeatureRefs.DrunkenCapstoneFeature.ToString(),
                     FeatureRefs.SplitTimelineFeature.ToString(),
 
+                    // self created feat
+                    Feats.SuperDodge.AddArcanePoolFeat,
 
                     // level up animal
                     FeatureRefs.AnimalCompanionRank.ToString(),
@@ -1735,7 +1765,19 @@ namespace AssaultMage.Archetypes
                     HD
                 )
                 .Configure();
-                
+
+
+            // existing feats
+            List<Blueprint<BlueprintCharacterClassReference>> AddToMagusClasses = new List<Blueprint<BlueprintCharacterClassReference>>();
+            //FakeClasses.Add(CharacterClassRefs.MagusClass.Reference.Get());
+            FakeClasses.Add(CharacterClassRefs.ClericClass.Reference.Get());
+
+            FeatureConfigurator.New("Test", Cleric20Guid)
+                .CopyFrom(FeatureRefs.SwordSaintCannyDefense)
+                .Configure();
+
+
+            // new feats
 
             /*FeatureConfigurator.For(Feats.ArmorAttune.ArmorAttuneFeat)
                 .SetReapplyOnLevelUp(true)
@@ -1778,8 +1820,11 @@ namespace AssaultMage.Archetypes
 
             FeatureConfigurator.For(Feats.SuperDodge.AddArcanePoolFeat)
                 .SetReapplyOnLevelUp(true)
-                .AddPrerequisiteArchetypeLevel(AssaultMageArchetype, BaseClass, true, GroupType.All, false, null, 19)
+                .AddPrerequisiteArchetypeLevel(AssaultMageArchetype, BaseClass, true, GroupType.All, false, null, 1)
                 .Configure();
+
+
+                
         }
 
         private static void SetSpellList()
