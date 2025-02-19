@@ -100,7 +100,7 @@ namespace AssaultMage
         static class StartGameLoader_Patch
         {
             private static bool Initialized = false;
-
+            
             [HarmonyPatch(nameof(StartGameLoader.LoadPackTOC)), HarmonyPostfix]
             static void LoadPackTOC()
             {
@@ -122,7 +122,7 @@ namespace AssaultMage
             }
         }
 
-    
+    /*
   
         [HarmonyPatch(typeof(CharGenClassPhaseVM))]
         public static class CharGenClassPhaseVM_Patch
@@ -459,7 +459,7 @@ namespace AssaultMage
 
                 return true;
             }
-        }
+        }*/
         
 
         public static void AddChanges()
@@ -467,6 +467,8 @@ namespace AssaultMage
             ArmorAttune.Configure();
             SuperDodge.Configure();
             AssaultMage.Archetypes.AssaultMage.Configure();
+
+            /*
             BlueprintFeatureSelectMythicSpellbook AngelIncorporateSpellbook;
             BlueprintFeatureSelectMythicSpellbook LichIncorporateSpellbook;
             BlueprintSpellbookReference AssaultMageSpellBookReference;
@@ -515,7 +517,7 @@ namespace AssaultMage
             {
                 Main.Logger.Info("Lich Spellbook not found");
             }
-
+            */
         }
     }
 }
