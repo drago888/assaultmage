@@ -468,7 +468,6 @@ namespace AssaultMage
             SuperDodge.Configure();
             AssaultMage.Archetypes.AssaultMage.Configure();
 
-            /*
             BlueprintFeatureSelectMythicSpellbook AngelIncorporateSpellbook;
             BlueprintFeatureSelectMythicSpellbook LichIncorporateSpellbook;
             BlueprintSpellbookReference AssaultMageSpellBookReference;
@@ -517,7 +516,6 @@ namespace AssaultMage
             {
                 Main.Logger.Info("Lich Spellbook not found");
             }
-            */
         }
     }
 }
