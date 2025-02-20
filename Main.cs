@@ -481,11 +481,13 @@ namespace AssaultMage
             {
                 Main.Logger.Info("Angel Spellbook found");
 
+                AngelIncorporateSpellbook.m_AllowedSpellbooks = AngelIncorporateSpellbook.m_AllowedSpellbooks.AddToArray(SpellbookRefs.WizardSpellbook.Reference.Get().ToReference<BlueprintSpellbookReference>());
+
                 if (AssaultMageSpellBookReference != null)
                 {
                     Main.Logger.Info("Assault Mage Spellbook reference found");
                     AngelIncorporateSpellbook.m_AllowedSpellbooks = AngelIncorporateSpellbook.m_AllowedSpellbooks.AddToArray(AssaultMageSpellBookReference);
-
+   
                     foreach (BlueprintSpellbookReference i in AngelIncorporateSpellbook.m_AllowedSpellbooks)
                     {
                         Main.Logger.Info("Spellbook allowed - " + i.GetBlueprint().name);

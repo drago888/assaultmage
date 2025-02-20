@@ -33,6 +33,7 @@ using Kingmaker.UnitLogic.Buffs.Components;
 using Kingmaker.Items.Slots;
 using Kingmaker.Designers.Mechanics.Buffs;
 using System.ComponentModel;
+using Kingmaker.Utility;
 
 namespace AssaultMage.Archetypes
 {
@@ -1837,251 +1838,225 @@ namespace AssaultMage.Archetypes
             BlueprintSpellsTable ClericSpellSlots = SpellsTableRefs.ClericSpellLevels.Reference.Get();
             BlueprintSpellList ClericSpellList = ClericSpellbook.SpellList;
 
+            List<BlueprintAbilityReference> SpellList = new List<BlueprintAbilityReference>();
+
+            // level 0
+            SpellLevelList zeroLevelSpells = new SpellLevelList(0);
+
+            zeroLevelSpells.m_Spells.AddRange(WizardSpellList.SpellsByLevel[0].SpellsRefs);
+            zeroLevelSpells.m_Spells.AddRange((ClericSpellList.SpellsByLevel[0].SpellsRefs)
+                            .Except(WizardSpellList.SpellsByLevel[0].SpellsRefs)
+                            .Except(WizardSpellList.SpellsByLevel[1].SpellsRefs)
+                            .Except(WizardSpellList.SpellsByLevel[2].SpellsRefs)
+                            .Except(WizardSpellList.SpellsByLevel[3].SpellsRefs)
+                            .Except(WizardSpellList.SpellsByLevel[4].SpellsRefs)
+                            .Except(WizardSpellList.SpellsByLevel[5].SpellsRefs)
+                            .Except(WizardSpellList.SpellsByLevel[6].SpellsRefs)
+                            .Except(WizardSpellList.SpellsByLevel[7].SpellsRefs)
+                            .Except(WizardSpellList.SpellsByLevel[8].SpellsRefs)
+                            .Except(WizardSpellList.SpellsByLevel[9].SpellsRefs)
+                            .Except(WizardSpellList.SpellsByLevel[10].SpellsRefs)
+                            .ToList()
+                            );
 
 
-            SpellLevelList zeroLevelSpells = new SpellLevelList(0)
-            {
-                m_Spells =
-                WizardSpellList.GetSpells(0)
-                  .Select(s => s.ToReference<BlueprintAbilityReference>())
-                  .ToList()
-            };
 
-            zeroLevelSpells.m_Spells.AddRange(
-                ClericSpellList.GetSpells(0)
-                    .Except(WizardSpellList.GetSpells(0))
-                    .Select(s => s.ToReference<BlueprintAbilityReference>())
-            );
 
-            SpellLevelList firstLevelSpells = new SpellLevelList(1)
-            {
-                m_Spells =
-                WizardSpellList.GetSpells(1)
-                  .Select(s => s.ToReference<BlueprintAbilityReference>())
-                  .ToList()
-            };
+            // level 1
+            SpellLevelList firstLevelSpells = new SpellLevelList(1);
 
-            firstLevelSpells.m_Spells.AddRange(
-                ClericSpellList.GetSpells(1)
-                    .Except(WizardSpellList.GetSpells(1))
-                    .Except(WizardSpellList.GetSpells(2))
-                    .Except(WizardSpellList.GetSpells(3))
-                    .Except(WizardSpellList.GetSpells(4))
-                    .Except(WizardSpellList.GetSpells(5))
-                    .Except(WizardSpellList.GetSpells(6))
-                    .Except(WizardSpellList.GetSpells(7))
-                    .Except(WizardSpellList.GetSpells(8))
-                    .Except(WizardSpellList.GetSpells(9))
-                    .Except(WizardSpellList.GetSpells(10))
-                    .Select(s => s.ToReference<BlueprintAbilityReference>())
-            );
+            firstLevelSpells.m_Spells.AddRange(WizardSpellList.SpellsByLevel[1].SpellsRefs);
+            firstLevelSpells.m_Spells.AddRange((ClericSpellList.SpellsByLevel[1].SpellsRefs)
+                            .Except(WizardSpellList.SpellsByLevel[0].SpellsRefs)
+                            .Except(WizardSpellList.SpellsByLevel[1].SpellsRefs)
+                            .Except(WizardSpellList.SpellsByLevel[2].SpellsRefs)
+                            .Except(WizardSpellList.SpellsByLevel[3].SpellsRefs)
+                            .Except(WizardSpellList.SpellsByLevel[4].SpellsRefs)
+                            .Except(WizardSpellList.SpellsByLevel[5].SpellsRefs)
+                            .Except(WizardSpellList.SpellsByLevel[6].SpellsRefs)
+                            .Except(WizardSpellList.SpellsByLevel[7].SpellsRefs)
+                            .Except(WizardSpellList.SpellsByLevel[8].SpellsRefs)
+                            .Except(WizardSpellList.SpellsByLevel[9].SpellsRefs)
+                            .Except(WizardSpellList.SpellsByLevel[10].SpellsRefs)
+                            .ToList()
+                            );
 
-            SpellLevelList secondLevelSpells = new SpellLevelList(2)
-            {
-                m_Spells =
-                WizardSpellList.GetSpells(2)
-                  .Select(s => s.ToReference<BlueprintAbilityReference>())
-                  .ToList()
-            };
+            // level 2
+            SpellLevelList secondLevelSpells = new SpellLevelList(2);
 
-            secondLevelSpells.m_Spells.AddRange(
-                ClericSpellList.GetSpells(2)
-                    .Except(WizardSpellList.GetSpells(1))
-                    .Except(WizardSpellList.GetSpells(2))
-                    .Except(WizardSpellList.GetSpells(3))
-                    .Except(WizardSpellList.GetSpells(4))
-                    .Except(WizardSpellList.GetSpells(5))
-                    .Except(WizardSpellList.GetSpells(6))
-                    .Except(WizardSpellList.GetSpells(7))
-                    .Except(WizardSpellList.GetSpells(8))
-                    .Except(WizardSpellList.GetSpells(9))
-                    .Except(WizardSpellList.GetSpells(10))
-                    .Select(s => s.ToReference<BlueprintAbilityReference>())
-            );
+            secondLevelSpells.m_Spells.AddRange(WizardSpellList.SpellsByLevel[2].SpellsRefs);
+            secondLevelSpells.m_Spells.AddRange((ClericSpellList.SpellsByLevel[2].SpellsRefs)
+                            .Except(WizardSpellList.SpellsByLevel[0].SpellsRefs)
+                            .Except(WizardSpellList.SpellsByLevel[1].SpellsRefs)
+                            .Except(WizardSpellList.SpellsByLevel[2].SpellsRefs)
+                            .Except(WizardSpellList.SpellsByLevel[3].SpellsRefs)
+                            .Except(WizardSpellList.SpellsByLevel[4].SpellsRefs)
+                            .Except(WizardSpellList.SpellsByLevel[5].SpellsRefs)
+                            .Except(WizardSpellList.SpellsByLevel[6].SpellsRefs)
+                            .Except(WizardSpellList.SpellsByLevel[7].SpellsRefs)
+                            .Except(WizardSpellList.SpellsByLevel[8].SpellsRefs)
+                            .Except(WizardSpellList.SpellsByLevel[9].SpellsRefs)
+                            .Except(WizardSpellList.SpellsByLevel[10].SpellsRefs)
+                            .ToList()
+                            );
 
-            SpellLevelList thirdLevelSpells = new SpellLevelList(3)
-            {
-                m_Spells =
-                WizardSpellList.GetSpells(3)
-                  .Select(s => s.ToReference<BlueprintAbilityReference>())
-                  .ToList()
-            };
+            // level 3
+            SpellLevelList thirdLevelSpells = new SpellLevelList(3);
 
-            thirdLevelSpells.m_Spells.AddRange(
-                ClericSpellList.GetSpells(3)
-                    .Except(WizardSpellList.GetSpells(1))
-                    .Except(WizardSpellList.GetSpells(2))
-                    .Except(WizardSpellList.GetSpells(3))
-                    .Except(WizardSpellList.GetSpells(4))
-                    .Except(WizardSpellList.GetSpells(5))
-                    .Except(WizardSpellList.GetSpells(6))
-                    .Except(WizardSpellList.GetSpells(7))
-                    .Except(WizardSpellList.GetSpells(8))
-                    .Except(WizardSpellList.GetSpells(9))
-                    .Except(WizardSpellList.GetSpells(10))
-                    .Select(s => s.ToReference<BlueprintAbilityReference>())
-            );
+            thirdLevelSpells.m_Spells.AddRange(WizardSpellList.SpellsByLevel[3].SpellsRefs);
+            thirdLevelSpells.m_Spells.AddRange((ClericSpellList.SpellsByLevel[3].SpellsRefs)
+                            .Except(WizardSpellList.SpellsByLevel[0].SpellsRefs)
+                            .Except(WizardSpellList.SpellsByLevel[1].SpellsRefs)
+                            .Except(WizardSpellList.SpellsByLevel[2].SpellsRefs)
+                            .Except(WizardSpellList.SpellsByLevel[3].SpellsRefs)
+                            .Except(WizardSpellList.SpellsByLevel[4].SpellsRefs)
+                            .Except(WizardSpellList.SpellsByLevel[5].SpellsRefs)
+                            .Except(WizardSpellList.SpellsByLevel[6].SpellsRefs)
+                            .Except(WizardSpellList.SpellsByLevel[7].SpellsRefs)
+                            .Except(WizardSpellList.SpellsByLevel[8].SpellsRefs)
+                            .Except(WizardSpellList.SpellsByLevel[9].SpellsRefs)
+                            .Except(WizardSpellList.SpellsByLevel[10].SpellsRefs)
+                            .ToList()
+                            );
 
-            SpellLevelList fourthLevelSpells = new SpellLevelList(4)
-            {
-                m_Spells =
-                WizardSpellList.GetSpells(4)
-                  .Select(s => s.ToReference<BlueprintAbilityReference>())
-                  .ToList()
-            };
+            // level 4
+            SpellLevelList fourthLevelSpells = new SpellLevelList(4);
 
-            fourthLevelSpells.m_Spells.AddRange(
-                ClericSpellList.GetSpells(4)
-                    .Except(WizardSpellList.GetSpells(1))
-                    .Except(WizardSpellList.GetSpells(2))
-                    .Except(WizardSpellList.GetSpells(3))
-                    .Except(WizardSpellList.GetSpells(4))
-                    .Except(WizardSpellList.GetSpells(5))
-                    .Except(WizardSpellList.GetSpells(6))
-                    .Except(WizardSpellList.GetSpells(7))
-                    .Except(WizardSpellList.GetSpells(8))
-                    .Except(WizardSpellList.GetSpells(9))
-                    .Except(WizardSpellList.GetSpells(10))
-                    .Select(s => s.ToReference<BlueprintAbilityReference>())
-            );
+            fourthLevelSpells.m_Spells.AddRange(WizardSpellList.SpellsByLevel[4].SpellsRefs);
+            fourthLevelSpells.m_Spells.AddRange((ClericSpellList.SpellsByLevel[4].SpellsRefs)
+                            .Except(WizardSpellList.SpellsByLevel[0].SpellsRefs)
+                            .Except(WizardSpellList.SpellsByLevel[1].SpellsRefs)
+                            .Except(WizardSpellList.SpellsByLevel[2].SpellsRefs)
+                            .Except(WizardSpellList.SpellsByLevel[3].SpellsRefs)
+                            .Except(WizardSpellList.SpellsByLevel[4].SpellsRefs)
+                            .Except(WizardSpellList.SpellsByLevel[5].SpellsRefs)
+                            .Except(WizardSpellList.SpellsByLevel[6].SpellsRefs)
+                            .Except(WizardSpellList.SpellsByLevel[7].SpellsRefs)
+                            .Except(WizardSpellList.SpellsByLevel[8].SpellsRefs)
+                            .Except(WizardSpellList.SpellsByLevel[9].SpellsRefs)
+                            .Except(WizardSpellList.SpellsByLevel[10].SpellsRefs)
+                            .ToList()
+                            );
 
-            SpellLevelList fifthLevelSpells = new SpellLevelList(5)
-            {
-                m_Spells =
-                WizardSpellList.GetSpells(5)
-                  .Select(s => s.ToReference<BlueprintAbilityReference>())
-                  .ToList()
-            };
 
-            fifthLevelSpells.m_Spells.AddRange(
-                ClericSpellList.GetSpells(5)
-                    .Except(WizardSpellList.GetSpells(1))
-                    .Except(WizardSpellList.GetSpells(2))
-                    .Except(WizardSpellList.GetSpells(3))
-                    .Except(WizardSpellList.GetSpells(4))
-                    .Except(WizardSpellList.GetSpells(5))
-                    .Except(WizardSpellList.GetSpells(6))
-                    .Except(WizardSpellList.GetSpells(7))
-                    .Except(WizardSpellList.GetSpells(8))
-                    .Except(WizardSpellList.GetSpells(9))
-                    .Except(WizardSpellList.GetSpells(10))
-                    .Select(s => s.ToReference<BlueprintAbilityReference>())
-            );
 
-            SpellLevelList sixthLevelSpells = new SpellLevelList(6)
-            {
-                m_Spells =
-                WizardSpellList.GetSpells(6)
-                  .Select(s => s.ToReference<BlueprintAbilityReference>())
-                  .ToList()
-            };
+            // level 5
+            SpellLevelList fifthLevelSpells = new SpellLevelList(5);
 
-            sixthLevelSpells.m_Spells.AddRange(
-                ClericSpellList.GetSpells(6)
-                    .Except(WizardSpellList.GetSpells(1))
-                    .Except(WizardSpellList.GetSpells(2))
-                    .Except(WizardSpellList.GetSpells(3))
-                    .Except(WizardSpellList.GetSpells(4))
-                    .Except(WizardSpellList.GetSpells(5))
-                    .Except(WizardSpellList.GetSpells(6))
-                    .Except(WizardSpellList.GetSpells(7))
-                    .Except(WizardSpellList.GetSpells(8))
-                    .Except(WizardSpellList.GetSpells(9))
-                    .Except(WizardSpellList.GetSpells(10))
-                    .Select(s => s.ToReference<BlueprintAbilityReference>())
-            );
+            fifthLevelSpells.m_Spells.AddRange(WizardSpellList.SpellsByLevel[5].SpellsRefs);
+            fifthLevelSpells.m_Spells.AddRange((ClericSpellList.SpellsByLevel[5].SpellsRefs)
+                            .Except(WizardSpellList.SpellsByLevel[0].SpellsRefs)
+                            .Except(WizardSpellList.SpellsByLevel[1].SpellsRefs)
+                            .Except(WizardSpellList.SpellsByLevel[2].SpellsRefs)
+                            .Except(WizardSpellList.SpellsByLevel[3].SpellsRefs)
+                            .Except(WizardSpellList.SpellsByLevel[4].SpellsRefs)
+                            .Except(WizardSpellList.SpellsByLevel[5].SpellsRefs)
+                            .Except(WizardSpellList.SpellsByLevel[6].SpellsRefs)
+                            .Except(WizardSpellList.SpellsByLevel[7].SpellsRefs)
+                            .Except(WizardSpellList.SpellsByLevel[8].SpellsRefs)
+                            .Except(WizardSpellList.SpellsByLevel[9].SpellsRefs)
+                            .Except(WizardSpellList.SpellsByLevel[10].SpellsRefs)
+                            .ToList()
+                            );
 
-            SpellLevelList seventhLevelSpells = new SpellLevelList(7)
-            {
-                m_Spells =
-                WizardSpellList.GetSpells(7)
-                  .Select(s => s.ToReference<BlueprintAbilityReference>())
-                  .ToList()
-            };
 
-            seventhLevelSpells.m_Spells.AddRange(
-                ClericSpellList.GetSpells(7)
-                    .Except(WizardSpellList.GetSpells(1))
-                    .Except(WizardSpellList.GetSpells(2))
-                    .Except(WizardSpellList.GetSpells(3))
-                    .Except(WizardSpellList.GetSpells(4))
-                    .Except(WizardSpellList.GetSpells(5))
-                    .Except(WizardSpellList.GetSpells(6))
-                    .Except(WizardSpellList.GetSpells(7))
-                    .Except(WizardSpellList.GetSpells(8))
-                    .Except(WizardSpellList.GetSpells(9))
-                    .Except(WizardSpellList.GetSpells(10))
-                    .Select(s => s.ToReference<BlueprintAbilityReference>())
-            );
+            // level 6
+            SpellLevelList sixthLevelSpells = new SpellLevelList(6);
 
-            SpellLevelList eighthLevelSpells = new SpellLevelList(8)
-            {
-                m_Spells =
-                WizardSpellList.GetSpells(8)
-                  .Select(s => s.ToReference<BlueprintAbilityReference>())
-                  .ToList()
-            };
+            sixthLevelSpells.m_Spells.AddRange(WizardSpellList.SpellsByLevel[6].SpellsRefs);
+            sixthLevelSpells.m_Spells.AddRange((ClericSpellList.SpellsByLevel[6].SpellsRefs)
+                            .Except(WizardSpellList.SpellsByLevel[0].SpellsRefs)
+                            .Except(WizardSpellList.SpellsByLevel[1].SpellsRefs)
+                            .Except(WizardSpellList.SpellsByLevel[2].SpellsRefs)
+                            .Except(WizardSpellList.SpellsByLevel[3].SpellsRefs)
+                            .Except(WizardSpellList.SpellsByLevel[4].SpellsRefs)
+                            .Except(WizardSpellList.SpellsByLevel[5].SpellsRefs)
+                            .Except(WizardSpellList.SpellsByLevel[6].SpellsRefs)
+                            .Except(WizardSpellList.SpellsByLevel[7].SpellsRefs)
+                            .Except(WizardSpellList.SpellsByLevel[8].SpellsRefs)
+                            .Except(WizardSpellList.SpellsByLevel[9].SpellsRefs)
+                            .Except(WizardSpellList.SpellsByLevel[10].SpellsRefs)
+                            .ToList()
+                            );
 
-            eighthLevelSpells.m_Spells.AddRange(
-                ClericSpellList.GetSpells(8)
-                    .Except(WizardSpellList.GetSpells(1))
-                    .Except(WizardSpellList.GetSpells(2))
-                    .Except(WizardSpellList.GetSpells(3))
-                    .Except(WizardSpellList.GetSpells(4))
-                    .Except(WizardSpellList.GetSpells(5))
-                    .Except(WizardSpellList.GetSpells(6))
-                    .Except(WizardSpellList.GetSpells(7))
-                    .Except(WizardSpellList.GetSpells(8))
-                    .Except(WizardSpellList.GetSpells(9))
-                    .Except(WizardSpellList.GetSpells(10))
-                    .Select(s => s.ToReference<BlueprintAbilityReference>())
-            );
+            // level 7
+            SpellLevelList seventhLevelSpells = new SpellLevelList(7);
 
-            SpellLevelList ninthLevelSpells = new SpellLevelList(9)
-            {
-                m_Spells =
-                WizardSpellList.GetSpells(9)
-                  .Select(s => s.ToReference<BlueprintAbilityReference>())
-                  .ToList()
-            };
+            seventhLevelSpells.m_Spells.AddRange(WizardSpellList.SpellsByLevel[7].SpellsRefs);
+            seventhLevelSpells.m_Spells.AddRange((ClericSpellList.SpellsByLevel[7].SpellsRefs)
+                            .Except(WizardSpellList.SpellsByLevel[0].SpellsRefs)
+                            .Except(WizardSpellList.SpellsByLevel[1].SpellsRefs)
+                            .Except(WizardSpellList.SpellsByLevel[2].SpellsRefs)
+                            .Except(WizardSpellList.SpellsByLevel[3].SpellsRefs)
+                            .Except(WizardSpellList.SpellsByLevel[4].SpellsRefs)
+                            .Except(WizardSpellList.SpellsByLevel[5].SpellsRefs)
+                            .Except(WizardSpellList.SpellsByLevel[6].SpellsRefs)
+                            .Except(WizardSpellList.SpellsByLevel[7].SpellsRefs)
+                            .Except(WizardSpellList.SpellsByLevel[8].SpellsRefs)
+                            .Except(WizardSpellList.SpellsByLevel[9].SpellsRefs)
+                            .Except(WizardSpellList.SpellsByLevel[10].SpellsRefs)
+                            .ToList()
+                            );
 
-            ninthLevelSpells.m_Spells.AddRange(
-                ClericSpellList.GetSpells(9)
-                    .Except(WizardSpellList.GetSpells(1))
-                    .Except(WizardSpellList.GetSpells(2))
-                    .Except(WizardSpellList.GetSpells(3))
-                    .Except(WizardSpellList.GetSpells(4))
-                    .Except(WizardSpellList.GetSpells(5))
-                    .Except(WizardSpellList.GetSpells(6))
-                    .Except(WizardSpellList.GetSpells(7))
-                    .Except(WizardSpellList.GetSpells(8))
-                    .Except(WizardSpellList.GetSpells(9))
-                    .Except(WizardSpellList.GetSpells(10))
-                    .Select(s => s.ToReference<BlueprintAbilityReference>())
-            );
 
-            SpellLevelList tenthLevelSpells = new SpellLevelList(10)
-            {
-                m_Spells =
-                WizardSpellList.GetSpells(10)
-                  .Select(s => s.ToReference<BlueprintAbilityReference>())
-                  .ToList()
-            };
+            // level 8
+            SpellLevelList eighthLevelSpells = new SpellLevelList(8);
 
-            tenthLevelSpells.m_Spells.AddRange(
-                ClericSpellList.GetSpells(10)
-                    .Except(WizardSpellList.GetSpells(1))
-                    .Except(WizardSpellList.GetSpells(2))
-                    .Except(WizardSpellList.GetSpells(3))
-                    .Except(WizardSpellList.GetSpells(4))
-                    .Except(WizardSpellList.GetSpells(5))
-                    .Except(WizardSpellList.GetSpells(6))
-                    .Except(WizardSpellList.GetSpells(7))
-                    .Except(WizardSpellList.GetSpells(8))
-                    .Except(WizardSpellList.GetSpells(9))
-                    .Except(WizardSpellList.GetSpells(10))
-                    .Select(s => s.ToReference<BlueprintAbilityReference>())
-            );
+            eighthLevelSpells.m_Spells.AddRange(WizardSpellList.SpellsByLevel[8].SpellsRefs);
+            eighthLevelSpells.m_Spells.AddRange((ClericSpellList.SpellsByLevel[8].SpellsRefs)
+                            .Except(WizardSpellList.SpellsByLevel[0].SpellsRefs)
+                            .Except(WizardSpellList.SpellsByLevel[1].SpellsRefs)
+                            .Except(WizardSpellList.SpellsByLevel[2].SpellsRefs)
+                            .Except(WizardSpellList.SpellsByLevel[3].SpellsRefs)
+                            .Except(WizardSpellList.SpellsByLevel[4].SpellsRefs)
+                            .Except(WizardSpellList.SpellsByLevel[5].SpellsRefs)
+                            .Except(WizardSpellList.SpellsByLevel[6].SpellsRefs)
+                            .Except(WizardSpellList.SpellsByLevel[7].SpellsRefs)
+                            .Except(WizardSpellList.SpellsByLevel[8].SpellsRefs)
+                            .Except(WizardSpellList.SpellsByLevel[9].SpellsRefs)
+                            .Except(WizardSpellList.SpellsByLevel[10].SpellsRefs)
+                            .ToList()
+                            );
+
+
+            // level 9
+            SpellLevelList ninthLevelSpells = new SpellLevelList(9);
+
+            ninthLevelSpells.m_Spells.AddRange(WizardSpellList.SpellsByLevel[9].SpellsRefs);
+            ninthLevelSpells.m_Spells.AddRange((ClericSpellList.SpellsByLevel[9].SpellsRefs)
+                            .Except(WizardSpellList.SpellsByLevel[0].SpellsRefs)
+                            .Except(WizardSpellList.SpellsByLevel[1].SpellsRefs)
+                            .Except(WizardSpellList.SpellsByLevel[2].SpellsRefs)
+                            .Except(WizardSpellList.SpellsByLevel[3].SpellsRefs)
+                            .Except(WizardSpellList.SpellsByLevel[4].SpellsRefs)
+                            .Except(WizardSpellList.SpellsByLevel[5].SpellsRefs)
+                            .Except(WizardSpellList.SpellsByLevel[6].SpellsRefs)
+                            .Except(WizardSpellList.SpellsByLevel[7].SpellsRefs)
+                            .Except(WizardSpellList.SpellsByLevel[8].SpellsRefs)
+                            .Except(WizardSpellList.SpellsByLevel[9].SpellsRefs)
+                            .Except(WizardSpellList.SpellsByLevel[10].SpellsRefs)
+                            .ToList()
+                            );
+
+
+            // level 10
+            SpellLevelList tenthLevelSpells = new SpellLevelList(10);
+
+            tenthLevelSpells.m_Spells.AddRange(WizardSpellList.SpellsByLevel[10].SpellsRefs);
+            tenthLevelSpells.m_Spells.AddRange((ClericSpellList.SpellsByLevel[10].SpellsRefs)
+                            .Except(WizardSpellList.SpellsByLevel[0].SpellsRefs)
+                            .Except(WizardSpellList.SpellsByLevel[1].SpellsRefs)
+                            .Except(WizardSpellList.SpellsByLevel[2].SpellsRefs)
+                            .Except(WizardSpellList.SpellsByLevel[3].SpellsRefs)
+                            .Except(WizardSpellList.SpellsByLevel[4].SpellsRefs)
+                            .Except(WizardSpellList.SpellsByLevel[5].SpellsRefs)
+                            .Except(WizardSpellList.SpellsByLevel[6].SpellsRefs)
+                            .Except(WizardSpellList.SpellsByLevel[7].SpellsRefs)
+                            .Except(WizardSpellList.SpellsByLevel[8].SpellsRefs)
+                            .Except(WizardSpellList.SpellsByLevel[9].SpellsRefs)
+                            .Except(WizardSpellList.SpellsByLevel[10].SpellsRefs)
+                            .ToList()
+                            );
 
             AssaultMageSpellList = SpellListConfigurator.New(AssaultMageSpellListName, AssaultMageSpellListGuid)
                 .AddToSpellsByLevel(
@@ -2098,6 +2073,8 @@ namespace AssaultMage.Archetypes
                     tenthLevelSpells
                  )
                 .Configure();
+
+            AssaultMageSpellList = WizardSpellList;
         }
 
         private static void SetSpellSlots()
