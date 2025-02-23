@@ -401,8 +401,8 @@ namespace AssaultMage.Archetypes
                     //FeatureRefs.ArcanistProficiencies.ToString(),
                     //FeatureRefs.RayCalculateFeature.ToString(),
                     //FeatureRefs.TouchCalculateFeature.ToString(),
-                    //FeatureRefs.ArcanistArcaneReservoirFeature.ToString(),
-                    //FeatureRefs.ArcanistConsumeSpellsFeature.ToString(),
+                    FeatureRefs.ArcanistArcaneReservoirFeature.ToString(),
+                    FeatureRefs.ArcanistConsumeSpellsFeature.ToString(),
                     // arcanist exploit are mostly useless as most use arcanist levels
                     //FeatureSelectionRefs.ArcanistExploitSelection.ToString(),
 
@@ -444,7 +444,7 @@ namespace AssaultMage.Archetypes
                     FeatureRefs.ShieldBlockFeature.ToString(),
 
                     // magus
-                    //FeatureRefs.ArcanePoolFeature.ToString(),
+                    FeatureRefs.ArcanePoolFeature.ToString(),
                     //FeatureRefs.SpellCombatFeature.ToString(),
                     //FeatureRefs.MagusProficiencies.ToString(),
                     //FeatureRefs.MagusCantripsFeature.ToString(),
@@ -453,7 +453,7 @@ namespace AssaultMage.Archetypes
                     //FeatureRefs.DetectMagic.ToString(),
 
                     // armored battlemage
-                    FeatureRefs.ArmoredBattlemageArcanePoolFeature.ToString(),
+                    //FeatureRefs.ArmoredBattlemageArcanePoolFeature.ToString(),
                     FeatureRefs.ArmoredBattlemageMediumArmor.ToString(),
 
                     // sword saint
@@ -483,9 +483,12 @@ namespace AssaultMage.Archetypes
 
                     // spell master
                     // 0933849149cfc9244ac05d6a5b57fd80 - specialist school progression
+                    ProgressionRefs.SpecialisationSchoolUniversalistProgression.ToString(),
                     // Item bond is useless as replaced by cleric healing spell conversion
-                    //FeatureRefs.ItemBondFeature.ToString(),
-                    //FeatureRefs.SpellMasterFocusedSpellsFeature.ToString(),
+                    FeatureRefs.ItemBondFeature.ToString(),
+                    // below self created ability will replace ItemBondFeature
+                    //Feats.SuperDodge.ItemBondFeature.ToString(),
+                    FeatureRefs.SpellMasterFocusedSpellsFeature.ToString(),
 
                     // school
                     //FeatureRefs.UniversalistSchoolBaseFeature.ToString(),
@@ -751,7 +754,7 @@ namespace AssaultMage.Archetypes
                     //FeatureRefs.Bravery.ToString(),
 
                     // magus
-                    //FeatureRefs.SpellStrikeFeature.ToString(),
+                    FeatureRefs.SpellStrikeFeature.ToString(),
 
                     // rogue
                     FeatureRefs.Evasion.ToString(),
@@ -788,7 +791,7 @@ namespace AssaultMage.Archetypes
 
                     // brown fur transmuter
                     // powerful change is useless as it only affects spells from arcanists slot
-                    //FeatureRefs.PowerfulChange.ToString(),
+                    FeatureRefs.PowerfulChange.ToString(),
 
                     // barbarian
                     //FeatureRefs.DangerSenseBarbarian.ToString(),
@@ -875,7 +878,7 @@ namespace AssaultMage.Archetypes
                     FeatureRefs.DragonDiscipleNaturalArmor.ToString(),
 
                     // self created feat
-                    Feats.SuperDodge.AddArcanePoolFeat,
+                    //Feats.SuperDodge.AddArcanePoolFeat,
 
                     // level up animal
                     FeatureRefs.AnimalCompanionRank.ToString(),
@@ -919,19 +922,19 @@ namespace AssaultMage.Archetypes
 
                     // magus
                     FeatureSelectionRefs.MagusFeatSelection.ToString(),
-                    //FeatureRefs.ArcaneWeaponPlus2.ToString(),
+                    FeatureRefs.ArcaneWeaponPlus2.ToString(),
 
                     // armored battlemage
-                    FeatureRefs.ArcaneArmorEnchantPlus2.ToString(),
+                    //FeatureRefs.ArcaneArmorEnchantPlus2.ToString(),
 
                     // rogue
                     FeatureRefs.SneakAttack.ToString(),
 
                     // wizard
-                    //FeatureSelectionRefs.WizardFeatSelection.ToString(),
+                    FeatureSelectionRefs.WizardFeatSelection.ToString(),
 
                     // spell master
-                    //FeatureRefs.SpellMasterItemBondSpecializationFeature.ToString(),
+                    FeatureRefs.SpellMasterItemBondSpecializationFeature.ToString(),
 
                     // free ability
                     FeatureRefs.PurityOfBody.ToString(),
@@ -995,7 +998,7 @@ namespace AssaultMage.Archetypes
                     FeatureRefs.DragonDiscipleConstitution.ToString(),
 
                     // self created feat
-                    Feats.SuperDodge.AddArcanePoolFeat,
+                    //Feats.SuperDodge.AddArcanePoolFeat,
 
                     // level up animal
                     FeatureRefs.AnimalCompanionRank.ToString(),
@@ -1099,7 +1102,7 @@ namespace AssaultMage.Archetypes
                     //FeatureRefs.UniversalistSchoolExtendReachFeature.ToString(),
 
                     // self created feat
-                    Feats.SuperDodge.AddArcanePoolFeat,
+                    //Feats.SuperDodge.AddArcanePoolFeat,
 
                     // level up animal
                     FeatureRefs.AnimalCompanionRank.ToString(),
@@ -1123,7 +1126,7 @@ namespace AssaultMage.Archetypes
 
                     // brown fur transmuter
                     // Share Transmutation is useless as it affects only arcanist spell slots
-                    //FeatureRefs.ShareTransmutation.ToString(),
+                    FeatureRefs.ShareTransmutation.ToString(),
 
                     // barbarian
                     //FeatureRefs.DangerSenseBarbarian.ToString(),
@@ -1147,10 +1150,10 @@ namespace AssaultMage.Archetypes
 
                     // magus
                     FeatureSelectionRefs.MagusArcanaSelection.ToString(),
-                    //FeatureRefs.ArcaneWeaponPlus3.ToString(),
+                    FeatureRefs.ArcaneWeaponPlus3.ToString(),
 
                     // armored battlemage
-                    FeatureRefs.ArcaneArmorEnchantPlus3.ToString(),
+                    //FeatureRefs.ArcaneArmorEnchantPlus3.ToString(),
 
                     // sword saint
                     FeatureRefs.SwordSaintCriticalPerfection.ToString(),
@@ -1215,7 +1218,7 @@ namespace AssaultMage.Archetypes
                     //FeatureRefs.SpellMasterItemBondSpecializationFeature.ToString(),
 
                     // self created feat
-                    Feats.SuperDodge.AddArcanePoolFeat,
+                    //Feats.SuperDodge.AddArcanePoolFeat,
 
                     // self created ability
                     Feats.SuperDodge.MentalAcuity2Feat,
@@ -1327,7 +1330,7 @@ namespace AssaultMage.Archetypes
                     //FeatureRefs.UniversalistSchoolEmpowerFeature.ToString(),
 
                     // self created feat
-                    Feats.SuperDodge.AddArcanePoolFeat,
+                    //Feats.SuperDodge.AddArcanePoolFeat,
 
                     // level up animal
                     FeatureRefs.AnimalCompanionRank.ToString(),
@@ -1363,12 +1366,12 @@ namespace AssaultMage.Archetypes
                     FeatureSelectionRefs.WeaponTrainingRankUpSelection.ToString(),
 
                     // magus
-                    //FeatureRefs.ArcaneWeaponPlus4.ToString(),
+                    FeatureRefs.ArcaneWeaponPlus4.ToString(),
                     //FeatureRefs.ArcaneHeavyArmor.ToString(),
 
                     // armored battlemage
                     //FeatureRefs.ArmorTraining.ToString(),
-                    FeatureRefs.ArcaneArmorEnchantPlus4.ToString(),
+                    //FeatureRefs.ArcaneArmorEnchantPlus4.ToString(),
 
                     // sword saint
                     FeatureRefs.SwordSaintInstantFocus.ToString(),
@@ -1425,7 +1428,7 @@ namespace AssaultMage.Archetypes
                     // wizard
 
                     // self created feat
-                    Feats.SuperDodge.AddArcanePoolFeat,
+                    //Feats.SuperDodge.AddArcanePoolFeat,
 
                     // level up animal
                     FeatureRefs.AnimalCompanionRank.ToString(),
@@ -1472,10 +1475,10 @@ namespace AssaultMage.Archetypes
                     //FeatureRefs.DangerSenseRogue.ToString(),
 
                     // wizard
-                    //FeatureSelectionRefs.WizardFeatSelection.ToString(),
+                    FeatureSelectionRefs.WizardFeatSelection.ToString(),
 
                     // spell master
-                    //FeatureRefs.SpellMasterItemBondSpecializationFeature.ToString(),
+                    FeatureRefs.SpellMasterItemBondSpecializationFeature.ToString(),
 
                     // free ability
                     FeatureRefs.FeatureWingsAngelSorcerer.ToString(),
@@ -1528,7 +1531,7 @@ namespace AssaultMage.Archetypes
 
                     // self created feat
                     Feats.SuperDodge.MentalAcuity4Feat,
-                    Feats.SuperDodge.AddArcanePoolFeat,
+                    //Feats.SuperDodge.AddArcanePoolFeat,
 
                     // level up animal
                     FeatureRefs.AnimalCompanionRank.ToString(),
@@ -1566,10 +1569,10 @@ namespace AssaultMage.Archetypes
 
                     // magus
                     FeatureSelectionRefs.MagusFeatSelection.ToString(),
-                    //FeatureRefs.ArcaneWeaponPlus5.ToString(),
+                    FeatureRefs.ArcaneWeaponPlus5.ToString(),
 
                     // armored battlemage
-                    FeatureRefs.ArcaneArmorEnchantPlus5.ToString(),
+                    //FeatureRefs.ArcaneArmorEnchantPlus5.ToString(),
 
                     // rogue
                     FeatureRefs.SneakAttack.ToString(),
@@ -1624,7 +1627,7 @@ namespace AssaultMage.Archetypes
                     // wizard
 
                     // self created feat
-                    Feats.SuperDodge.AddArcanePoolFeat,
+                    //Feats.SuperDodge.AddArcanePoolFeat,
 
                     // level up animal
                     FeatureRefs.AnimalCompanionRank.ToString(),
@@ -1733,7 +1736,7 @@ namespace AssaultMage.Archetypes
                     FeatureSelectionRefs.WizardFeatSelection.ToString(),
 
                     // spell master
-                    //FeatureRefs.SpellMasterItemBondSpecializationFeature.ToString(),
+                    FeatureRefs.SpellMasterItemBondSpecializationFeature.ToString(),
 
                     // free ability
                     //FeatureRefs.BloodlineDraconicBronzePowerOfWyrms.ToString(),
@@ -1750,7 +1753,7 @@ namespace AssaultMage.Archetypes
                     FeatureRefs.SplitTimelineFeature.ToString(),
 
                     // self created feat
-                    Feats.SuperDodge.AddArcanePoolFeat,
+                    //Feats.SuperDodge.AddArcanePoolFeat,
 
                     // level up animal
                     FeatureRefs.AnimalCompanionRank.ToString(),
@@ -1825,8 +1828,12 @@ namespace AssaultMage.Archetypes
                 .AddPrerequisiteArchetypeLevel(AssaultMageArchetype, BaseClass, true, GroupType.All, false, null, 1)
                 .Configure();
 
+            /*FeatureConfigurator.For(Feats.SuperDodge.ItemBondFeature)
+                .SetReapplyOnLevelUp(true)
+                .AddPrerequisiteArchetypeLevel(AssaultMageArchetype, BaseClass, true, GroupType.All, false, null, 1)
+                .Configure();*/
 
-                
+
         }
 
         private static void SetSpellList()
@@ -2685,11 +2692,13 @@ namespace AssaultMage.Archetypes
                 .SetSpellList(AssaultMageSpellList)
                 .SetSpellsPerDay(AssaultMageSpellTable)
                 .SetHasSpecialSpellList()
-                //.SetSpellSlots(AssaultMageSpellTable)
+                .SetSpellSlots(AssaultMageSpellTable)
                 .SetAllSpellsKnown(false)
                 .SetCanCopyScrolls(true)
                 .SetCastingAttribute(StatType.Intelligence)
                 .SetIsArcane(true)
+                .SetIsArcanist(true)
+                .SetSpontaneous(true)
                 .Configure();
 
           

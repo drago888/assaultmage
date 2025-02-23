@@ -392,6 +392,17 @@
   {
     "Key": "UltimateBuffAbility.Description",
     "enGB": "The ultimate buff ability that enhance the armor with lots of useful constant buffs"
+  },
+
+  {
+    "Key": "ItemBondFeature.Name",
+    "ProcessTemplates": false,
+    "enGB": "Item Bond Feature"
+  },
+
+  {
+    "Key": "ItemBondFeature.Description",
+    "enGB": "Item Bond Feature"
   }
 
 

@@ -10,6 +10,9 @@ using System;
 using UnityModManagerNet;
 using System.Linq;
 using Kingmaker.UI.MVVM._VM.ServiceWindows.CharacterInfo.Sections.Progression.Spellbook;
+using Kingmaker.UnitLogic.Abilities.Blueprints;
+using Kingmaker.UnitLogic.Abilities.Components;
+using Kingmaker.UnitLogic.Abilities.Components.Base;
 using Kingmaker.Blueprints.Classes;
 using BlueprintCore.Blueprints.References;
 using Kingmaker.UI.MVVM._VM.ServiceWindows.CharacterInfo.Sections.Progression.Level;
@@ -25,12 +28,23 @@ using Kingmaker.UI.GlobalMap.Temp;
 using Kingmaker.EntitySystem.Entities;
 using Kingmaker.UI.MVVM._VM.CharGen;
 using Kingmaker.UnitLogic.Abilities;
-using Kingmaker.UnitLogic.Abilities.Blueprints;
 using Kingmaker.UI.ServiceWindow.CharacterScreen;
 using Kingmaker.UI.MVVM._VM.CharGen.Phases.Spells;
 using System.Collections.Generic;
 using Kingmaker.UI.MVVM._VM.ServiceWindows.MythicInfo;
 using Kingmaker.UI.MVVM._VM.CharGen.Phases.Total;
+using Kingmaker.Blueprints.Classes.Prerequisites;
+using Kingmaker.UnitLogic.Buffs.Blueprints;
+using Kingmaker.UnitLogic.FactLogic;
+using Kingmaker.Designers.Mechanics.Facts;
+using Kingmaker.UnitLogic.Mechanics.Components;
+using UniRx;
+using System.Reflection;
+using TinyJson;
+
+using BlueprintCore.Blueprints.CustomConfigurators;
+using Kingmaker.Blueprints.Facts;
+
 
 namespace AssaultMage
 {
@@ -71,6 +85,7 @@ namespace AssaultMage
         static class BlueprintsCaches_Patch
         {
             private static bool Initialized = false;
+            static bool loaded = false;
 
             [HarmonyPriority(Priority.First)]
             [HarmonyPatch(nameof(BlueprintsCache.Init)), HarmonyPostfix]
@@ -93,6 +108,22 @@ namespace AssaultMage
                 {
                     Logger.Error("Failed to configure blueprints.", e);
                 }
+            }
+
+            [HarmonyPatch(nameof(BlueprintsCache.Init)), HarmonyPostfix]
+            static void Postfix()
+            {
+                if (loaded) return;
+                loaded = true;
+
+                AddPatches();
+
+                /*
+                var groetusFeature = ResourcesLibrary.TryGetBlueprint<BlueprintFeature>("c3e4d5681906d5246ab8b0637b98cbfe");
+                groetusFeature.ComponentsArray = groetusFeature.ComponentsArray
+                    .Where(c => !(c is PrerequisiteFeature))
+                    .ToArray();
+                */
             }
         }
 
@@ -461,6 +492,288 @@ namespace AssaultMage
             }
         }*/
         
+        public static void AddPatches()
+        {
+            BlueprintCharacterClassReference ClericClassRef = BlueprintReferenceBase.CreateTyped<BlueprintCharacterClassReference>(ResourcesLibrary.TryGetBlueprint(BlueprintGuid.Parse("67819271767a9dd4fbfd4ae700befea0")));
+            BlueprintArchetypeReference AssaultMageArchetypeRef = BlueprintReferenceBase.CreateTyped<BlueprintArchetypeReference>(ResourcesLibrary.TryGetBlueprint(BlueprintGuid.Parse(AssaultMage.Archetypes.AssaultMage.ArchtypeGuid)));
+            BlueprintSpellbookReference AssaultMageSpellbookRef = BlueprintReferenceBase.CreateTyped<BlueprintSpellbookReference>(ResourcesLibrary.TryGetBlueprint(BlueprintGuid.Parse(AssaultMage.Archetypes.AssaultMage.ArchetypeSpellbookGuid)));
+            //BlueprintAbilityReference AssaultMageItemBondRef = BlueprintReferenceBase.CreateTyped<BlueprintAbilityReference>(ResourcesLibrary.TryGetBlueprint(BlueprintGuid.Parse(Feats.SuperDodge.ItemBondFeatureGuid)));
+
+            // ArcanePoolResourse
+            BlueprintAbilityResource ArcanePoolResourse = (BlueprintAbilityResource)ResourcesLibrary.TryGetBlueprint(BlueprintGuid.Parse("effc3e386331f864e9e06d19dc218b37"));
+
+            List<BlueprintCharacterClassReference> ArcanePoolResourse_m_ClassDiv = ArcanePoolResourse.m_MaxAmount.m_ClassDiv.ToList<BlueprintCharacterClassReference>();
+            ArcanePoolResourse_m_ClassDiv.Add(ClericClassRef);
+
+            ArcanePoolResourse.m_MaxAmount.m_ClassDiv = ArcanePoolResourse_m_ClassDiv.ToArray();
+
+            List<BlueprintArchetypeReference> ArcanePoolResourse_m_ArchetypesDiv = ArcanePoolResourse.m_MaxAmount.m_ArchetypesDiv.ToList<BlueprintArchetypeReference>();
+            ArcanePoolResourse_m_ArchetypesDiv.Add(AssaultMageArchetypeRef);
+
+            ArcanePoolResourse.m_MaxAmount.m_ArchetypesDiv = ArcanePoolResourse_m_ArchetypesDiv.ToArray();
+
+            // ArcanistArcaneReservoirResource
+            BlueprintAbilityResource ArcanistArcaneReservoirResource = (BlueprintAbilityResource)ResourcesLibrary.TryGetBlueprint(BlueprintGuid.Parse("cac948cbbe79b55459459dd6a8fe44ce"));
+
+            List<BlueprintCharacterClassReference> ArcanistArcaneReservoirResource_m_ClassDiv = ArcanistArcaneReservoirResource.m_MaxAmount.m_ClassDiv.ToList<BlueprintCharacterClassReference>();
+            ArcanistArcaneReservoirResource_m_ClassDiv.Add(ClericClassRef);
+
+            ArcanistArcaneReservoirResource.m_MaxAmount.m_ClassDiv = ArcanistArcaneReservoirResource_m_ClassDiv.ToArray();
+
+            List<BlueprintArchetypeReference> ArcanistArcaneReservoirResource_m_ArchetypesDiv = ArcanistArcaneReservoirResource.m_MaxAmount.m_ArchetypesDiv.ToList<BlueprintArchetypeReference>();
+            ArcanistArcaneReservoirResource_m_ArchetypesDiv.Add(AssaultMageArchetypeRef);
+
+            ArcanistArcaneReservoirResource.m_MaxAmount.m_ArchetypesDiv = ArcanistArcaneReservoirResource_m_ArchetypesDiv.ToArray();
+
+            
+            // ArcanistArcaneReservoirCLBuff
+            BlueprintBuff ArcanistArcaneReservoirCLBuff = (BlueprintBuff)ResourcesLibrary.TryGetBlueprint(BlueprintGuid.Parse("33e0c3a2a54c0e7489fa4ec4d79a581b"));
+
+            List<BlueprintSpellbookReference> ArcanistArcaneReservoirCLBuff_m_Spellbooks =
+                ArcanistArcaneReservoirCLBuff.GetComponent<AddAbilityUseTrigger>()
+                .m_Spellbooks
+                .ToList<BlueprintSpellbookReference>();
+
+            ArcanistArcaneReservoirCLBuff_m_Spellbooks.Add(AssaultMageSpellbookRef);
+
+            ArcanistArcaneReservoirCLBuff.GetComponent<AddAbilityUseTrigger>().m_Spellbooks = ArcanistArcaneReservoirCLBuff_m_Spellbooks.ToArray();
+
+            List<BlueprintSpellbookReference> ArcanistArcaneReservoirCLBuff_cl_m_Spellbooks =
+                ArcanistArcaneReservoirCLBuff.GetComponent<AddCasterLevelForSpellbook>()
+                .m_Spellbooks
+                .ToList<BlueprintSpellbookReference>();
+
+            ArcanistArcaneReservoirCLBuff_cl_m_Spellbooks.Add(AssaultMageSpellbookRef);
+
+            ArcanistArcaneReservoirCLBuff.GetComponent<AddCasterLevelForSpellbook>().m_Spellbooks = ArcanistArcaneReservoirCLBuff_cl_m_Spellbooks.ToArray();
+
+            // ArcanistArcaneReservoirCLPotentBuff
+            BlueprintBuff ArcanistArcaneReservoirCLPotentBuff = (BlueprintBuff)ResourcesLibrary.TryGetBlueprint(BlueprintGuid.Parse("ea01ddf2c1878354990000d1c7fc5ce4"));
+
+            List<BlueprintSpellbookReference> ArcanistArcaneReservoirCLPotentBuff_m_Spellbooks =
+                ArcanistArcaneReservoirCLPotentBuff.GetComponent<AddAbilityUseTrigger>()
+                .m_Spellbooks
+                .ToList<BlueprintSpellbookReference>();
+
+            ArcanistArcaneReservoirCLPotentBuff_m_Spellbooks.Add(AssaultMageSpellbookRef);
+
+            ArcanistArcaneReservoirCLPotentBuff.GetComponent<AddAbilityUseTrigger>().m_Spellbooks = ArcanistArcaneReservoirCLPotentBuff_m_Spellbooks.ToArray();
+
+            List<BlueprintSpellbookReference> ArcanistArcaneReservoirCLPotentBuff_cl_m_Spellbooks =
+                ArcanistArcaneReservoirCLPotentBuff.GetComponent<AddCasterLevelForSpellbook>()
+                .m_Spellbooks
+                .ToList<BlueprintSpellbookReference>();
+
+            ArcanistArcaneReservoirCLPotentBuff_cl_m_Spellbooks.Add(AssaultMageSpellbookRef);
+
+            ArcanistArcaneReservoirCLPotentBuff.GetComponent<AddCasterLevelForSpellbook>().m_Spellbooks = ArcanistArcaneReservoirCLPotentBuff_cl_m_Spellbooks.ToArray();
+
+           
+            // ArcanistArcaneReservoirDCBuff
+            BlueprintBuff ArcanistArcaneReservoirDCBuff = (BlueprintBuff)ResourcesLibrary.TryGetBlueprint(BlueprintGuid.Parse("db4b91a8a297c4247b13cfb6ea228bf3"));
+
+            List<BlueprintSpellbookReference> ArcanistArcaneReservoirDCBuff_m_Spellbooks =
+                ArcanistArcaneReservoirDCBuff.GetComponent<AddAbilityUseTrigger>()
+                .m_Spellbooks
+                .ToList<BlueprintSpellbookReference>();
+
+            ArcanistArcaneReservoirDCBuff_m_Spellbooks.Add(AssaultMageSpellbookRef);
+
+            ArcanistArcaneReservoirDCBuff.GetComponent<AddAbilityUseTrigger>().m_Spellbooks = ArcanistArcaneReservoirDCBuff_m_Spellbooks.ToArray();
+
+            List<BlueprintSpellbookReference> ArcanistArcaneReservoirDCBuff_cl_m_Spellbooks =
+                ArcanistArcaneReservoirDCBuff.GetComponent<IncreaseSpellSpellbookDC>()
+                .m_Spellbooks
+                .ToList<BlueprintSpellbookReference>();
+
+            ArcanistArcaneReservoirDCBuff_cl_m_Spellbooks.Add(AssaultMageSpellbookRef);
+
+            ArcanistArcaneReservoirDCBuff.GetComponent<IncreaseSpellSpellbookDC>().m_Spellbooks = ArcanistArcaneReservoirDCBuff_cl_m_Spellbooks.ToArray();
+
+            // ArcanistArcaneReservoirDCPotentBuff
+            BlueprintBuff ArcanistArcaneReservoirDCPotentBuff = (BlueprintBuff)ResourcesLibrary.TryGetBlueprint(BlueprintGuid.Parse("6fea993ed5782054a88fa54037a3e6dd"));
+
+            List<BlueprintSpellbookReference> ArcanistArcaneReservoirDCPotentBuff_m_Spellbooks =
+                ArcanistArcaneReservoirDCPotentBuff.GetComponent<AddAbilityUseTrigger>()
+                .m_Spellbooks
+                .ToList<BlueprintSpellbookReference>();
+
+            ArcanistArcaneReservoirDCPotentBuff_m_Spellbooks.Add(AssaultMageSpellbookRef);
+
+            ArcanistArcaneReservoirDCPotentBuff.GetComponent<AddAbilityUseTrigger>().m_Spellbooks = ArcanistArcaneReservoirDCPotentBuff_m_Spellbooks.ToArray();
+
+            List<BlueprintSpellbookReference> ArcanistArcaneReservoirDCPotentBuff_cl_m_Spellbooks =
+                ArcanistArcaneReservoirDCPotentBuff.GetComponent<IncreaseSpellSpellbookDC>()
+                .m_Spellbooks
+                .ToList<BlueprintSpellbookReference>();
+
+            ArcanistArcaneReservoirDCPotentBuff_cl_m_Spellbooks.Add(AssaultMageSpellbookRef);
+
+            ArcanistArcaneReservoirDCPotentBuff.GetComponent<IncreaseSpellSpellbookDC>().m_Spellbooks = ArcanistArcaneReservoirDCPotentBuff_cl_m_Spellbooks.ToArray();
+
+            // ArcanistArcaneReservoirResourceBuff
+            BlueprintBuff ArcanistArcaneReservoirResourceBuff = (BlueprintBuff)ResourcesLibrary.TryGetBlueprint(BlueprintGuid.Parse("1dd776b7b27dcd54ab3cedbbaf440cf3"));
+
+            List<BlueprintArchetypeReference> ArcanistArcaneReservoirResourceBuff_m_AdditionalArchetypes =
+                ArcanistArcaneReservoirResourceBuff.GetComponent<ContextRankConfig>()
+                .m_AdditionalArchetypes
+                .ToList<BlueprintArchetypeReference>();
+
+            ArcanistArcaneReservoirResourceBuff_m_AdditionalArchetypes.Add(AssaultMageArchetypeRef);
+
+            ArcanistArcaneReservoirResourceBuff.GetComponent<ContextRankConfig>()
+                .m_AdditionalArchetypes = ArcanistArcaneReservoirResourceBuff_m_AdditionalArchetypes.ToArray();
+
+            List<BlueprintCharacterClassReference> ArcanistArcaneReservoirResourceBuff_m_Class =
+                ArcanistArcaneReservoirResourceBuff.GetComponent<ContextRankConfig>()
+                .m_Class
+                .ToList<BlueprintCharacterClassReference>();
+
+            ArcanistArcaneReservoirResourceBuff_m_Class.Add(ClericClassRef);
+
+            ArcanistArcaneReservoirResourceBuff.GetComponent<ContextRankConfig>()
+                .m_Class = ArcanistArcaneReservoirResourceBuff_m_Class.ToArray();
+
+            
+            // DimensionStrikeFeature
+            BlueprintFeature DimensionStrikeFeature = (BlueprintFeature)ResourcesLibrary.TryGetBlueprint(BlueprintGuid.Parse("cb6916027e3c25e4185de068249254dc"));
+
+            PrerequisiteClassLevel PrerequisiteClass = new PrerequisiteClassLevel();
+            PrerequisiteClass.m_CharacterClass = ClericClassRef;
+            PrerequisiteClass.Level = 9;
+
+            PrerequisiteArchetypeLevel PrerequisiteArchetype = new PrerequisiteArchetypeLevel();
+            PrerequisiteArchetype.m_CharacterClass = ClericClassRef;
+            PrerequisiteArchetype.m_Archetype = AssaultMageArchetypeRef;
+            PrerequisiteArchetype.Level = 9;
+
+            DimensionStrikeFeature.AddComponents(PrerequisiteClass, PrerequisiteArchetype);
+
+            // EnhancePotion
+            BlueprintFeature EnhancePotion = (BlueprintFeature)ResourcesLibrary.TryGetBlueprint(BlueprintGuid.Parse("2673ccdd6df742d42a8c94977c76a984"));
+
+            List<BlueprintCharacterClassReference> EnhancePotion_m_Class = EnhancePotion.GetComponent<EnhancePotion>().m_Classes.ToList();
+            EnhancePotion_m_Class.Add(ClericClassRef);
+
+            EnhancePotion.GetComponent<EnhancePotion>().m_Classes = EnhancePotion_m_Class.ToArray();
+
+            List<BlueprintArchetypeReference> EnhancePotion_m_Archetypes = EnhancePotion.GetComponent<EnhancePotion>().m_Archetypes.ToList();
+            EnhancePotion_m_Archetypes.Add(AssaultMageArchetypeRef);
+
+            EnhancePotion.GetComponent<EnhancePotion>().m_Archetypes = EnhancePotion_m_Archetypes.ToArray();
+
+
+            // ItemBondAbility is not patched as ItemBondAbility.GetComponent<AbilityRestoreSpellSlot>().SpellbooksReference is not found
+            // ItemBondAbility
+            /*BlueprintAbility ItemBondAbility = (BlueprintAbility)ResourcesLibrary.TryGetBlueprint(BlueprintGuid.Parse("e5dcf71e02e08fc448d9745653845df1"));
+            foreach (BlueprintComponent com in ItemBondAbility.ComponentsArray)
+            {
+                if (com.name == "$AbilityRestoreSpellSlot$315be1da-597c-40bb-838b-f1bdf4955cde")
+                {
+                   
+                    ((AbilityRestoreSpellSlot)com).
+                }
+            }*/
+
+            // ItemBondAbility will use WMT to modify
+
+            // ItemBondFeature
+            BlueprintFeature ItemBondFeature = (BlueprintFeature)ResourcesLibrary.TryGetBlueprint(BlueprintGuid.Parse("2fb5e65bd57caa943b45ee32d825e9b9"));
+            ItemBondFeature.GetComponent<AddAbilityResources>().Amount = 1;
+            ItemBondFeature.GetComponent<AddAbilityResources>().RestoreAmount = true;
+            
+
+            // PowerfulChangeBuff
+            BlueprintBuff PowerfulChangeBuff = (BlueprintBuff)ResourcesLibrary.TryGetBlueprint(BlueprintGuid.Parse("be5d23755e7e501448193bbbd71c5256"));
+
+            List<BlueprintSpellbookReference> PowerfulChangeBuff_m_Spellbooks = PowerfulChangeBuff.GetComponent<AddAbilityUseTrigger>().m_Spellbooks.ToList();
+            PowerfulChangeBuff_m_Spellbooks.Add(AssaultMageSpellbookRef);
+
+            PowerfulChangeBuff.GetComponent<AddAbilityUseTrigger>().m_Spellbooks = PowerfulChangeBuff_m_Spellbooks.ToArray();
+
+            // PowerfulChangeBuffGreater
+            BlueprintBuff PowerfulChangeBuffGreater = (BlueprintBuff)ResourcesLibrary.TryGetBlueprint(BlueprintGuid.Parse("d6ccf420a9b196e4cae334e0d3ea9e8b"));
+
+            List<BlueprintSpellbookReference> PowerfulChangeBuffGreater_m_Spellbooks = PowerfulChangeBuffGreater.GetComponent<AddAbilityUseTrigger>().m_Spellbooks.ToList();
+            PowerfulChangeBuffGreater_m_Spellbooks.Add(AssaultMageSpellbookRef);
+
+            PowerfulChangeBuffGreater.GetComponent<AddAbilityUseTrigger>().m_Spellbooks = PowerfulChangeBuffGreater_m_Spellbooks.ToArray();
+
+
+            // ShareTransmutationBuff
+            BlueprintBuff ShareTransmutationBuff = (BlueprintBuff)ResourcesLibrary.TryGetBlueprint(BlueprintGuid.Parse("2231eb5d1a5a48d499a20fa5bde7a4e2"));
+
+            List<BlueprintSpellbookReference> ShareTransmutationBuff_m_Spellbooks = ShareTransmutationBuff.GetComponent<AddAbilityUseTrigger>().m_Spellbooks.ToList();
+            ShareTransmutationBuff_m_Spellbooks.Add(AssaultMageSpellbookRef);
+
+            ShareTransmutationBuff.GetComponent<AddAbilityUseTrigger>().m_Spellbooks = ShareTransmutationBuff_m_Spellbooks.ToArray();
+
+            // ShareTransmutationBuffGreater
+            BlueprintBuff ShareTransmutationBuffGreater = (BlueprintBuff)ResourcesLibrary.TryGetBlueprint(BlueprintGuid.Parse("e0d4e42a41a0a24459a1bfc4f0a3ae4c"));
+
+            List<BlueprintSpellbookReference> ShareTransmutationBuffGreater_m_Spellbooks = ShareTransmutationBuffGreater.GetComponent<AddAbilityUseTrigger>().m_Spellbooks.ToList();
+            ShareTransmutationBuffGreater_m_Spellbooks.Add(AssaultMageSpellbookRef);
+
+            ShareTransmutationBuffGreater.GetComponent<AddAbilityUseTrigger>().m_Spellbooks = ShareTransmutationBuffGreater_m_Spellbooks.ToArray();
+
+            // SpecialisationSchoolUniversalistProgression
+            BlueprintProgression SpecialisationSchoolUniversalistProgression = (BlueprintProgression)ResourcesLibrary.TryGetBlueprint(BlueprintGuid.Parse("0933849149cfc9244ac05d6a5b57fd80"));
+
+            List<BlueprintProgression.ClassWithLevel> SpecialisationSchoolUniversalistProgression_m_Class = SpecialisationSchoolUniversalistProgression.m_Classes.ToList();
+            BlueprintProgression.ClassWithLevel ClassWithLevel = new BlueprintProgression.ClassWithLevel();
+            ClassWithLevel.AdditionalLevel = 0;
+            ClassWithLevel.m_Class = ClericClassRef;
+            SpecialisationSchoolUniversalistProgression_m_Class.Add(ClassWithLevel);
+
+            SpecialisationSchoolUniversalistProgression.m_Classes = SpecialisationSchoolUniversalistProgression_m_Class.ToArray();
+
+            List<BlueprintProgression.ArchetypeWithLevel> SpecialisationSchoolUniversalistProgression_m_Archetypes = SpecialisationSchoolUniversalistProgression.m_Archetypes.ToList();
+            BlueprintProgression.ArchetypeWithLevel ArchetypeWithLevel = new BlueprintProgression.ArchetypeWithLevel();
+            ArchetypeWithLevel.AdditionalLevel = 0;
+            ArchetypeWithLevel.m_Archetype = AssaultMageArchetypeRef;
+
+            SpecialisationSchoolUniversalistProgression_m_Archetypes.Add(ArchetypeWithLevel);
+
+            SpecialisationSchoolUniversalistProgression.m_Archetypes = SpecialisationSchoolUniversalistProgression_m_Archetypes.ToArray();
+
+            // SpellMasterFocusedSpellsBuff
+            BlueprintBuff SpellMasterFocusedSpellsBuff = (BlueprintBuff)ResourcesLibrary.TryGetBlueprint(BlueprintGuid.Parse("967de73c1def41f79678bbe3116f2770"));
+
+            List<BlueprintSpellbookReference> SpellMasterFocusedSpellsBuff_m_Spellbooks = SpellMasterFocusedSpellsBuff.GetComponent<AddCasterLevelForSpellbook>().m_Spellbooks.ToList();
+            SpellMasterFocusedSpellsBuff_m_Spellbooks.Add(AssaultMageSpellbookRef);
+
+            SpellMasterFocusedSpellsBuff.GetComponent<AddCasterLevelForSpellbook>().m_Spellbooks = SpellMasterFocusedSpellsBuff_m_Spellbooks.ToArray();
+
+            // SpellMasterFocusedSpellsResource
+            BlueprintAbilityResource SpellMasterFocusedSpellsResource = (BlueprintAbilityResource)ResourcesLibrary.TryGetBlueprint(BlueprintGuid.Parse("32947324b3054fdea55092735de9c82c"));
+
+            List<BlueprintCharacterClassReference> SpellMasterFocusedSpellsResource_m_Class = SpellMasterFocusedSpellsResource.m_MaxAmount.m_Class.ToList();
+            SpellMasterFocusedSpellsResource_m_Class.Add(ClericClassRef);
+
+            SpellMasterFocusedSpellsResource.m_MaxAmount.m_Class = SpellMasterFocusedSpellsResource_m_Class.ToArray();
+            SpellMasterFocusedSpellsResource.m_MaxAmount.m_ClassDiv = SpellMasterFocusedSpellsResource_m_Class.ToArray();
+
+            List<BlueprintArchetypeReference> SpellMasterFocusedSpellsResource_m_Archetypes = SpellMasterFocusedSpellsResource.m_MaxAmount.m_Archetypes.ToList();
+            SpellMasterFocusedSpellsResource_m_Archetypes.Add(AssaultMageArchetypeRef);
+
+            SpellMasterFocusedSpellsResource.m_MaxAmount.m_Archetypes = SpellMasterFocusedSpellsResource_m_Archetypes.ToArray();
+            SpellMasterFocusedSpellsResource.m_MaxAmount.m_ArchetypesDiv = SpellMasterFocusedSpellsResource_m_Archetypes.ToArray();
+
+            // UniversalistSchoolGreaterResource
+            BlueprintAbilityResource UniversalistSchoolGreaterResource = (BlueprintAbilityResource)ResourcesLibrary.TryGetBlueprint(BlueprintGuid.Parse("42fd5b455f986f94293b15b13f38d6a5"));
+
+            List<BlueprintCharacterClassReference> UniversalistSchoolGreaterResource_m_Class = UniversalistSchoolGreaterResource.m_MaxAmount.m_Class.ToList();
+            UniversalistSchoolGreaterResource_m_Class.Add(ClericClassRef);
+
+            UniversalistSchoolGreaterResource.m_MaxAmount.m_Class = UniversalistSchoolGreaterResource_m_Class.ToArray();
+            UniversalistSchoolGreaterResource.m_MaxAmount.m_ClassDiv = UniversalistSchoolGreaterResource_m_Class.ToArray();
+
+            List<BlueprintArchetypeReference> UniversalistSchoolGreaterResource_m_Archetypes = UniversalistSchoolGreaterResource.m_MaxAmount.m_Archetypes.ToList();
+            UniversalistSchoolGreaterResource_m_Archetypes.Add(AssaultMageArchetypeRef);
+
+            UniversalistSchoolGreaterResource.m_MaxAmount.m_Archetypes = UniversalistSchoolGreaterResource_m_Archetypes.ToArray();
+            UniversalistSchoolGreaterResource.m_MaxAmount.m_ArchetypesDiv = UniversalistSchoolGreaterResource_m_Archetypes.ToArray();
+        }
 
         public static void AddChanges()
         {

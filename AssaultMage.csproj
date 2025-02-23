@@ -31,6 +31,7 @@
     <PackageReference Include="Unity" Version="5.11.10" />
     <PackageReference Include="WW-Blueprint-Core" Version="*" />
   </ItemGroup>
+ 
 
   <ItemGroup>
     <!-- Main Wrath Assembly, Publicized -->
@@ -46,7 +47,7 @@
       <HintPath>$(WrathPath)\Wrath_Data\Managed\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="Owlcat.Runtime.Core">
-      <HintPath>$(WrathPath)\Wrath_Data\Managed\Owlcat.Runtime.Core.dll</HintPath>
+      <HintPath>$(WrathPath)\Wrath_Data\Managed\Owlcat.Runtime.Core.dll</HintPath>  
     </Reference>
     <Reference Include="Owlcat.Runtime.UI">
       <HintPath>assemblies\lib\Owlcat.Runtime.UI_public.dll</HintPath>

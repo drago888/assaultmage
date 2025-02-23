@@ -7,8 +7,11 @@ using AssaultMage.Archetypes;
 using BlueprintCore.Actions.Builder;
 using BlueprintCore.Actions.Builder.BasicEx;
 using BlueprintCore.Actions.Builder.ContextEx;
+using BlueprintCore.Blueprints.Configurators.UnitLogic.Abilities;
 using BlueprintCore.Blueprints.Configurators.UnitLogic.ActivatableAbilities;
+using BlueprintCore.Blueprints.CustomConfigurators;
 using BlueprintCore.Blueprints.CustomConfigurators.Classes;
+using BlueprintCore.Blueprints.CustomConfigurators.UnitLogic.Abilities;
 using BlueprintCore.Blueprints.CustomConfigurators.UnitLogic.Buffs;
 using BlueprintCore.Blueprints.References;
 using BlueprintCore.Conditions.Builder;
@@ -23,6 +26,7 @@ using Kingmaker.Blueprints.Items.Weapons;
 using Kingmaker.Designers;
 using Kingmaker.EntitySystem.Stats;
 using Kingmaker.Enums;
+using Kingmaker.UnitLogic.Abilities.Blueprints;
 using Kingmaker.UnitLogic.ActivatableAbilities;
 using Kingmaker.UnitLogic.Buffs.Blueprints;
 using Kingmaker.UnitLogic.Mechanics;
@@ -114,6 +118,15 @@ namespace AssaultMage.Feats
             private static readonly string AddArcanePoolIcon = null;
             internal static BlueprintFeature AddArcanePoolFeat;
 
+            private static readonly string ItemBondFeatureName = "ItemBondAbility";
+            internal static readonly string ItemBondFeatureGuid = "027f3c3f0b144673a09d287f0a046bbf";
+            private static readonly string ItemBondFeatureDisplayName = "ItemBondFeature.Name";
+            private static readonly string ItemBondFeatureDescription = "ItemBondFeature.Description";
+            private static readonly string AItemBondFeatureIcon = null;
+            internal static BlueprintAbility ItemBondFeature;
+
+            internal static List<Blueprint<BlueprintSpellbookReference>> AllowedSpellbooks = new List<Blueprint<BlueprintSpellbookReference>>();
+
 
         public static void Configure()
             {
@@ -128,8 +141,8 @@ namespace AssaultMage.Feats
                 }
             }
 
-            public static void ConfigureEnabled()
-            {
+        public static void ConfigureEnabled()
+        {
             ArmorProficiencyGroup[] ArmorsProficiencies = { /*ArmorProficiencyGroup.Heavy ,
                                                             ArmorProficiencyGroup.Medium,
                                                             ArmorProficiencyGroup.Light,
@@ -172,27 +185,28 @@ namespace AssaultMage.Feats
                             //.Build();
 
                             .ApplyBuffPermanent(BuffRefs.LuckDomainBaseBuff.Reference.GetBlueprint(), true, false, true, false, null, null, true)
-                            .ApplyBuffPermanent(BuffRefs.GuidanceBuff.Reference.GetBlueprint(), true, false, true, false, null, null, true)
-                            .BuffActionAddStatBonus(ModifierDescriptor.UntypedStackable, StatType.AC, 20)
-                            .BuffActionAddStatBonus(ModifierDescriptor.UntypedStackable, StatType.AdditionalAttackBonus, 20)
-                            .BuffActionAddStatBonus(ModifierDescriptor.UntypedStackable, StatType.AdditionalCMB, 20)
-                            .BuffActionAddStatBonus(ModifierDescriptor.UntypedStackable, StatType.AdditionalCMD, 20)
-                            .BuffActionAddStatBonus(ModifierDescriptor.UntypedStackable, StatType.SkillKnowledgeArcana, 20)
-                            .BuffActionAddStatBonus(ModifierDescriptor.UntypedStackable, StatType.SkillKnowledgeWorld, 20)
-                            .BuffActionAddStatBonus(ModifierDescriptor.UntypedStackable, StatType.SkillLoreNature, 20)
-                            .BuffActionAddStatBonus(ModifierDescriptor.UntypedStackable, StatType.SkillLoreReligion, 20)
-                            .BuffActionAddStatBonus(ModifierDescriptor.UntypedStackable, StatType.SkillAthletics, 20)
-                            .BuffActionAddStatBonus(ModifierDescriptor.UntypedStackable, StatType.SkillMobility, 20)
-                            .BuffActionAddStatBonus(ModifierDescriptor.UntypedStackable, StatType.SkillPerception, 20)
-                            .BuffActionAddStatBonus(ModifierDescriptor.UntypedStackable, StatType.SkillPersuasion, 20)
-                            .BuffActionAddStatBonus(ModifierDescriptor.UntypedStackable, StatType.SkillStealth, 20)
-                            .BuffActionAddStatBonus(ModifierDescriptor.UntypedStackable, StatType.SkillThievery, 20)
-                            .BuffActionAddStatBonus(ModifierDescriptor.UntypedStackable, StatType.SkillUseMagicDevice, 20)
-                            .BuffActionAddStatBonus(ModifierDescriptor.UntypedStackable, StatType.SaveFortitude, 20)
-                            .BuffActionAddStatBonus(ModifierDescriptor.UntypedStackable, StatType.SaveWill, 20)
-                            .BuffActionAddStatBonus(ModifierDescriptor.UntypedStackable, StatType.SaveReflex, 20);
-                            
-                     
+                            .ApplyBuffPermanent(BuffRefs.ProtectiveWardEffectBuff.Reference.GetBlueprint())
+                            //.ApplyBuffPermanent(BuffRefs.GuidanceBuff.Reference.GetBlueprint(), true, false, true, false, null, null, true)
+                            .BuffActionAddStatBonus(ModifierDescriptor.UntypedStackable, StatType.AC, 30)
+                            .BuffActionAddStatBonus(ModifierDescriptor.UntypedStackable, StatType.AdditionalAttackBonus, 30)
+                            .BuffActionAddStatBonus(ModifierDescriptor.UntypedStackable, StatType.AdditionalCMB, 30)
+                            .BuffActionAddStatBonus(ModifierDescriptor.UntypedStackable, StatType.AdditionalCMD, 30)
+                            .BuffActionAddStatBonus(ModifierDescriptor.UntypedStackable, StatType.SkillKnowledgeArcana, 30)
+                            .BuffActionAddStatBonus(ModifierDescriptor.UntypedStackable, StatType.SkillKnowledgeWorld, 30)
+                            .BuffActionAddStatBonus(ModifierDescriptor.UntypedStackable, StatType.SkillLoreNature, 30)
+                            .BuffActionAddStatBonus(ModifierDescriptor.UntypedStackable, StatType.SkillLoreReligion, 30)
+                            .BuffActionAddStatBonus(ModifierDescriptor.UntypedStackable, StatType.SkillAthletics, 30)
+                            .BuffActionAddStatBonus(ModifierDescriptor.UntypedStackable, StatType.SkillMobility, 30)
+                            .BuffActionAddStatBonus(ModifierDescriptor.UntypedStackable, StatType.SkillPerception, 30)
+                            .BuffActionAddStatBonus(ModifierDescriptor.UntypedStackable, StatType.SkillPersuasion, 30)
+                            .BuffActionAddStatBonus(ModifierDescriptor.UntypedStackable, StatType.SkillStealth, 30)
+                            .BuffActionAddStatBonus(ModifierDescriptor.UntypedStackable, StatType.SkillThievery, 30)
+                            .BuffActionAddStatBonus(ModifierDescriptor.UntypedStackable, StatType.SkillUseMagicDevice, 30)
+                            .BuffActionAddStatBonus(ModifierDescriptor.UntypedStackable, StatType.SaveFortitude, 30)
+                            .BuffActionAddStatBonus(ModifierDescriptor.UntypedStackable, StatType.SaveWill, 30)
+                            .BuffActionAddStatBonus(ModifierDescriptor.UntypedStackable, StatType.SaveReflex, 30);
+
+
 
             ConUltimateBuff = BuffConfigurator.New(ConBuffName, ConBuffGuid)
                                     .SetDisplayName(ConBuffDisplayName)
@@ -302,7 +316,7 @@ namespace AssaultMage.Feats
                     .SetHideInCharacterSheetAndLevelUp(false)
                     .SetHideNotAvailibleInUI(false)
                     .RemoveFromGroups(FeatureGroup.Feat)
-                    .AddBuffSkillBonus(StatType.Intelligence,1, ModifierDescriptor.Inherent)
+                    .AddBuffSkillBonus(StatType.Intelligence, 1, ModifierDescriptor.Inherent)
                     .AddRecalculateOnStatChange(null, BlueprintCore.Blueprints.CustomConfigurators.ComponentMerge.Skip, StatType.Intelligence, false)
                     .Configure(delayed: true);
 
@@ -376,6 +390,16 @@ namespace AssaultMage.Feats
                     .AddRecalculateOnStatChange(null, BlueprintCore.Blueprints.CustomConfigurators.ComponentMerge.Skip, StatType.Intelligence, false)
                     .Configure(delayed: false);
 
+
+            AllowedSpellbooks.Add(AssaultMage.Archetypes.AssaultMage.ArchetypeSpellbookGuid);
+
+            ItemBondFeature = AbilityConfigurator.New(ItemBondFeatureName, ItemBondFeatureGuid)
+                    .SetDisplayName(ItemBondFeatureName)
+                    .SetDescription(ItemBondFeatureGuid)
+                    .AddAbilityResourceLogic(1, false, true, null, ComponentMerge.Skip, AbilityResourceRefs.ItemBondResource.Reference.Get(),
+                            null, null)
+                    .AddAbilityRestoreSpellSlot(true, true, null, ComponentMerge.Skip, AllowedSpellbooks, null)
+                    .Configure(delayed: true);
         }
     
 
