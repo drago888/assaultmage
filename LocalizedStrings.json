@@ -395,14 +395,14 @@
   },
 
   {
-    "Key": "ItemBondFeature.Name",
+    "Key": "ItemBondAbility.Name",
     "ProcessTemplates": false,
-    "enGB": "Item Bond Feature"
+    "enGB": "Item Bond"
   },
 
   {
-    "Key": "ItemBondFeature.Description",
-    "enGB": "Item Bond Feature"
+    "Key": "ItemBondAbility.Description",
+    "enGB": "A bonded object can be used once per day to restore any spell slot."
   }
 
 

@@ -13,7 +13,7 @@ namespace AssaultMage.Feats
 
         private static readonly string DisplayName = "MyFeat.Name";
         private static readonly string Description = "MyFeat.Description";
-        private static readonly string Icon = "assets/icons/quillen.jpg";
+        private static readonly string Icon = "assets/icons/quillen.png";
 
         public static void Configure()
         {

@@ -44,6 +44,7 @@ using TinyJson;
 
 using BlueprintCore.Blueprints.CustomConfigurators;
 using Kingmaker.Blueprints.Facts;
+using QuickGraph;
 
 
 namespace AssaultMage
@@ -87,6 +88,7 @@ namespace AssaultMage
             private static bool Initialized = false;
             static bool loaded = false;
 
+
             [HarmonyPriority(Priority.First)]
             [HarmonyPatch(nameof(BlueprintsCache.Init)), HarmonyPostfix]
             static void Init()
@@ -103,6 +105,7 @@ namespace AssaultMage
                     Logger.Info("Configuring blueprints.");
 
                     AddChanges();
+                    AddPatches();
                 }
                 catch (Exception e)
                 {
@@ -116,7 +119,7 @@ namespace AssaultMage
                 if (loaded) return;
                 loaded = true;
 
-                AddPatches();
+                //AddPatches();
 
                 /*
                 var groetusFeature = ResourcesLibrary.TryGetBlueprint<BlueprintFeature>("c3e4d5681906d5246ab8b0637b98cbfe");
@@ -662,6 +665,19 @@ namespace AssaultMage
 
             EnhancePotion.GetComponent<EnhancePotion>().m_Archetypes = EnhancePotion_m_Archetypes.ToArray();
 
+            // --------------------------
+            /*var subclassTypes = Assembly
+                .GetAssembly(typeof(BlueprintComponent))
+                .GetTypes()
+                .Where(t => t.IsSubclassOf(typeof(BlueprintComponent)));
+
+            foreach (var type in subclassTypes)
+            {
+                if (type.GetType().GetTypeInfo().GetDeclaredProperty("SpellbooksReference") != null)
+                {
+                    Logger.Info("Subclass with SpellbooksReference is - " + type.Name);
+                }
+            }*/
 
             // ItemBondAbility is not patched as ItemBondAbility.GetComponent<AbilityRestoreSpellSlot>().SpellbooksReference is not found
             // ItemBondAbility
@@ -670,18 +686,20 @@ namespace AssaultMage
             {
                 if (com.name == "$AbilityRestoreSpellSlot$315be1da-597c-40bb-838b-f1bdf4955cde")
                 {
-                   
-                    ((AbilityRestoreSpellSlot)com).
+                    ((AbilityRestoreSpontaneousSpell)com). = true;
+
+                    object c = com.CheckSpellbook;
                 }
             }*/
+            
+            
 
-            // ItemBondAbility will use WMT to modify
 
             // ItemBondFeature
             BlueprintFeature ItemBondFeature = (BlueprintFeature)ResourcesLibrary.TryGetBlueprint(BlueprintGuid.Parse("2fb5e65bd57caa943b45ee32d825e9b9"));
             ItemBondFeature.GetComponent<AddAbilityResources>().Amount = 1;
             ItemBondFeature.GetComponent<AddAbilityResources>().RestoreAmount = true;
-            
+
 
             // PowerfulChangeBuff
             BlueprintBuff PowerfulChangeBuff = (BlueprintBuff)ResourcesLibrary.TryGetBlueprint(BlueprintGuid.Parse("be5d23755e7e501448193bbbd71c5256"));

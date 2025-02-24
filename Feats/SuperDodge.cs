@@ -32,6 +32,9 @@ using Kingmaker.UnitLogic.Buffs.Blueprints;
 using Kingmaker.UnitLogic.Mechanics;
 using Unity.Injection;
 using static Kingmaker.Blueprints.Classes.Prerequisites.Prerequisite;
+using Kingmaker.Localization.Shared;
+using BlueprintCore.Utils.Assets;
+using UnityEngine;
 
 namespace AssaultMage.Feats
 {
@@ -45,35 +48,35 @@ namespace AssaultMage.Feats
 
             private static readonly string DisplayName = "SuperDodge.Name";
             private static readonly string Description = "SuperDodge.Description";
-            private static readonly string Icon = "assets/icons/armoredmage.jpg";
+            private static readonly string Icon = "assets/icons/armoredmage.png";
             internal static BlueprintFeature SuperDodgeFeat;
 
             private static readonly string ConBuffName = "ConUltimateBuff";
             internal static readonly string ConBuffGuid = "8be56a13-ad5e-4b0b-ae37-4249124d3d32";
             private static readonly string ConBuffDisplayName = "ConUltimateBuff.Name";
             private static readonly string ConBuffDescription = "ConUltimateBuff.Description";
-            private static readonly string ConBuffIcon = "assets/icons/armoredmage.jpg";
+            private static readonly string ConBuffIcon = "assets/icons/armoredmage.png";
             internal static BlueprintBuff ConUltimateBuff;
 
             private static readonly string BuffName = "UltimateBuff";
             internal static readonly string BuffGuid = "30591265-853a-4e83-afb7-de15d4a35778";
             private static readonly string BuffDisplayName = "UltimateBuff.Name";
             private static readonly string BuffDescription = "UltimateBuff.Description";
-            private static readonly string BuffIcon = "assets/icons/armoredmage.jpg";
+            private static readonly string BuffIcon = "assets/icons/armoredmage.png";
             internal static BlueprintBuff UltimateBuff;
 
             private static readonly string AbilityName = "UltimateBuffAbility";
             internal static readonly string AbilityGuid = "d3737e69-78d0-4889-936d-d9e40487e062";
             private static readonly string AbilityDisplayName = "UltimateBuffAbility.Name";
             private static readonly string AbilityDescription = "UltimateBuffAbility.Description";
-            private static readonly string AbilityIcon = "assets/icons/armoredmage.jpg";
+            private static readonly string AbilityIcon = "assets/icons/armoredmage.png";
             internal static BlueprintActivatableAbility AbilityUltimateBuff;
 
             private static readonly string ShiftingProjectionFeatName = "ShiftingProjection";
             internal static readonly string ShiftingProjectionFeatGuid = "cc6acc5d-4017-4a8f-ba33-cf7319d458b8";
             private static readonly string ShiftingProjectionDisplayName = "ShiftingProjection.Name";
             private static readonly string ShiftingProjectionDescription = "ShiftingProjection.Description";
-            private static readonly string ShiftingProjectionIcon = "assets/icons/armoredmage.jpg";
+            private static readonly string ShiftingProjectionIcon = "assets/icons/armoredmage.png";
             internal static BlueprintFeature ShiftingProjectionFeat;
 
             private static readonly string MentalAcuity1FeatName = "MentalAcuity1";
@@ -118,12 +121,14 @@ namespace AssaultMage.Feats
             private static readonly string AddArcanePoolIcon = null;
             internal static BlueprintFeature AddArcanePoolFeat;
 
-            private static readonly string ItemBondFeatureName = "ItemBondAbility";
-            internal static readonly string ItemBondFeatureGuid = "027f3c3f0b144673a09d287f0a046bbf";
-            private static readonly string ItemBondFeatureDisplayName = "ItemBondFeature.Name";
-            private static readonly string ItemBondFeatureDescription = "ItemBondFeature.Description";
-            private static readonly string AItemBondFeatureIcon = null;
-            internal static BlueprintAbility ItemBondFeature;
+            private static readonly string ItemBondAbilityName = "ItemBondAbility";
+            //internal static readonly string ItemBondAbilityGuid = "027f3c3f0b144673a09d287f0a046bbf";
+            // below is original ItemBondAbility GUID
+            internal static readonly string ItemBondAbilityGuid = "e5dcf71e02e08fc448d9745653845df1";
+            private static readonly string ItemBondAbilityDisplayName = "ItemBondAbility.Name";
+            private static readonly string ItemBondAbilityDescription = "ItemBondAbility.Description";
+            private static readonly string ItemBondAbilityIcon = "assets/icons/objectbond.png";
+            internal static BlueprintAbility ItemBondAbility;
 
             internal static List<Blueprint<BlueprintSpellbookReference>> AllowedSpellbooks = new List<Blueprint<BlueprintSpellbookReference>>();
 
@@ -390,16 +395,62 @@ namespace AssaultMage.Feats
                     .AddRecalculateOnStatChange(null, BlueprintCore.Blueprints.CustomConfigurators.ComponentMerge.Skip, StatType.Intelligence, false)
                     .Configure(delayed: false);
 
-
+            AllowedSpellbooks.Add(SpellbookRefs.WizardSpellbook.Reference.Guid);
+            AllowedSpellbooks.Add(SpellbookRefs.ThassilonianAbjurationSpellbook.Reference.Guid);
+            AllowedSpellbooks.Add(SpellbookRefs.ThassilonianConjurationSpellbook.Reference.Guid);
+            AllowedSpellbooks.Add(SpellbookRefs.ThassilonianEnchantmentSpellbook.Reference.Guid);
+            AllowedSpellbooks.Add(SpellbookRefs.ThassilonianEvocationSpellbook.Reference.Guid);
+            AllowedSpellbooks.Add(SpellbookRefs.ThassilonianIllusionSpellbook.Reference.Guid);
+            AllowedSpellbooks.Add(SpellbookRefs.ThassilonianNecromancySpellbook.Reference.Guid);
+            AllowedSpellbooks.Add(SpellbookRefs.ThassilonianTransmutationSpellbook.Reference.Guid);
             AllowedSpellbooks.Add(AssaultMage.Archetypes.AssaultMage.ArchetypeSpellbookGuid);
 
-            ItemBondFeature = AbilityConfigurator.New(ItemBondFeatureName, ItemBondFeatureGuid)
-                    .SetDisplayName(ItemBondFeatureName)
-                    .SetDescription(ItemBondFeatureGuid)
+            // remove original itembondability
+            ResourcesLibrary.BlueprintsCache.RemoveCachedBlueprint((BlueprintGuid.Parse(ItemBondAbilityGuid)));
+
+
+            ItemBondAbility = AbilityConfigurator.New(ItemBondAbilityName, ItemBondAbilityGuid)
+                    .SetDisplayName(ItemBondAbilityDisplayName)
+                    .SetDescription(ItemBondAbilityDescription)
                     .AddAbilityResourceLogic(1, false, true, null, ComponentMerge.Skip, AbilityResourceRefs.ItemBondResource.Reference.Get(),
                             null, null)
                     .AddAbilityRestoreSpellSlot(true, true, null, ComponentMerge.Skip, AllowedSpellbooks, null)
+                    .SetAllowNonContextActions(false)
+                    .SetIcon(ItemBondAbilityIcon)
+                    .SetAutoUseIsForbidden(true)
+                    .SetType(AbilityType.Supernatural)
+                    .SetRange(AbilityRange.Personal)
+                    .SetIgnoreMinimalRangeLimit(false)
+                    .SetCustomRange(0)
+                    .SetShowNameForVariant(false)
+                    .SetOnlyForAllyCaster(false)
+                    .SetCanTargetPoint(false)
+                    .SetCanTargetEnemies(false)
+                    .SetCanTargetFriends(false)
+                    .SetCanTargetSelf(true)
+                    .SetShouldTurnToTarget(true)
+                    .SetSpellResistance(false)
+                    .SetIgnoreSpellResistanceForAlly(false)
+                    .SetActionBarAutoFillIgnored(true)
+                    .SetHidden(true)
+                    .SetNeedEquipWeapons(false)
+                    .SetUseCurrentWeaponAsReasonItem(false)
+                    .SetNotOffensive(false)
+                    .SetEffectOnAlly(AbilityEffectOnUnit.None)
+                    .SetEffectOnEnemy(AbilityEffectOnUnit.None)
+                    .SetAnimation(Kingmaker.Visual.Animation.Kingmaker.Actions.UnitAnimationActionCastSpell.CastAnimationStyle.Self)
+                    .SetHasFastAnimation(false)
+                    .SetAnimation(Kingmaker.Visual.Animation.Kingmaker.Actions.UnitAnimationActionCastSpell.CastAnimationStyle.Omni)
+                    .SetTargetMapObjects(false)
+                    .SetActionType(Kingmaker.UnitLogic.Commands.Base.UnitCommand.CommandType.Free)
+                    .SetMinimalTransitionOut(0)
+                    .SetAvailableMetamagic(Kingmaker.UnitLogic.Abilities.Metamagic.Heighten)
+                    .SetIsFullRoundAction(false)
+                    .SetDisableLog(false)
+                    .SetIsDomainAbility(false)
                     .Configure(delayed: true);
+
+
         }
     
 

@@ -402,7 +402,7 @@ namespace AssaultMage.Archetypes
                     //FeatureRefs.RayCalculateFeature.ToString(),
                     //FeatureRefs.TouchCalculateFeature.ToString(),
                     FeatureRefs.ArcanistArcaneReservoirFeature.ToString(),
-                    FeatureRefs.ArcanistConsumeSpellsFeature.ToString(),
+                    //FeatureRefs.ArcanistConsumeSpellsFeature.ToString(),
                     // arcanist exploit are mostly useless as most use arcanist levels
                     //FeatureSelectionRefs.ArcanistExploitSelection.ToString(),
 
@@ -2698,7 +2698,7 @@ namespace AssaultMage.Archetypes
                 .SetCastingAttribute(StatType.Intelligence)
                 .SetIsArcane(true)
                 .SetIsArcanist(true)
-                .SetSpontaneous(true)
+                //.SetSpontaneous(true)
                 .Configure();
 
           
